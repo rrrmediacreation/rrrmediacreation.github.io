@@ -1,0 +1,2406 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R.R.R Web Studio • Visual Website Builder & Designer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter, Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Studio Custom Scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+
+        /* Viewport transition */
+        #preview-frame-wrapper {
+            transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), height 0.35s ease;
+        }
+
+        /* Subtle grid pattern behind preview stage */
+        .canvas-grid {
+            background-color: #070b14;
+            background-image: radial-gradient(#1e293b 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 h-screen w-screen overflow-hidden flex flex-col select-none">
+
+    <!-- Toast Notification Container -->
+    <div id="studio-toast-container" class="fixed bottom-5 right-5 z-[120] flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- ===================================================================== -->
+    <!-- 1. TOP STUDIO TOOLBAR                                                 -->
+    <!-- ===================================================================== -->
+    <header class="h-14 bg-slate-900 border-b border-slate-800 px-3 lg:px-4 flex items-center justify-between gap-2 shrink-0 z-30">
+        
+        <!-- Left: Studio Brand & Template Switcher -->
+        <div class="flex items-center gap-3 min-w-0">
+            <!-- Mobile Sidebar Toggle -->
+            <button onclick="toggleMobileSidebar()" class="lg:hidden w-9 h-9 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center shrink-0 cursor-pointer" title="Toggle Designer Sidebar">
+                <i class="fa-solid fa-sliders"></i>
+            </button>
+
+            <div class="flex items-center gap-2.5 shrink-0">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-amber-600 text-slate-950 font-display font-extrabold text-xs flex items-center justify-center shadow-md shadow-amber-500/20">
+                    RRR
+                </div>
+                <div class="hidden sm:block leading-tight">
+                    <div class="font-display font-bold text-sm text-white tracking-tight">R.R.R Web Studio</div>
+                    <div class="text-[10px] text-slate-400 font-medium">Visual Builder & Code Exporter</div>
+                </div>
+            </div>
+
+            <div class="h-5 w-px bg-slate-800 hidden md:block"></div>
+
+            <!-- Template Switcher -->
+            <div class="relative hidden md:flex items-center">
+                <i class="fa-solid fa-layer-group text-amber-400 text-xs absolute left-3 pointer-events-none"></i>
+                <select id="template-selector" onchange="switchTemplate(this.value)" class="pl-8 pr-7 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-800 border border-slate-700 text-xs font-medium text-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer max-w-[230px] truncate">
+                    <option value="rrr-service-menu">R.R.R Media Creation (Service Menu)</option>
+                    <option value="agency-landing">Agency Landing Page Preset</option>
+                    <option value="shop-storefront">Local Shop Bio-Link & Storefront</option>
+                    <option value="blank-canvas">Blank Starter Canvas</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Center: Viewport Toggles & Workspace Mode Tabs -->
+        <div class="flex items-center gap-2">
+            <!-- Responsive Viewport Toggles -->
+            <div class="hidden xl:flex items-center bg-slate-950 p-1 rounded-lg border border-slate-800" id="viewport-controls">
+                <button onclick="setViewport('desktop')" data-vp="desktop" class="vp-btn px-2.5 py-1 rounded-md text-xs font-medium bg-slate-800 text-amber-400 flex items-center gap-1.5 transition cursor-pointer" title="Desktop (100%)">
+                    <i class="fa-solid fa-desktop"></i>
+                    <span>Desktop</span>
+                </button>
+                <button onclick="setViewport('tablet')" data-vp="tablet" class="vp-btn px-2.5 py-1 rounded-md text-xs font-medium text-slate-400 hover:text-white flex items-center gap-1.5 transition cursor-pointer" title="Tablet (768px)">
+                    <i class="fa-solid fa-tablet-screen-button"></i>
+                    <span>768px</span>
+                </button>
+                <button onclick="setViewport('mobile')" data-vp="mobile" class="vp-btn px-2.5 py-1 rounded-md text-xs font-medium text-slate-400 hover:text-white flex items-center gap-1.5 transition cursor-pointer" title="Mobile (375px)">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <span>375px</span>
+                </button>
+            </div>
+
+            <!-- Workspace Mode Tabs -->
+            <div class="flex items-center bg-slate-950 p-1 rounded-lg border border-slate-800">
+                <button onclick="setWorkspaceMode('preview')" data-mode="preview" class="mode-btn px-2.5 sm:px-3 py-1 rounded-md text-xs font-semibold bg-amber-500 text-slate-950 flex items-center gap-1.5 transition cursor-pointer">
+                    <i class="fa-solid fa-eye"></i>
+                    <span class="hidden sm:inline">Visual Preview</span>
+                </button>
+                <button onclick="setWorkspaceMode('split')" data-mode="split" class="mode-btn px-2.5 sm:px-3 py-1 rounded-md text-xs font-semibold text-slate-400 hover:text-white flex items-center gap-1.5 transition cursor-pointer">
+                    <i class="fa-solid fa-table-columns"></i>
+                    <span class="hidden sm:inline">Split View</span>
+                </button>
+                <button onclick="setWorkspaceMode('code')" data-mode="code" class="mode-btn px-2.5 sm:px-3 py-1 rounded-md text-xs font-semibold text-slate-400 hover:text-white flex items-center gap-1.5 transition cursor-pointer">
+                    <i class="fa-solid fa-code"></i>
+                    <span class="hidden sm:inline">Full Code</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Right: Export & GitHub Actions -->
+        <div class="flex items-center gap-2 shrink-0">
+            <button onclick="openGithubModal()" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold transition cursor-pointer" title="GitHub Pages Deployment Guide">
+                <i class="fa-brands fa-github text-sm"></i>
+                <span class="hidden lg:inline">Deploy Guide</span>
+            </button>
+
+            <button onclick="copyGeneratedHTML()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-400 border border-slate-700 text-xs font-semibold transition cursor-pointer">
+                <i class="fa-regular fa-copy"></i>
+                <span class="hidden md:inline">Copy HTML</span>
+            </button>
+
+            <button onclick="downloadIndexHTML()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition shadow-lg shadow-emerald-950/50 cursor-pointer">
+                <i class="fa-solid fa-download"></i>
+                <span>Download index.html</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===================================================================== -->
+    <!-- 2. MAIN STUDIO WORKSPACE                                              -->
+    <!-- ===================================================================== -->
+    <div class="flex-1 flex overflow-hidden relative">
+
+        <!-- LEFT SIDEBAR: VISUAL DESIGNER & BLOCK CONTROLS -->
+        <aside id="studio-sidebar" class="fixed lg:static inset-y-14 left-0 z-20 w-80 bg-slate-900 border-r border-slate-800 flex flex-col transform -translate-x-full lg:translate-x-0 transition-transform duration-300 shrink-0">
+            
+            <!-- Sidebar Sub-Navigation Tabs -->
+            <div class="grid grid-cols-3 border-b border-slate-800 bg-slate-950/60 p-1.5 gap-1 shrink-0">
+                <button onclick="switchSidebarTab('brand')" data-stab="brand" class="stab-btn py-1.5 rounded-md text-xs font-semibold bg-slate-800 text-amber-400 flex items-center justify-center gap-1.5 transition cursor-pointer">
+                    <i class="fa-solid fa-palette"></i>
+                    <span>Brand</span>
+                </button>
+                <button onclick="switchSidebarTab('sections')" data-stab="sections" class="stab-btn py-1.5 rounded-md text-xs font-semibold text-slate-400 hover:text-white flex items-center justify-center gap-1.5 transition cursor-pointer">
+                    <i class="fa-solid fa-cubes"></i>
+                    <span>Blocks</span>
+                </button>
+                <button onclick="switchSidebarTab('services')" data-stab="services" class="stab-btn py-1.5 rounded-md text-xs font-semibold text-slate-400 hover:text-white flex items-center justify-center gap-1.5 transition cursor-pointer">
+                    <i class="fa-solid fa-tags"></i>
+                    <span>Services</span>
+                </button>
+            </div>
+
+            <!-- Sidebar Scrollable Content -->
+            <div class="flex-1 overflow-y-auto p-4 space-y-5 select-text">
+
+                <!-- TAB 1: BRAND & THEME CUSTOMIZER -->
+                <div id="stab-panel-brand" class="space-y-5">
+                    <!-- Mobile Template Selector -->
+                    <div class="md:hidden">
+                        <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Starter Template</label>
+                        <select onchange="switchTemplate(this.value)" class="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-xs text-white">
+                            <option value="rrr-service-menu">R.R.R Media Creation (Service Menu)</option>
+                            <option value="agency-landing">Agency Landing Page Preset</option>
+                            <option value="shop-storefront">Local Shop Bio-Link & Storefront</option>
+                            <option value="blank-canvas">Blank Starter Canvas</option>
+                        </select>
+                    </div>
+
+                    <!-- Brand Identity Inputs -->
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-amber-400">Brand Identity</span>
+                            <button onclick="resetToDefaultState()" class="text-[11px] text-slate-400 hover:text-white underline cursor-pointer">Reset Defaults</button>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1">Business / Brand Name</label>
+                            <input type="text" id="input-brand-name" value="R.R.R Media Creation" oninput="updateConfig('brandName', this.value)"
+                                class="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1">Logo Monogram (3–4 chars)</label>
+                            <input type="text" id="input-brand-logo" value="RRR" maxlength="5" oninput="updateConfig('brandLogo', this.value)"
+                                class="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white font-mono uppercase focus:outline-none focus:border-amber-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1">Tagline / Subtitle</label>
+                            <textarea id="input-tagline" rows="2" oninput="updateConfig('tagline', this.value)"
+                                class="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-500">Your Digital Partner for Every Business Need.</textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1">WhatsApp Number (with Country Code)</label>
+                            <div class="relative">
+                                <i class="fa-brands fa-whatsapp text-emerald-400 text-sm absolute left-3 top-2.5"></i>
+                                <input type="text" id="input-whatsapp" value="917978143717" oninput="updateConfig('whatsapp', this.value)"
+                                    class="w-full pl-8 pr-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white font-mono focus:outline-none focus:border-emerald-500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="border-slate-800">
+
+                    <!-- Theme Palette Swatches -->
+                    <div class="space-y-2.5">
+                        <span class="block text-[11px] font-bold uppercase tracking-wider text-amber-400">Color Theme Preset</span>
+                        <div class="grid grid-cols-2 gap-2" id="theme-swatches">
+                            <button onclick="setTheme('navy-gold')" data-theme="navy-gold" class="theme-card p-2.5 rounded-xl bg-slate-950 border-2 border-amber-500 text-left transition cursor-pointer">
+                                <div class="flex items-center gap-1.5 mb-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-[#0F172A] border border-slate-600"></span>
+                                    <span class="w-4 h-4 rounded-full bg-[#F59E0B]"></span>
+                                    <span class="w-4 h-4 rounded-full bg-[#10B981]"></span>
+                                </div>
+                                <div class="text-xs font-semibold text-white">Navy & Gold</div>
+                                <div class="text-[10px] text-slate-400">Signature R.R.R</div>
+                            </button>
+
+                            <button onclick="setTheme('emerald-slate')" data-theme="emerald-slate" class="theme-card p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-slate-600 text-left transition cursor-pointer">
+                                <div class="flex items-center gap-1.5 mb-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-[#064E3B] border border-slate-600"></span>
+                                    <span class="w-4 h-4 rounded-full bg-[#34D399]"></span>
+                                    <span class="w-4 h-4 rounded-full bg-[#0EA5E9]"></span>
+                                </div>
+                                <div class="text-xs font-semibold text-white">Emerald & Slate</div>
+                                <div class="text-[10px] text-slate-400">Modern Fintech</div>
+                            </button>
+
+                            <button onclick="setTheme('indigo-amber')" data-theme="indigo-amber" class="theme-card p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-slate-600 text-left transition cursor-pointer">
+                                <div class="flex items-center gap-1.5 mb-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-[#1E1B4B] border border-slate-600"></span>
+                                    <span class="w-4 h-4 rounded-full bg-[#6366F1]"></span>
+                                    <span class="w-4 h-4 rounded-full bg-[#F59E0B]"></span>
+                                </div>
+                                <div class="text-xs font-semibold text-white">Royal Indigo</div>
+                                <div class="text-[10px] text-slate-400">Creative Studio</div>
+                            </button>
+
+                            <button onclick="setTheme('crimson-charcoal')" data-theme="crimson-charcoal" class="theme-card p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-slate-600 text-left transition cursor-pointer">
+                                <div class="flex items-center gap-1.5 mb-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-[#18181B] border border-slate-600"></span>
+                                    <span class="w-4 h-4 rounded-full bg-[#E11D48]"></span>
+                                    <span class="w-4 h-4 rounded-full bg-[#FB923C]"></span>
+                                </div>
+                                <div class="text-xs font-semibold text-white">Crimson Dark</div>
+                                <div class="text-[10px] text-slate-400">Bold & Executive</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <hr class="border-slate-800">
+
+                    <!-- Font Pair Selector -->
+                    <div class="space-y-2">
+                        <label class="block text-[11px] font-bold uppercase tracking-wider text-amber-400">Typography Pairing</label>
+                        <select id="input-font-pair" onchange="updateConfig('fontPair', this.value)" class="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white focus:outline-none focus:border-amber-500 cursor-pointer">
+                            <option value="jakarta-inter">Plus Jakarta Sans + Inter (Clean Modern)</option>
+                            <option value="poppins-opensans">Poppins + Open Sans (Friendly Geometric)</option>
+                            <option value="outfit-dmsans">Outfit + DM Sans (Bold Agency)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- TAB 2: SECTION & BLOCK MANAGER -->
+                <div id="stab-panel-sections" class="hidden space-y-5">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-amber-400">Page Sections & Order</span>
+                            <span class="text-[10px] text-slate-400">Toggle or Reorder</span>
+                        </div>
+                        <div id="sections-list-container" class="space-y-2">
+                            <!-- Section rows rendered dynamically -->
+                        </div>
+                    </div>
+
+                    <hr class="border-slate-800">
+
+                    <!-- Add Custom Block Builder -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-3.5 space-y-3">
+                        <div class="flex items-center gap-2 text-xs font-bold text-emerald-400">
+                            <i class="fa-solid fa-plus-circle"></i>
+                            <span>Add Custom Section / Block</span>
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] text-slate-400 mb-1">Block Layout Type</label>
+                            <select id="custom-block-type" class="w-full px-2.5 py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white">
+                                <option value="hero-cta">Hero Promotional CTA Banner</option>
+                                <option value="why-choose">Why Choose Us (3-Column Grid)</option>
+                                <option value="testimonials">Client Testimonials Strip</option>
+                                <option value="faq">FAQ Accordion Block</option>
+                                <option value="contact-card">Office Location & Contact Card</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] text-slate-400 mb-1">Section Heading</label>
+                            <input type="text" id="custom-block-heading" placeholder="e.g., Why Businesses Trust R.R.R Media" class="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white">
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] text-slate-400 mb-1">Description / Content</label>
+                            <textarea id="custom-block-body" rows="2" placeholder="Fast turnaround, transparent pricing, and 100% digital compliance support." class="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] text-slate-400 mb-1">Action Button Label</label>
+                            <input type="text" id="custom-block-btn" value="Chat on WhatsApp" class="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white">
+                        </div>
+
+                        <button onclick="addCustomBlock()" class="w-full py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition flex items-center justify-center gap-1.5 cursor-pointer">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span>Insert Block into Website</span>
+                        </button>
+                    </div>
+
+                    <!-- Added Custom Blocks List -->
+                    <div id="custom-blocks-manager" class="space-y-2"></div>
+                </div>
+
+                <!-- TAB 3: QUICK SERVICE / PRICE ITEM EDITOR -->
+                <div id="stab-panel-services" class="hidden space-y-4">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-3.5 space-y-3">
+                        <div class="flex items-center gap-2 text-xs font-bold text-amber-400">
+                            <i class="fa-solid fa-tag"></i>
+                            <span>Add Custom Service Card</span>
+                        </div>
+                        <p class="text-[11px] text-slate-400 leading-relaxed">
+                            Instantly add a new priced service card to your live menu & interactive Quote Builder.
+                        </p>
+
+                        <div>
+                            <label class="block text-[11px] text-slate-400 mb-1">Service Title</label>
+                            <input type="text" id="new-svc-name" placeholder="e.g., E-Commerce Website Design (5 Pages)" class="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">Base Price (₹)</label>
+                                <input type="number" id="new-svc-price" placeholder="4999" class="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white font-mono">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">Badge Tag</label>
+                                <input type="text" id="new-svc-tag" placeholder="Web Dev" class="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] text-slate-400 mb-1">Target Category</label>
+                            <select id="new-svc-category" class="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white">
+                                <option value="cat-a">A. Digital Marketing & Media</option>
+                                <option value="cat-b">B. Business Registration & Tax</option>
+                                <option value="cat-c">C. GeM, Tenders & Contractor</option>
+                                <option value="cat-d">D. Citizen & Document Assistance</option>
+                                <option value="cat-e">E. CCTV & Security Surveillance</option>
+                            </select>
+                        </div>
+
+                        <button onclick="addCustomServiceItem()" class="w-full py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition flex items-center justify-center gap-1.5 cursor-pointer">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Add Service to Menu</span>
+                        </button>
+                    </div>
+
+                    <!-- List of Custom Added Services -->
+                    <div id="custom-services-list" class="space-y-2"></div>
+                </div>
+
+            </div>
+
+            <!-- Sidebar Bottom Status -->
+            <div class="p-3 bg-slate-950 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400 shrink-0">
+                <span class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Live Sync Active
+                </span>
+                <span id="code-size-indicator" class="font-mono text-slate-500">0 KB</span>
+            </div>
+        </aside>
+
+        <!-- Backdrop for Mobile Sidebar -->
+        <div id="mobile-sidebar-backdrop" onclick="toggleMobileSidebar()" class="fixed inset-0 bg-black/60 z-10 hidden lg:hidden"></div>
+
+        <!-- CENTER + RIGHT WORKSPACE AREA -->
+        <div class="flex-1 flex overflow-hidden">
+
+            <!-- CENTER STAGE: LIVE INTERACTIVE IFRAME PREVIEW -->
+            <main id="preview-pane" class="flex-1 canvas-grid flex flex-col items-center justify-start p-3 sm:p-5 overflow-hidden relative">
+                
+                <!-- Browser Chrome Wrapper -->
+                <div id="preview-frame-wrapper" class="w-full h-full bg-slate-900 rounded-2xl border border-slate-700/80 shadow-2xl flex flex-col overflow-hidden">
+                    
+                    <!-- Realistic Browser Top Bar -->
+                    <div class="h-10 bg-slate-900 border-b border-slate-800 px-3.5 flex items-center justify-between gap-3 shrink-0">
+                        <!-- Window Traffic Lights -->
+                        <div class="flex items-center gap-1.5 shrink-0">
+                            <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+                        </div>
+
+                        <!-- Editable URL Bar -->
+                        <div class="flex-1 max-w-md bg-slate-950 border border-slate-800 rounded-lg px-3 py-1 flex items-center gap-2 text-xs text-slate-400">
+                            <i class="fa-solid fa-lock text-emerald-500 text-[10px]"></i>
+                            <input type="text" id="preview-url-bar" value="https://rrrmediacreation.in" class="bg-transparent text-slate-300 font-mono text-[11px] w-full focus:outline-none">
+                        </div>
+
+                        <!-- Quick Refresh & Viewport Label -->
+                        <div class="flex items-center gap-2 shrink-0">
+                            <span id="viewport-badge" class="hidden sm:inline-block text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400">100%</span>
+                            <button onclick="renderLivePreview()" class="w-7 h-7 rounded-md hover:bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition cursor-pointer" title="Reload Live Preview">
+                                <i class="fa-solid fa-rotate-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Live Website Iframe -->
+                    <iframe id="live-preview-iframe" title="Live Website Preview" class="w-full flex-1 bg-white border-0"></iframe>
+                </div>
+            </main>
+
+            <!-- RIGHT / SPLIT PANEL: LIVE CODE INSPECTOR & EDITOR -->
+            <section id="code-pane" class="hidden w-full lg:w-[46%] bg-[#090d16] border-l border-slate-800 flex-col shrink-0">
+                <!-- Code Panel Toolbar -->
+                <div class="h-11 bg-slate-900 border-b border-slate-800 px-4 flex items-center justify-between gap-2 shrink-0">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-brands fa-html5 text-amber-500 text-sm"></i>
+                        <span class="font-mono text-xs font-semibold text-slate-200">index.html</span>
+                        <span id="manual-edit-badge" class="hidden px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-semibold">Edited</span>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button onclick="applyManualCode()" class="px-2.5 py-1 rounded-md bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition flex items-center gap-1.5 cursor-pointer">
+                            <i class="fa-solid fa-play text-[10px]"></i>
+                            <span>Apply Code Changes</span>
+                        </button>
+                        <button onclick="copyGeneratedHTML()" class="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition cursor-pointer" title="Copy Code">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Raw HTML Code Editor Textarea -->
+                <div class="flex-1 relative overflow-hidden">
+                    <textarea id="code-editor-textarea" spellcheck="false" oninput="markCodeAsManuallyEdited()"
+                        class="w-full h-full p-4 bg-[#070b14] text-emerald-300 font-mono text-xs leading-relaxed resize-none focus:outline-none selection:bg-amber-500/30 selection:text-white"></textarea>
+                </div>
+
+                <!-- Code Footer Tip -->
+                <div class="px-4 py-2 bg-slate-900 border-t border-slate-800 text-[11px] text-slate-400 flex items-center justify-between shrink-0">
+                    <span>Single-file standalone HTML + Tailwind CSS + JS</span>
+                    <button onclick="openGithubModal()" class="text-amber-400 hover:underline font-medium cursor-pointer">How to host free on GitHub →</button>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- 3. DEPLOY TO GITHUB PAGES HELPER MODAL                                -->
+    <!-- ===================================================================== -->
+    <div id="github-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-xs z-[100] hidden items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl">
+            <div class="px-6 py-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <i class="fa-brands fa-github text-xl text-white"></i>
+                    <h3 class="font-display font-bold text-base text-white">Deploy to GitHub Pages in 3 Easy Steps</h3>
+                </div>
+                <button onclick="closeGithubModal()" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center cursor-pointer">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-6 space-y-4 text-xs sm:text-sm text-slate-300 select-text">
+                <div class="flex items-start gap-3">
+                    <div class="w-6 h-6 rounded-full bg-amber-500 text-slate-950 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</div>
+                    <div>
+                        <div class="font-bold text-white">Download Your Production File</div>
+                        <p class="text-slate-400 text-xs mt-0.5">Click <span class="text-emerald-400 font-semibold">Download index.html</span> in the top-right toolbar. Everything (HTML, Tailwind CSS, icons, and interactive quote JS) is bundled into that single file.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                    <div class="w-6 h-6 rounded-full bg-amber-500 text-slate-950 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</div>
+                    <div>
+                        <div class="font-bold text-white">Upload to a Public GitHub Repository</div>
+                        <p class="text-slate-400 text-xs mt-0.5">Create a new public repository on GitHub named <code class="px-1.5 py-0.5 rounded bg-slate-800 text-amber-300 font-mono">username.github.io</code>, click <strong>Add file → Upload files</strong>, drag in your <code class="text-amber-300 font-mono">index.html</code>, and commit changes.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                    <div class="w-6 h-6 rounded-full bg-amber-500 text-slate-950 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</div>
+                    <div>
+                        <div class="font-bold text-white">Activate Free Hosting & Custom Domain</div>
+                        <p class="text-slate-400 text-xs mt-0.5">Open repository <strong>Settings → Pages</strong>, select branch <code class="text-amber-300 font-mono">main</code> / <code class="text-amber-300 font-mono">/ (root)</code>, and hit <strong>Save</strong>. Your site goes live at <code class="text-emerald-400 font-mono">https://username.github.io</code> within 60 seconds!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="px-6 py-3.5 bg-slate-950 border-t border-slate-800 flex items-center justify-end gap-2">
+                <button onclick="closeGithubModal()" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold cursor-pointer">Close</button>
+                <button onclick="downloadIndexHTML(); closeGithubModal();" class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 cursor-pointer">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Download index.html Now</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden textarea for reliable clipboard copy -->
+    <textarea id="studio-clipboard-helper" class="sr-only" aria-hidden="true"></textarea>
+
+    <script>
+        // =========================================================================
+        // 1. THEME & FONT DEFINITIONS
+        // =========================================================================
+        const THEMES = {
+            'navy-gold': {
+                name: 'Navy & Gold',
+                headerBg: '#0F172A',
+                headerDark: '#070D19',
+                surfaceDark: '#1E293B',
+                accent: '#F59E0B',
+                accentLight: '#FBBF24',
+                accentDark: '#D97706',
+                accentTextOnBtn: '#070D19',
+                secondary: '#10B981',
+                secondaryDark: '#059669'
+            },
+            'emerald-slate': {
+                name: 'Emerald & Slate',
+                headerBg: '#064E3B',
+                headerDark: '#022C22',
+                surfaceDark: '#065F46',
+                accent: '#34D399',
+                accentLight: '#6EE7B7',
+                accentDark: '#10B981',
+                accentTextOnBtn: '#022C22',
+                secondary: '#0EA5E9',
+                secondaryDark: '#0284C7'
+            },
+            'indigo-amber': {
+                name: 'Royal Indigo & Amber',
+                headerBg: '#1E1B4B',
+                headerDark: '#0F0D2E',
+                surfaceDark: '#312E81',
+                accent: '#F59E0B',
+                accentLight: '#FBBF24',
+                accentDark: '#D97706',
+                accentTextOnBtn: '#0F0D2E',
+                secondary: '#6366F1',
+                secondaryDark: '#4F46E5'
+            },
+            'crimson-charcoal': {
+                name: 'Crimson & Charcoal',
+                headerBg: '#18181B',
+                headerDark: '#09090B',
+                surfaceDark: '#27272A',
+                accent: '#F43F5E',
+                accentLight: '#FB7185',
+                accentDark: '#E11D48',
+                accentTextOnBtn: '#FFFFFF',
+                secondary: '#F59E0B',
+                secondaryDark: '#D97706'
+            }
+        };
+
+        const FONT_PAIRS = {
+            'jakarta-inter': {
+                googleUrl: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap',
+                display: "'Plus Jakarta Sans', sans-serif",
+                sans: "'Inter', sans-serif"
+            },
+            'poppins-opensans': {
+                googleUrl: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap',
+                display: "'Poppins', sans-serif",
+                sans: "'Open Sans', sans-serif"
+            },
+            'outfit-dmsans': {
+                googleUrl: 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@600;700;800&display=swap',
+                display: "'Outfit', sans-serif",
+                sans: "'DM Sans', sans-serif"
+            }
+        };
+
+        // =========================================================================
+        // 2. COMPLETE R.R.R MEDIA CREATION DATA CATALOG
+        // =========================================================================
+        const DEFAULT_AMC_PACKAGES = [
+            {
+                id: 'amc-1',
+                category: 'amc',
+                badge: 'Cat A • Digital Marketing',
+                title: 'AMC 1: Local Visibility Care',
+                price: 999,
+                displayPrice: '₹999 / mo',
+                includes: [
+                    'Google Business Profile (GBP) weekly updates & photo uploads',
+                    'Review monitoring & customer response replies',
+                    '2 festival / offer promotional posters per month',
+                    'WhatsApp catalogue updates (up to 10 products)'
+                ],
+                note: 'Min. 3-month lock-in. Keeps local search ranking active.'
+            },
+            {
+                id: 'amc-2',
+                category: 'amc',
+                badge: 'Cat A • Digital Marketing',
+                title: 'AMC 2: Social Growth Retainer',
+                price: 2999,
+                displayPrice: '₹2,999 / mo',
+                includes: [
+                    '12 custom social media posts (Instagram & Facebook)',
+                    '2 basic Reels per month (customer-supplied footage)',
+                    'Monthly Google Business Profile optimization'
+                ],
+                note: 'Bundles ₹3,797+ worth of standalone design & video work.'
+            },
+            {
+                id: 'amc-3',
+                category: 'amc',
+                badge: 'Cat A • Digital Marketing',
+                title: 'AMC 3: Complete Brand & Reels AMC',
+                price: 5999,
+                displayPrice: '₹5,999 / mo',
+                includes: [
+                    '12 custom social media posts + 4 Reels/month',
+                    'WhatsApp status creatives & GBP updates',
+                    'Monthly performance report',
+                    'Meta / Google ad campaign monitoring (ad spend extra)'
+                ],
+                note: 'Ad spend budget is extra. Min. 3-month commitment.'
+            },
+            {
+                id: 'amc-4',
+                category: 'amc',
+                badge: 'Cat B • Compliance & Tax',
+                title: 'AMC 4: GST Compliance Care',
+                price: 799,
+                displayPrice: '₹799 / mo',
+                includes: [
+                    'Monthly GST return preparation & filing (GSTR-1 & 3B)',
+                    'Nil-return filing support when applicable',
+                    'Basic GST amendment & portal notice tracking'
+                ],
+                note: 'Also available at ₹1,999/quarter. Statutory fees extra.'
+            },
+            {
+                id: 'amc-5',
+                category: 'amc',
+                badge: 'Cat B • HR & Payroll',
+                title: 'AMC 5: MSME HR & Payroll AMC',
+                price: 1499,
+                displayPrice: '₹1,499 / mo',
+                includes: [
+                    'Monthly payroll preparation support (up to 10 staff)',
+                    'Monthly EPFO & ESIC challan preparation',
+                    'Up to 2 new employee onboardings/month included'
+                ],
+                note: 'Govt. EPFO/ESIC challan contributions are extra.'
+            },
+            {
+                id: 'amc-6',
+                category: 'amc',
+                badge: 'Cat B • Complete Back-Office',
+                title: 'AMC 6: Complete Business Care',
+                price: 1999,
+                displayPrice: '₹1,999 / mo',
+                includes: [
+                    'Monthly GST return filing support',
+                    'Monthly payroll & PF/ESIC compliance support',
+                    'Priority PAN / Udyam / business document updates'
+                ],
+                note: 'All-in-one compliance retainer for growing MSMEs.'
+            },
+            {
+                id: 'amc-7',
+                category: 'amc',
+                badge: 'Cat C • Tenders & GeM',
+                title: 'AMC 7: Tender Radar Subscription',
+                price: 999,
+                displayPrice: '₹999 / mo',
+                includes: [
+                    'Daily/weekly customized tender alerts (GeM & state portals)',
+                    'Tender search, shortlisting & eligibility checklist'
+                ],
+                note: 'Portal fees, EMD & DSC charges are extra.'
+            },
+            {
+                id: 'amc-8',
+                category: 'amc',
+                badge: 'Cat C • Tenders & GeM',
+                title: 'AMC 8: Active Bidder Retainer',
+                price: 2999,
+                displayPrice: '₹2,999 / mo',
+                includes: [
+                    'Unlimited tender alerts & shortlisting',
+                    'Up to 3 basic bid document preparations per month',
+                    'GeM catalogue listing updates (up to 5 products/mo)',
+                    'Contractor company profile updates'
+                ],
+                note: 'Registration & bid submission do not guarantee award.'
+            },
+            {
+                id: 'amc-9',
+                category: 'amc',
+                badge: 'Cat E • CCTV Security',
+                title: 'AMC 9: Standard CCTV Care (Up to 4 Cam)',
+                price: 1999,
+                displayPrice: '₹1,999 / yr',
+                includes: [
+                    '2 scheduled preventive maintenance visits per year',
+                    '2 free emergency troubleshooting / repair visits',
+                    'DVR/NVR health check & mobile viewing reconfiguration'
+                ],
+                note: '12-month term. Hardware, HDD, cables & adapters billed extra.'
+            },
+            {
+                id: 'amc-10',
+                category: 'amc',
+                badge: 'Cat E • CCTV Security',
+                title: 'AMC 10: Commercial CCTV Care (8+ Cam)',
+                price: 3499,
+                displayPrice: '₹3,499 / yr',
+                includes: [
+                    'Quarterly preventive maintenance visits (4 per year)',
+                    'Unlimited remote mobile app & DVR troubleshooting',
+                    'Priority on-site repair visits within 24 hours'
+                ],
+                note: '12-month term. Replacement parts & cabling billed extra.'
+            },
+            {
+                id: 'amc-11',
+                category: 'amc',
+                badge: 'All-in-One Hybrid AMC',
+                title: 'AMC 11: Office & Shop Partner Hybrid',
+                price: 3999,
+                displayPrice: '₹3,999 / mo',
+                includes: [
+                    'Monthly GST return filing support (Category B)',
+                    'GBP management + 4 festival/promo posters/mo (Category A)',
+                    'Annual CCTV maintenance & mobile viewing support (Category E)',
+                    'Priority office document, scan & form assistance (Category D)'
+                ],
+                note: 'Complete Digital + Compliance + Security under one plan.'
+            }
+        ];
+
+        const DEFAULT_COMBO_PACKAGES = [
+            {
+                id: 'combo-1',
+                category: 'combos',
+                badge: 'Most Popular for Shops',
+                title: '1. Local Business Starter',
+                price: 1499,
+                displayPrice: '₹1,499',
+                includes: [
+                    'Google Business Profile setup',
+                    'Instagram / Facebook page setup',
+                    'WhatsApp Business setup',
+                    '3 promotional posters',
+                    'WhatsApp catalogue & basic contact links'
+                ],
+                note: 'Ideal for local shops, clinics & new service providers.'
+            },
+            {
+                id: 'combo-2',
+                category: 'combos',
+                badge: 'Complete Brand Kit',
+                title: '2. New Business Launch',
+                price: 2499,
+                displayPrice: '₹2,499',
+                includes: [
+                    'Everything in Local Business Starter',
+                    'Custom Business Logo design',
+                    'Visiting card design',
+                    '2 extra promotional posters (5 total)',
+                    'WhatsApp catalogue (up to 20 products)'
+                ],
+                note: 'Complete digital & print identity kit for new ventures.'
+            },
+            {
+                id: 'combo-3',
+                category: 'combos',
+                badge: 'Compliance Essential',
+                title: '3. MSME Documentation Support',
+                price: 1499,
+                displayPrice: '₹1,499',
+                includes: [
+                    'Udyam (MSME) registration',
+                    'GST registration assistance',
+                    'PAN application / correction',
+                    'Document checklist & status follow-up'
+                ],
+                note: 'Government/statutory portal fees, if any, are extra.'
+            },
+            {
+                id: 'combo-4',
+                category: 'combos',
+                badge: 'B2G / Govt Vendors',
+                title: '4. Contractor & Tender Starter',
+                price: 3499,
+                displayPrice: '₹3,499',
+                includes: [
+                    'GeM onboarding / e-procurement portal registration',
+                    'Contractor company profile creation',
+                    'Tender search & eligibility checklist',
+                    'Basic bid document preparation'
+                ],
+                note: 'Portal fees, EMD, and DSC charges are extra.'
+            },
+            {
+                id: 'combo-5',
+                category: 'combos',
+                badge: 'Monthly Retainer',
+                title: '5. Digital Growth Monthly',
+                price: 5999,
+                displayPrice: '₹5,999 / mo',
+                includes: [
+                    '12 custom social media posts',
+                    '4 Reels (customer supplied footage)',
+                    'WhatsApp status creatives',
+                    'Google Business Profile updates',
+                    'Monthly performance report'
+                ],
+                note: 'Ad spend budget is extra. Monthly retainer billing.'
+            },
+            {
+                id: 'combo-6',
+                category: 'combos',
+                badge: 'Retail Security + Digital',
+                title: '6. Complete Shop Launch & Security',
+                price: 7999,
+                displayPrice: '₹7,999',
+                includes: [
+                    'Everything in Local Business Starter',
+                    '2-Camera CCTV system installation',
+                    'On-site layout survey',
+                    'Mobile app live viewing setup'
+                ],
+                note: 'CCTV hardware, DVR, HDD & cabling billed separately.'
+            },
+            {
+                id: 'combo-7',
+                category: 'combos',
+                badge: 'Office All-in-One',
+                title: '7. Office & Contractor Compliance + Security',
+                price: 9999,
+                displayPrice: '₹9,999',
+                includes: [
+                    'Udyam & GST registration assistance',
+                    'Google Business Profile setup',
+                    '4-Camera CCTV system installation',
+                    'Mobile viewing & DVR configuration'
+                ],
+                note: 'CCTV hardware & government fees billed separately.'
+            }
+        ];
+
+        const DEFAULT_SERVICE_SECTIONS = [
+            {
+                id: 'cat-a',
+                code: 'A',
+                title: 'Digital Marketing & Media Creation',
+                subtitle: 'Social media branding, reels production, Google visibility & paid lead campaigns.',
+                disclaimer: 'Category A Note: Advertising budget is extra. Specify revision limits, shoot hours, and deliverables in each quote.',
+                items: [
+                    { id: 'a1', name: 'Google Business Profile setup', price: 499, displayPrice: '₹499', tag: 'Local SEO' },
+                    { id: 'a2', name: 'Profile optimisation and photo upload', price: 799, displayPrice: '₹799', tag: 'Local SEO' },
+                    { id: 'a3', name: 'Instagram / Facebook business page setup', price: 399, displayPrice: '₹399', tag: 'Social Setup' },
+                    { id: 'a4', name: 'WhatsApp Business setup', price: 399, displayPrice: '₹399', tag: 'Messaging' },
+                    { id: 'a5', name: 'WhatsApp catalogue (up to 20 products)', price: 599, displayPrice: '₹599', tag: 'E-Commerce' },
+                    { id: 'a6', name: 'Promotional poster design', price: 199, displayPrice: '₹199', tag: 'Graphic Design' },
+                    { id: 'a7', name: 'Visiting card design', price: 299, displayPrice: '₹299', tag: 'Print Design' },
+                    { id: 'a8', name: 'Business logo design', price: 799, displayPrice: '₹799', tag: 'Branding' },
+                    { id: 'a9', name: 'Basic Reel editing (customer footage supplied)', price: 399, displayPrice: '₹399 / video', tag: 'Video' },
+                    { id: 'a10', name: 'Reel shooting and editing', price: 999, displayPrice: '₹999 / video', tag: 'Production' },
+                    { id: 'a11', name: 'Monthly social media package (12 posts)', price: 2999, displayPrice: '₹2,999', tag: 'Monthly' },
+                    { id: 'a12', name: 'Monthly Reels package (8 Reels/month)', price: 3999, displayPrice: '₹3,999', tag: 'Monthly' },
+                    { id: 'a13', name: 'Combined monthly social media management', price: 5999, displayPrice: '₹5,999 – ₹9,999', tag: 'Base ₹5,999' },
+                    { id: 'a14', name: 'Meta / Google ad campaign setup', price: 999, displayPrice: '₹999', tag: 'Paid Ads' },
+                    { id: 'a15', name: 'Ad campaign management', price: 1999, displayPrice: '₹1,999 / month onwards', tag: 'Paid Ads' }
+                ]
+            },
+            {
+                id: 'cat-b',
+                code: 'B',
+                title: 'Business Registration, Taxation & Compliance',
+                subtitle: 'Fast-track MSME, GST, PAN, PF/ESIC, trademark & company incorporation support.',
+                disclaimer: 'Category B Note: Government fees, statutory portal charges, DSC fees, stamp duty, and third-party costs are extra. Confirm whether GST filing is monthly or quarterly before quoting.',
+                items: [
+                    { id: 'b1', name: 'PAN application assistance', price: 150, displayPrice: '₹150', tag: 'Tax ID' },
+                    { id: 'b2', name: 'PAN correction assistance', price: 250, displayPrice: '₹250', tag: 'Tax ID' },
+                    { id: 'b3', name: 'Voter application assistance', price: 150, displayPrice: '₹150', tag: 'Citizen ID' },
+                    { id: 'b4', name: 'Learners / Driving licence application assistance', price: 250, displayPrice: '₹250', tag: 'Transport' },
+                    { id: 'b5', name: 'Udyam (MSME) registration assistance', price: 499, displayPrice: '₹499', tag: 'MSME' },
+                    { id: 'b6', name: 'GST registration assistance', price: 999, displayPrice: '₹999', tag: 'GST' },
+                    { id: 'b7', name: 'GST amendment assistance', price: 499, displayPrice: '₹499', tag: 'GST' },
+                    { id: 'b8', name: 'GST nil-return filing support', price: 399, displayPrice: '₹399 / return', tag: 'GST Filing' },
+                    { id: 'b9', name: 'GST monthly return preparation & filing support', price: 799, displayPrice: '₹799 / month onwards', tag: 'GST Filing' },
+                    { id: 'b10', name: 'EPFO employer registration assistance', price: 999, displayPrice: '₹999', tag: 'Labour Law' },
+                    { id: 'b11', name: 'ESIC employer registration assistance', price: 999, displayPrice: '₹999', tag: 'Labour Law' },
+                    { id: 'b12', name: 'EPFO / ESIC employee onboarding support', price: 150, displayPrice: '₹150 / employee', tag: 'HR Compliance' },
+                    { id: 'b13', name: 'Monthly payroll preparation support', price: 999, displayPrice: '₹999 / month onwards', tag: 'Payroll' },
+                    { id: 'b14', name: 'Proprietorship setup / documentation assistance', price: 799, displayPrice: '₹799', tag: 'Entity Setup' },
+                    { id: 'b15', name: 'Company / LLP incorporation coordination', price: 2999, displayPrice: '₹2,999 onwards', tag: 'Corporate' },
+                    { id: 'b16', name: 'Trademark search & preliminary report', price: 799, displayPrice: '₹799', tag: 'IP Protection' },
+                    { id: 'b17', name: 'Trademark filing coordination', price: 1499, displayPrice: '₹1,499 onwards', tag: 'IP Protection' }
+                ]
+            },
+            {
+                id: 'cat-c',
+                code: 'C',
+                title: 'GeM, Tenders & Contractor Services',
+                subtitle: 'End-to-end Government e-Marketplace onboarding, bid documentation & tender alerts.',
+                disclaimer: 'Category C Note: Official portal charges, tender fees, EMD, DSC provider charges, and certifications are extra. Registration does not guarantee contract award.',
+                items: [
+                    { id: 'c1', name: 'GeM seller registration assistance', price: 999, displayPrice: '₹999', tag: 'GeM Portal' },
+                    { id: 'c2', name: 'Product / service catalogue listing support', price: 499, displayPrice: '₹499 / category onwards', tag: 'GeM Listing' },
+                    { id: 'c3', name: 'Tender search and shortlist', price: 499, displayPrice: '₹499', tag: 'Discovery' },
+                    { id: 'c4', name: 'Tender alerts (1 month)', price: 999, displayPrice: '₹999', tag: 'Subscription' },
+                    { id: 'c5', name: 'Tender document checklist & eligibility review', price: 799, displayPrice: '₹799', tag: 'Compliance' },
+                    { id: 'c6', name: 'Basic bid document preparation', price: 1499, displayPrice: '₹1,499', tag: 'Bidding' },
+                    { id: 'c7', name: 'Complex tender preparation & submission support', price: 2999, displayPrice: '₹2,999 – ₹7,500', tag: 'Base ₹2,999' },
+                    { id: 'c8', name: 'DSC procurement coordination', price: 300, displayPrice: '₹300 service fee + provider cost', tag: 'Digital Signature' },
+                    { id: 'c9', name: 'Contractor company profile', price: 999, displayPrice: '₹999', tag: 'Branding' },
+                    { id: 'c10', name: 'Tender tracking monthly subscription', price: 1999, displayPrice: '₹1,999 / month', tag: 'Monthly' },
+                    { id: 'c11', name: 'Tender support for regular contractors', price: 2999, displayPrice: '₹2,999 / month onwards', tag: 'Retainer' }
+                ]
+            },
+            {
+                id: 'cat-d',
+                code: 'D',
+                title: 'Citizen & Document Assistance',
+                subtitle: 'Everyday digital documentation, online form submissions, resumes & printing services.',
+                disclaimer: 'Category D Note: Aadhaar enrolment/biometric updates are referred to authorised centres. Gun licence charges cover lawful documentation assistance only.',
+                items: [
+                    { id: 'd1', name: 'Scan, merge, or convert PDF', price: 20, displayPrice: '₹20 – ₹100', tag: 'Base ₹20' },
+                    { id: 'd2', name: 'Online form filling', price: 100, displayPrice: '₹100 – ₹250', tag: 'Base ₹100' },
+                    { id: 'd3', name: 'Resume preparation', price: 299, displayPrice: '₹299', tag: 'Career' },
+                    { id: 'd4', name: 'Online appointment booking', price: 100, displayPrice: '₹100 – ₹200', tag: 'Base ₹100' },
+                    { id: 'd5', name: 'Application status tracking', price: 50, displayPrice: '₹50 – ₹100', tag: 'Base ₹50' },
+                    { id: 'd6', name: 'Printout', price: 5, displayPrice: '₹5 – ₹10 / page', tag: 'Base ₹5' },
+                    { id: 'd7', name: 'Photocopy', price: 2, displayPrice: '₹2 – ₹5 / page', tag: 'Base ₹2' },
+                    { id: 'd8', name: 'Gun licence application documentation guidance', price: 999, displayPrice: '₹999 onwards', tag: 'Documentation' }
+                ]
+            },
+            {
+                id: 'cat-e',
+                code: 'E',
+                title: 'CCTV & Security Surveillance Services',
+                subtitle: 'Professional CCTV layout planning, installation, mobile viewing setup & Annual Maintenance.',
+                disclaimer: 'Category E Note: Camera hardware, DVR/NVR, hard disk, connectors, power supply, and cabling are billed separately.',
+                items: [
+                    { id: 'e1', name: 'Site survey & camera layout plan', price: 0, displayPrice: 'Free (if booked) / ₹299', tag: 'Base ₹0' },
+                    { id: 'e2', name: 'Single Wi-Fi / smart camera setup', price: 499, displayPrice: '₹499', tag: 'Smart Home' },
+                    { id: 'e3', name: '2-Camera CCTV system installation', price: 1499, displayPrice: '₹1,499', tag: 'Installation' },
+                    { id: 'e4', name: '4-Camera CCTV system installation', price: 2499, displayPrice: '₹2,499', tag: 'Installation' },
+                    { id: 'e5', name: '8-Camera CCTV system installation', price: 4499, displayPrice: '₹4,499', tag: 'Commercial' },
+                    { id: 'e6', name: 'Mobile viewing & DVR/NVR configuration', price: 499, displayPrice: '₹499', tag: 'Configuration' },
+                    { id: 'e7', name: 'Troubleshooting / repair visit', price: 399, displayPrice: '₹399 onwards', tag: 'Support' },
+                    { id: 'e8', name: 'Annual Maintenance Contract (AMC)', price: 1999, displayPrice: '₹1,999 / year onwards', tag: 'AMC Plan' }
+                ]
+            }
+        ];
+
+        // =========================================================================
+        // 3. STUDIO STATE
+        // =========================================================================
+        let studioState = {
+            template: 'rrr-service-menu',
+            brandName: 'R.R.R Media Creation',
+            brandLogo: 'RRR',
+            tagline: 'Your Digital Partner for Every Business Need.',
+            whatsapp: '917978143717',
+            theme: 'navy-gold',
+            fontPair: 'jakarta-inter',
+            sections: [
+                { id: 'hero', label: 'Hero Brand & Search Banner', visible: true },
+                { id: 'nav', label: 'Sticky Category Navigation', visible: true },
+                { id: 'combos', label: 'Featured Combo Packages', visible: true },
+                { id: 'amc', label: 'AMC & Monthly Retainer Plans', visible: true },
+                { id: 'catalog', label: 'Categorized Services (A–E)', visible: true },
+                { id: 'custom-blocks', label: 'Custom Designer Blocks', visible: true },
+                { id: 'quote-drawer', label: 'Interactive Quote Builder', visible: true },
+                { id: 'footer', label: 'Footer & Quick WhatsApp CTA', visible: true }
+            ],
+            customBlocks: [],
+            customServices: []
+        };
+
+        let isManualCodeDirty = false;
+        let currentWorkspaceMode = 'preview';
+        let currentViewport = 'desktop';
+
+        // =========================================================================
+        // 4. INITIALIZATION
+        // =========================================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSectionsManager();
+            syncAll();
+        });
+
+        function syncAll() {
+            const generatedHTML = buildTargetWebsiteHTML();
+            const codeTextarea = document.getElementById('code-editor-textarea');
+            codeTextarea.value = generatedHTML;
+            isManualCodeDirty = false;
+            document.getElementById('manual-edit-badge').classList.add('hidden');
+
+            // Update KB indicator
+            const kb = (new Blob([generatedHTML]).size / 1024).toFixed(1);
+            document.getElementById('code-size-indicator').textContent = `${kb} KB`;
+
+            renderLivePreview(generatedHTML);
+        }
+
+        function renderLivePreview(htmlOverride = null) {
+            const iframe = document.getElementById('live-preview-iframe');
+            const htmlContent = htmlOverride || document.getElementById('code-editor-textarea').value;
+            iframe.srcdoc = htmlContent;
+        }
+
+        // =========================================================================
+        // 5. STUDIO CONTROLS (VIEWPORT, MODE, TABS, TEMPLATES)
+        // =========================================================================
+        function setViewport(vp) {
+            currentViewport = vp;
+            const wrapper = document.getElementById('preview-frame-wrapper');
+            const badge = document.getElementById('viewport-badge');
+
+            document.querySelectorAll('.vp-btn').forEach(btn => {
+                if (btn.dataset.vp === vp) {
+                    btn.classList.add('bg-slate-800', 'text-amber-400');
+                    btn.classList.remove('text-slate-400');
+                } else {
+                    btn.classList.remove('bg-slate-800', 'text-amber-400');
+                    btn.classList.add('text-slate-400');
+                }
+            });
+
+            if (vp === 'desktop') {
+                wrapper.style.width = '100%';
+                badge.textContent = '100%';
+            } else if (vp === 'tablet') {
+                wrapper.style.width = '768px';
+                wrapper.style.maxWidth = '100%';
+                badge.textContent = '768px';
+            } else if (vp === 'mobile') {
+                wrapper.style.width = '375px';
+                wrapper.style.maxWidth = '100%';
+                badge.textContent = '375px';
+            }
+        }
+
+        function setWorkspaceMode(mode) {
+            currentWorkspaceMode = mode;
+            const previewPane = document.getElementById('preview-pane');
+            const codePane = document.getElementById('code-pane');
+
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                if (btn.dataset.mode === mode) {
+                    btn.classList.add('bg-amber-500', 'text-slate-950');
+                    btn.classList.remove('text-slate-400');
+                } else {
+                    btn.classList.remove('bg-amber-500', 'text-slate-950');
+                    btn.classList.add('text-slate-400');
+                }
+            });
+
+            if (mode === 'preview') {
+                previewPane.classList.remove('hidden');
+                previewPane.classList.add('flex');
+                codePane.classList.add('hidden');
+                codePane.classList.remove('flex', 'w-full');
+                codePane.classList.add('lg:w-[46%]');
+            } else if (mode === 'split') {
+                previewPane.classList.remove('hidden');
+                previewPane.classList.add('flex');
+                codePane.classList.remove('hidden', 'w-full');
+                codePane.classList.add('flex', 'lg:w-[46%]');
+            } else if (mode === 'code') {
+                previewPane.classList.add('hidden');
+                previewPane.classList.remove('flex');
+                codePane.classList.remove('hidden', 'lg:w-[46%]');
+                codePane.classList.add('flex', 'w-full');
+            }
+        }
+
+        function switchSidebarTab(tab) {
+            document.querySelectorAll('.stab-btn').forEach(btn => {
+                if (btn.dataset.stab === tab) {
+                    btn.classList.add('bg-slate-800', 'text-amber-400');
+                    btn.classList.remove('text-slate-400');
+                } else {
+                    btn.classList.remove('bg-slate-800', 'text-amber-400');
+                    btn.classList.add('text-slate-400');
+                }
+            });
+
+            ['brand', 'sections', 'services'].forEach(panel => {
+                const el = document.getElementById(`stab-panel-${panel}`);
+                if (panel === tab) el.classList.remove('hidden');
+                else el.classList.add('hidden');
+            });
+        }
+
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('studio-sidebar');
+            const backdrop = document.getElementById('mobile-sidebar-backdrop');
+            sidebar.classList.toggle('-translate-x-full');
+            backdrop.classList.toggle('hidden');
+        }
+
+        function updateConfig(key, value) {
+            studioState[key] = value;
+            syncAll();
+        }
+
+        function setTheme(themeKey) {
+            studioState.theme = themeKey;
+            document.querySelectorAll('.theme-card').forEach(card => {
+                if (card.dataset.theme === themeKey) {
+                    card.classList.add('border-2', 'border-amber-500');
+                    card.classList.remove('border', 'border-slate-800');
+                } else {
+                    card.classList.remove('border-2', 'border-amber-500');
+                    card.classList.add('border', 'border-slate-800');
+                }
+            });
+            syncAll();
+            showStudioToast(`Theme applied: ${THEMES[themeKey].name}`);
+        }
+
+        function switchTemplate(templateKey) {
+            studioState.template = templateKey;
+
+            if (templateKey === 'rrr-service-menu') {
+                studioState.brandName = 'R.R.R Media Creation';
+                studioState.brandLogo = 'RRR';
+                studioState.tagline = 'Your Digital Partner for Every Business Need.';
+                studioState.whatsapp = '917978143717';
+                studioState.theme = 'navy-gold';
+                studioState.sections.forEach(s => s.visible = true);
+            } else if (templateKey === 'agency-landing') {
+                studioState.brandName = 'Apex Digital Studio';
+                studioState.brandLogo = 'APEX';
+                studioState.tagline = 'High-Converting Websites, Reels & Paid Growth Campaigns.';
+                studioState.theme = 'indigo-amber';
+                studioState.sections.forEach(s => {
+                    s.visible = ['hero', 'combos', 'amc', 'custom-blocks', 'quote-drawer', 'footer'].includes(s.id);
+                });
+                if (studioState.customBlocks.length === 0) {
+                    studioState.customBlocks.push({
+                        id: 'cb-preset-1',
+                        type: 'why-choose',
+                        heading: 'Why Brands Scale With Us',
+                        body: 'Dedicated creative strategists, 48-hour delivery turnaround, and transparent ROI tracking.',
+                        btnText: 'Book Strategy Call'
+                    });
+                }
+            } else if (templateKey === 'shop-storefront') {
+                studioState.brandName = 'Smart Retail & Security Hub';
+                studioState.brandLogo = 'SRS';
+                studioState.tagline = 'Complete Shop Branding, GST Registration & CCTV Setup.';
+                studioState.theme = 'emerald-slate';
+                studioState.sections.forEach(s => {
+                    s.visible = ['hero', 'combos', 'catalog', 'quote-drawer', 'footer'].includes(s.id);
+                });
+            } else if (templateKey === 'blank-canvas') {
+                studioState.brandName = 'My New Website';
+                studioState.brandLogo = 'WEB';
+                studioState.tagline = 'Built visually with R.R.R Web Studio — ready for GitHub Pages.';
+                studioState.sections.forEach(s => {
+                    s.visible = ['hero', 'custom-blocks', 'footer'].includes(s.id);
+                });
+                if (studioState.customBlocks.length === 0) {
+                    studioState.customBlocks.push({
+                        id: 'cb-blank-1',
+                        type: 'hero-cta',
+                        heading: 'Launch Your Digital Presence Today',
+                        body: 'Customize colors, add service cards, or insert blocks from the left studio sidebar.',
+                        btnText: 'Get Started on WhatsApp'
+                    });
+                }
+            }
+
+            // Sync UI inputs
+            document.getElementById('input-brand-name').value = studioState.brandName;
+            document.getElementById('input-brand-logo').value = studioState.brandLogo;
+            document.getElementById('input-tagline').value = studioState.tagline;
+            document.getElementById('input-whatsapp').value = studioState.whatsapp;
+            setTheme(studioState.theme);
+            renderSectionsManager();
+            renderCustomBlocksManager();
+            syncAll();
+            showStudioToast('Template loaded!');
+        }
+
+        function resetToDefaultState() {
+            studioState.customBlocks = [];
+            studioState.customServices = [];
+            document.getElementById('template-selector').value = 'rrr-service-menu';
+            switchTemplate('rrr-service-menu');
+            renderCustomServicesManager();
+        }
+
+        // =========================================================================
+        // 6. SECTION & BLOCK MANAGER LOGIC
+        // =========================================================================
+        function renderSectionsManager() {
+            const container = document.getElementById('sections-list-container');
+            container.innerHTML = studioState.sections.map((sec, index) => `
+                <div class="flex items-center justify-between gap-2 p-2.5 rounded-lg bg-slate-950 border border-slate-800">
+                    <div class="flex items-center gap-2 min-w-0">
+                        <input type="checkbox" ${sec.visible ? 'checked' : ''} onchange="toggleSectionVisibility('${sec.id}')"
+                            class="w-3.5 h-3.5 rounded accent-amber-500 cursor-pointer shrink-0">
+                        <span class="text-xs font-medium ${sec.visible ? 'text-slate-200' : 'text-slate-500 line-through'} truncate">${sec.label}</span>
+                    </div>
+                    <div class="flex items-center gap-1 shrink-0">
+                        <button onclick="moveSection(${index}, -1)" ${index === 0 ? 'disabled' : ''} class="w-6 h-6 rounded bg-slate-900 hover:bg-slate-800 disabled:opacity-30 text-slate-400 text-[10px] flex items-center justify-center cursor-pointer" title="Move Up">
+                            <i class="fa-solid fa-arrow-up"></i>
+                        </button>
+                        <button onclick="moveSection(${index}, 1)" ${index === studioState.sections.length - 1 ? 'disabled' : ''} class="w-6 h-6 rounded bg-slate-900 hover:bg-slate-800 disabled:opacity-30 text-slate-400 text-[10px] flex items-center justify-center cursor-pointer" title="Move Down">
+                            <i class="fa-solid fa-arrow-down"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleSectionVisibility(id) {
+            const sec = studioState.sections.find(s => s.id === id);
+            if (sec) {
+                sec.visible = !sec.visible;
+                renderSectionsManager();
+                syncAll();
+            }
+        }
+
+        function moveSection(index, direction) {
+            const targetIndex = index + direction;
+            if (targetIndex < 0 || targetIndex >= studioState.sections.length) return;
+            const temp = studioState.sections[index];
+            studioState.sections[index] = studioState.sections[targetIndex];
+            studioState.sections[targetIndex] = temp;
+            renderSectionsManager();
+            syncAll();
+        }
+
+        function addCustomBlock() {
+            const type = document.getElementById('custom-block-type').value;
+            const heading = document.getElementById('custom-block-heading').value.trim() || 'Featured Business Highlight';
+            const body = document.getElementById('custom-block-body').value.trim() || 'End-to-end digital, compliance, and security solutions tailored for your growth.';
+            const btnText = document.getElementById('custom-block-btn').value.trim() || 'Enquire on WhatsApp';
+
+            studioState.customBlocks.push({
+                id: 'cb-' + Date.now(),
+                type,
+                heading,
+                body,
+                btnText
+            });
+
+            document.getElementById('custom-block-heading').value = '';
+            document.getElementById('custom-block-body').value = '';
+            renderCustomBlocksManager();
+            syncAll();
+            showStudioToast('Custom section block added!');
+        }
+
+        function removeCustomBlock(id) {
+            studioState.customBlocks = studioState.customBlocks.filter(b => b.id !== id);
+            renderCustomBlocksManager();
+            syncAll();
+        }
+
+        function renderCustomBlocksManager() {
+            const container = document.getElementById('custom-blocks-manager');
+            if (studioState.customBlocks.length === 0) {
+                container.innerHTML = '';
+                return;
+            }
+            container.innerHTML = `
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 pt-2">Inserted Custom Blocks (${studioState.customBlocks.length})</div>
+                ${studioState.customBlocks.map(b => `
+                    <div class="flex items-center justify-between gap-2 p-2.5 rounded-lg bg-slate-950 border border-slate-800">
+                        <div class="min-w-0">
+                            <div class="text-[10px] font-mono text-amber-400 uppercase">${b.type}</div>
+                            <div class="text-xs font-semibold text-white truncate">${b.heading}</div>
+                        </div>
+                        <button onclick="removeCustomBlock('${b.id}')" class="w-7 h-7 rounded bg-rose-950/60 hover:bg-rose-600 text-rose-400 hover:text-white text-xs flex items-center justify-center transition cursor-pointer">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                `).join('')}
+            `;
+        }
+
+        // =========================================================================
+        // 7. CUSTOM SERVICE ITEM CREATOR
+        // =========================================================================
+        function addCustomServiceItem() {
+            const name = document.getElementById('new-svc-name').value.trim();
+            const priceVal = parseInt(document.getElementById('new-svc-price').value, 10);
+            const tag = document.getElementById('new-svc-tag').value.trim() || 'Featured';
+            const categoryId = document.getElementById('new-svc-category').value;
+
+            if (!name || isNaN(priceVal) || priceVal < 0) {
+                showStudioToast('Enter a valid service name and price', 'error');
+                return;
+            }
+
+            const newItem = {
+                id: 'custom-svc-' + Date.now(),
+                name,
+                price: priceVal,
+                displayPrice: '₹' + priceVal.toLocaleString('en-IN'),
+                tag,
+                categoryId
+            };
+
+            studioState.customServices.push(newItem);
+            document.getElementById('new-svc-name').value = '';
+            document.getElementById('new-svc-price').value = '';
+            document.getElementById('new-svc-tag').value = '';
+
+            renderCustomServicesManager();
+            syncAll();
+            showStudioToast(`Added "${name}" to menu!`);
+        }
+
+        function removeCustomServiceItem(id) {
+            studioState.customServices = studioState.customServices.filter(s => s.id !== id);
+            renderCustomServicesManager();
+            syncAll();
+        }
+
+        function renderCustomServicesManager() {
+            const container = document.getElementById('custom-services-list');
+            if (studioState.customServices.length === 0) {
+                container.innerHTML = '';
+                return;
+            }
+            container.innerHTML = `
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 pt-2">Your Custom Services (${studioState.customServices.length})</div>
+                ${studioState.customServices.map(s => `
+                    <div class="flex items-center justify-between gap-2 p-2.5 rounded-lg bg-slate-950 border border-slate-800">
+                        <div class="min-w-0">
+                            <div class="text-xs font-semibold text-white truncate">${s.name}</div>
+                            <div class="text-[11px] font-mono text-emerald-400">${s.displayPrice} • ${s.tag}</div>
+                        </div>
+                        <button onclick="removeCustomServiceItem('${s.id}')" class="w-7 h-7 rounded bg-rose-950/60 hover:bg-rose-600 text-rose-400 hover:text-white text-xs flex items-center justify-center transition cursor-pointer">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                `).join('')}
+            `;
+        }
+
+        // =========================================================================
+        // 8. MANUAL CODE EDITOR & EXPORT ACTIONS
+        // =========================================================================
+        function markCodeAsManuallyEdited() {
+            isManualCodeDirty = true;
+            document.getElementById('manual-edit-badge').classList.remove('hidden');
+            const code = document.getElementById('code-editor-textarea').value;
+            const kb = (new Blob([code]).size / 1024).toFixed(1);
+            document.getElementById('code-size-indicator').textContent = `${kb} KB`;
+        }
+
+        function applyManualCode() {
+            const manualHTML = document.getElementById('code-editor-textarea').value;
+            renderLivePreview(manualHTML);
+            showStudioToast('Custom HTML changes applied to preview!');
+        }
+
+        function copyGeneratedHTML() {
+            const code = document.getElementById('code-editor-textarea').value;
+            const helper = document.getElementById('studio-clipboard-helper');
+            helper.value = code;
+            helper.select();
+            helper.setSelectionRange(0, 999999);
+            try {
+                document.execCommand('copy');
+                showStudioToast('Complete index.html copied to clipboard!');
+            } catch (e) {
+                showStudioToast('Copy failed — use Download index.html', 'error');
+            }
+        }
+
+        function downloadIndexHTML() {
+            const code = document.getElementById('code-editor-textarea').value;
+            const blob = new Blob([code], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showStudioToast('Downloaded index.html ready for GitHub Pages!');
+        }
+
+        function openGithubModal() {
+            const modal = document.getElementById('github-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeGithubModal() {
+            const modal = document.getElementById('github-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function showStudioToast(message, type = 'success') {
+            const container = document.getElementById('studio-toast-container');
+            const toast = document.createElement('div');
+            const bg = type === 'error' ? 'bg-rose-600' : 'bg-slate-900 border border-slate-700';
+            const icon = type === 'error' ? 'fa-circle-exclamation text-white' : 'fa-circle-check text-emerald-400';
+
+            toast.className = `${bg} text-white px-4 py-2.5 rounded-xl shadow-2xl text-xs font-semibold flex items-center gap-2 transition-all duration-300 translate-y-2 opacity-0`;
+            toast.innerHTML = `<i class="fa-solid ${icon}"></i><span>${message}</span>`;
+            container.appendChild(toast);
+
+            requestAnimationFrame(() => toast.classList.remove('translate-y-2', 'opacity-0'));
+            setTimeout(() => {
+                toast.classList.add('opacity-0', '-translate-y-2');
+                setTimeout(() => toast.remove(), 250);
+            }, 2600);
+        }
+
+        // =========================================================================
+        // 9. PRODUCTION SINGLE-FILE HTML GENERATOR ENGINE
+        // =========================================================================
+        function escapeHTML(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        function renderCustomBlockMarkup(block, whatsappNum) {
+            const waUrl = `https://wa.me/${encodeURIComponent(whatsappNum)}?text=${encodeURIComponent('Hi, I am interested in: ' + block.heading)}`;
+            if (block.type === 'why-choose') {
+                return `
+                <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+                    <div class="max-w-2xl mb-6">
+                        <span class="inline-block px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider mb-2">Why Choose Us</span>
+                        <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900">${escapeHTML(block.heading)}</h2>
+                        <p class="text-slate-600 text-sm mt-2">${escapeHTML(block.body)}</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                            <div class="w-10 h-10 rounded-lg bg-brand-primary text-brand-accent flex items-center justify-center mb-3"><i class="fa-solid fa-bolt"></i></div>
+                            <h3 class="font-bold text-slate-900 text-sm">Fast Digital Turnaround</h3>
+                            <p class="text-xs text-slate-500 mt-1">Same-day design, registration filing, and quick WhatsApp updates.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                            <div class="w-10 h-10 rounded-lg bg-brand-primary text-brand-accent flex items-center justify-center mb-3"><i class="fa-solid fa-shield-check"></i></div>
+                            <h3 class="font-bold text-slate-900 text-sm">Transparent Fixed Pricing</h3>
+                            <p class="text-xs text-slate-500 mt-1">Clear upfront service fees with zero hidden agency markups.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                            <div class="w-10 h-10 rounded-lg bg-brand-primary text-brand-accent flex items-center justify-center mb-3"><i class="fa-solid fa-headset"></i></div>
+                            <h3 class="font-bold text-slate-900 text-sm">Single-Window Partner</h3>
+                            <p class="text-xs text-slate-500 mt-1">Marketing, GST, GeM tenders, and CCTV security under one roof.</p>
+                        </div>
+                    </div>
+                </section>`;
+            } else if (block.type === 'testimonials') {
+                return `
+                <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+                    <h2 class="font-display font-extrabold text-2xl text-slate-900 mb-2">${escapeHTML(block.heading)}</h2>
+                    <p class="text-slate-500 text-sm mb-6">${escapeHTML(block.body)}</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                            <div class="text-amber-500 text-xs mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <p class="text-xs text-slate-700 italic">"Got our Udyam, GST, and Google Business Profile live within 48 hours. Super smooth service!"</p>
+                            <div class="mt-3 text-xs font-bold text-slate-900">— Retail Store Owner</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                            <div class="text-amber-500 text-xs mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <p class="text-xs text-slate-700 italic">"Their GeM registration and tender bid checklist saved us days of paperwork."</p>
+                            <div class="mt-3 text-xs font-bold text-slate-900">— Civil & Electrical Contractor</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                            <div class="text-amber-500 text-xs mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <p class="text-xs text-slate-700 italic">"Clean 4-camera CCTV installation with instant live mobile viewing setup."</p>
+                            <div class="mt-3 text-xs font-bold text-slate-900">— Commercial Office Manager</div>
+                        </div>
+                    </div>
+                </section>`;
+            } else if (block.type === 'faq') {
+                return `
+                <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+                    <h2 class="font-display font-extrabold text-2xl text-slate-900 mb-2">${escapeHTML(block.heading)}</h2>
+                    <p class="text-slate-500 text-sm mb-5">${escapeHTML(block.body)}</p>
+                    <div class="space-y-3">
+                        <details class="group p-4 rounded-xl bg-slate-50 border border-slate-200" open>
+                            <summary class="font-bold text-sm text-slate-900 cursor-pointer flex justify-between items-center">
+                                <span>How do I get an exact quote for multiple services?</span>
+                                <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
+                            </summary>
+                            <p class="text-xs text-slate-600 mt-2">Click "+ Add" on any combo package or service card, open the Quote Builder, and send your itemized estimate directly to our WhatsApp.</p>
+                        </details>
+                        <details class="group p-4 rounded-xl bg-slate-50 border border-slate-200">
+                            <summary class="font-bold text-sm text-slate-900 cursor-pointer flex justify-between items-center">
+                                <span>Are government portal fees or CCTV hardware included?</span>
+                                <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
+                            </summary>
+                            <p class="text-xs text-slate-600 mt-2">Listed prices cover professional service charges. Statutory portal fees, ad spend budgets, and CCTV hardware/cables are billed transparently as applicable.</p>
+                        </details>
+                    </div>
+                </section>`;
+            } else if (block.type === 'contact-card') {
+                return `
+                <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider mb-2">Direct Support Desk</span>
+                        <h2 class="font-display font-extrabold text-2xl text-slate-900">${escapeHTML(block.heading)}</h2>
+                        <p class="text-slate-600 text-sm mt-1 max-w-xl">${escapeHTML(block.body)}</p>
+                    </div>
+                    <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl bg-brand-secondary hover:opacity-95 text-white font-bold text-sm inline-flex items-center gap-2 shadow-lg shrink-0">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>${escapeHTML(block.btnText)}</span>
+                    </a>
+                </section>`;
+            } else {
+                // hero-cta
+                return `
+                <section class="bg-brand-primary text-white rounded-2xl p-6 sm:p-10 shadow-lg relative overflow-hidden">
+                    <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                        <div class="max-w-2xl">
+                            <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-white">${escapeHTML(block.heading)}</h2>
+                            <p class="text-slate-300 text-sm sm:text-base mt-2">${escapeHTML(block.body)}</p>
+                        </div>
+                        <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl bg-brand-accent text-brand-accent-text font-bold text-sm inline-flex items-center gap-2 shadow-md shrink-0">
+                            <i class="fa-brands fa-whatsapp text-base"></i>
+                            <span>${escapeHTML(block.btnText)}</span>
+                        </a>
+                    </div>
+                </section>`;
+            }
+        }
+
+        function buildTargetWebsiteHTML() {
+            const theme = THEMES[studioState.theme] || THEMES['navy-gold'];
+            const font = FONT_PAIRS[studioState.fontPair] || FONT_PAIRS['jakarta-inter'];
+            const brandName = escapeHTML(studioState.brandName);
+            const brandLogo = escapeHTML(studioState.brandLogo);
+            const tagline = escapeHTML(studioState.tagline);
+            const whatsapp = escapeHTML(studioState.whatsapp.replace(/[^0-9]/g, '') || '917978143717');
+
+            // Merge custom services into cloned service sections
+            const mergedSections = JSON.parse(JSON.stringify(DEFAULT_SERVICE_SECTIONS));
+            studioState.customServices.forEach(cs => {
+                const targetSec = mergedSections.find(s => s.id === cs.categoryId);
+                if (targetSec) {
+                    targetSec.items.unshift({
+                        id: cs.id,
+                        name: cs.name,
+                        price: cs.price,
+                        displayPrice: cs.displayPrice,
+                        tag: cs.tag
+                    });
+                }
+            });
+
+            // Determine visible sections in user-ordered sequence
+            const isVisible = (id) => {
+                const s = studioState.sections.find(sec => sec.id === id);
+                return s ? s.visible : true;
+            };
+
+            const mainOrderedBlocks = studioState.sections
+                .filter(s => ['combos', 'amc', 'catalog', 'custom-blocks'].includes(s.id) && s.visible)
+                .map(s => {
+                    if (s.id === 'combos') {
+                        return `
+        <!-- Featured Combo Packages Section -->
+        <section id="section-combos" class="mb-12">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-2">
+                <div>
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider mb-2">
+                        <i class="fa-solid fa-star text-amber-500"></i> High-Value Bundles
+                    </div>
+                    <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900">
+                        Featured Combo Packages
+                    </h2>
+                </div>
+                <p class="text-sm text-slate-500">All-in-one bundled solutions tailored for startups, shops & contractors.</p>
+            </div>
+            <div id="combos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
+        </section>`;
+                    } else if (s.id === 'amc') {
+                        return `
+        <!-- Dedicated AMC & Retainer Plans Section -->
+        <section id="section-amc" class="mb-12">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-4 gap-2">
+                <div>
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider mb-2">
+                        <i class="fa-solid fa-rotate text-emerald-600"></i> Recurring Maintenance & Retainers
+                    </div>
+                    <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900">
+                        AMC & Monthly Retainer Plans
+                    </h2>
+                </div>
+                <p class="text-sm text-slate-500">Predictable monthly & annual care plans for marketing, compliance, tenders & CCTV.</p>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-2xl p-4 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+                <div class="flex items-start gap-2.5 text-xs text-slate-600">
+                    <i class="fa-solid fa-shield-halved text-emerald-600 text-base mt-0.5 shrink-0"></i>
+                    <div>
+                        <span class="font-bold text-slate-900">Standard AMC Terms:</span> Advance billing (monthly/quarterly/annual). Minimum lock-in: 3 months for Digital & Tender AMCs; 12 months for CCTV AMCs. Unused monthly deliverables do not roll over. Govt. fees, portal charges, ad spend & hardware are extra.
+                    </div>
+                </div>
+            </div>
+            <div id="amc-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
+        </section>`;
+                    } else if (s.id === 'catalog') {
+                        return `
+        <!-- Categorized Service Catalog Sections -->
+        <div id="catalog-sections" class="space-y-12 mb-12"></div>`;
+                    } else if (s.id === 'custom-blocks' && studioState.customBlocks.length > 0) {
+                        return `
+        <!-- Custom Designer Sections -->
+        <div class="space-y-8 mb-12">
+            ${studioState.customBlocks.map(b => renderCustomBlockMarkup(b, whatsapp)).join('\n')}
+        </div>`;
+                    }
+                    return '';
+                }).join('\n');
+
+            return `<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${brandName} | Digital Service Menu & Quote Builder</title>
+    <script src="https://cdn.tailwindcss.com"><\/script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="${font.googleUrl}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --brand-primary: ${theme.headerBg};
+            --brand-dark: ${theme.headerDark};
+            --brand-surface: ${theme.surfaceDark};
+            --brand-accent: ${theme.accent};
+            --brand-accent-light: ${theme.accentLight};
+            --brand-accent-text: ${theme.accentTextOnBtn};
+            --brand-secondary: ${theme.secondary};
+            --brand-secondary-dark: ${theme.secondaryDark};
+        }
+        body { font-family: ${font.sans}; }
+        .font-display { font-family: ${font.display}; }
+        .bg-brand-primary { background-color: var(--brand-primary); }
+        .bg-brand-dark { background-color: var(--brand-dark); }
+        .bg-brand-surface { background-color: var(--brand-surface); }
+        .bg-brand-accent { background-color: var(--brand-accent); }
+        .text-brand-accent { color: var(--brand-accent); }
+        .text-brand-accent-text { color: var(--brand-accent-text); }
+        .bg-brand-secondary { background-color: var(--brand-secondary); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        @media print {
+            body * { visibility: hidden; }
+            #printable-estimate, #printable-estimate * { visibility: visible; }
+            #printable-estimate {
+                position: absolute; left: 0; top: 0; width: 100%;
+                background: white !important; color: black !important; padding: 20px !important;
+            }
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased pb-28 md:pb-12">
+
+    <div id="toast-container" class="fixed top-4 right-4 z-[100] flex flex-col gap-2 pointer-events-none"></div>
+
+    ${isVisible('hero') ? `
+    <!-- Header & Brand Banner -->
+    <header class="bg-brand-primary text-white border-b border-white/10 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 relative z-10">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div class="flex items-start sm:items-center gap-4">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-brand-accent flex items-center justify-center text-brand-accent-text font-display font-extrabold text-xl sm:text-2xl shadow-lg shrink-0">
+                        ${brandLogo}
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <h1 class="font-display font-extrabold text-2xl sm:text-3xl tracking-tight text-white">
+                                ${brandName}
+                            </h1>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-white/10 text-brand-accent border border-white/15">
+                                Official Service Menu
+                            </span>
+                        </div>
+                        <p class="text-slate-200 text-sm sm:text-base mt-1 font-medium">
+                            “${tagline}”
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-3">
+                    <a href="https://wa.me/${whatsapp}?text=${encodeURIComponent('Hi ' + studioState.brandName + ', I would like to inquire about your services.')}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-brand-secondary hover:opacity-95 text-white font-semibold text-sm transition shadow-lg cursor-pointer">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>WhatsApp Enquiry</span>
+                    </a>
+                    ${isVisible('quote-drawer') ? `
+                    <button onclick="toggleQuoteDrawer(true)" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-brand-surface hover:opacity-95 text-brand-accent border border-white/15 font-semibold text-sm transition cursor-pointer">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                        <span>Quote Builder</span>
+                        <span id="header-badge" class="ml-1 px-2 py-0.5 text-xs rounded-full bg-brand-accent text-brand-accent-text font-bold">0</span>
+                    </button>` : ''}
+                </div>
+            </div>
+
+            <div class="mt-6 max-w-2xl">
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-300">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <input type="text" id="search-input" placeholder="Search services (e.g., GST, Reels, CCTV, Logo, GeM, PAN, Poster)..." 
+                        class="w-full pl-11 pr-10 py-3 rounded-xl bg-brand-surface border border-white/15 text-white placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-400 text-sm sm:text-base transition">
+                    <button id="clear-search" onclick="clearSearch()" class="hidden absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-300 hover:text-white cursor-pointer">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>` : ''}
+
+    ${isVisible('nav') ? `
+    <!-- Sticky Category Navigation Tabs -->
+    <nav class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="category-tabs" class="flex items-center gap-2 py-3 overflow-x-auto no-scrollbar"></div>
+        </div>
+    </nav>` : ''}
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div id="empty-search-state" class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200 shadow-sm mb-8">
+            <div class="w-16 h-16 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-search"></i>
+            </div>
+            <h3 class="text-lg font-display font-bold text-slate-900">No matching services found</h3>
+            <p class="text-slate-500 text-sm mt-1 max-w-md mx-auto">Try searching with broader keywords like "GST", "CCTV", "Social", "Tender", or reset your filter.</p>
+            <button onclick="resetFilters()" class="mt-4 px-5 py-2.5 rounded-xl bg-brand-primary text-white text-sm font-semibold cursor-pointer">
+                Reset All Filters
+            </button>
+        </div>
+
+        ${mainOrderedBlocks}
+    </main>
+
+    ${isVisible('footer') ? `
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-slate-300 border-t border-slate-800 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-brand-accent text-brand-accent-text font-display font-extrabold text-sm flex items-center justify-center">${brandLogo}</div>
+                <div>
+                    <div class="font-display font-bold text-white text-sm">${brandName}</div>
+                    <div class="text-xs text-slate-400">${tagline}</div>
+                </div>
+            </div>
+            <a href="https://wa.me/${whatsapp}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-brand-secondary text-white text-xs font-bold inline-flex items-center gap-2">
+                <i class="fa-brands fa-whatsapp text-sm"></i>
+                <span>Connect on WhatsApp (+${whatsapp})</span>
+            </a>
+        </div>
+    </footer>` : ''}
+
+    ${isVisible('quote-drawer') ? `
+    <!-- Desktop Floating Quote Summary Pill -->
+    <div id="desktop-floating-bar" class="hidden md:flex fixed bottom-6 right-6 z-40 items-center gap-4 bg-brand-primary text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-white/15">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-brand-accent text-brand-accent-text flex items-center justify-center font-bold text-lg">
+                <i class="fa-solid fa-calculator"></i>
+            </div>
+            <div>
+                <div class="text-xs text-slate-300 font-medium">Estimated Quote (<span id="desktop-item-count">0</span> items)</div>
+                <div class="font-display font-extrabold text-lg text-brand-accent" id="desktop-total-price">₹0</div>
+            </div>
+        </div>
+        <button onclick="toggleQuoteDrawer(true)" class="px-4 py-2.5 rounded-xl bg-brand-secondary hover:opacity-95 text-white font-semibold text-sm transition flex items-center gap-2 cursor-pointer">
+            <span>Review & Share</span>
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Sticky Bottom Quote Bar -->
+    <div id="mobile-sticky-bar" class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-brand-primary text-white px-4 py-3 border-t border-white/15 shadow-2xl flex items-center justify-between gap-3">
+        <div>
+            <div class="text-xs text-slate-300"><span id="mobile-item-count" class="font-bold text-white">0</span> services selected</div>
+            <div class="font-display font-extrabold text-lg text-brand-accent leading-tight" id="mobile-total-price">₹0</div>
+        </div>
+        <button onclick="toggleQuoteDrawer(true)" class="px-5 py-2.5 rounded-xl bg-brand-accent text-brand-accent-text font-bold text-sm transition flex items-center gap-2 shadow-md cursor-pointer">
+            <span>View Quote</span>
+            <i class="fa-solid fa-chevron-up text-xs"></i>
+        </button>
+    </div>
+
+    <!-- Slide-Over Quote Builder Drawer -->
+    <div id="quote-drawer-backdrop" onclick="toggleQuoteDrawer(false)" class="fixed inset-0 bg-slate-950/60 backdrop-blur-xs z-50 hidden transition-opacity opacity-0"></div>
+    <aside id="quote-drawer" class="fixed top-0 right-0 h-full w-full sm:w-[480px] bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="bg-brand-primary text-white px-6 py-5 flex items-center justify-between border-b border-white/10 shrink-0">
+            <div>
+                <h2 class="font-display font-bold text-xl flex items-center gap-2">
+                    <i class="fa-solid fa-file-invoice text-brand-accent"></i>
+                    <span>Custom Quote Builder</span>
+                </h2>
+                <p class="text-xs text-slate-300 mt-0.5">${brandName} • Instant Estimate</p>
+            </div>
+            <button onclick="toggleQuoteDrawer(false)" class="w-9 h-9 rounded-xl bg-brand-surface text-slate-200 hover:text-white flex items-center justify-center transition cursor-pointer">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+
+        <div class="flex-1 overflow-y-auto p-6 space-y-6" id="printable-estimate">
+            <div class="hidden print:block border-b-2 border-slate-900 pb-4 mb-4">
+                <h1 class="text-2xl font-bold text-slate-900">${brandName}</h1>
+                <p class="text-sm text-slate-600">“${tagline}”</p>
+                <p class="text-xs text-slate-500 mt-1">Service Estimate / Quotation • Generated on <span id="print-date"></span></p>
+            </div>
+
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Client / Quotation Details</span>
+                    <button onclick="clearQuote()" id="clear-quote-btn" class="text-xs text-rose-600 hover:text-rose-700 font-semibold hidden no-print cursor-pointer">Clear All</button>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">Client Name</label>
+                        <input type="text" id="client-name" placeholder="e.g., Rajesh Sharma" class="w-full px-3 py-2 rounded-lg bg-white border border-slate-300 text-sm focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">Business / Shop Name</label>
+                        <input type="text" id="business-name" placeholder="e.g., Sharma Enterprises" class="w-full px-3 py-2 rounded-lg bg-white border border-slate-300 text-sm focus:outline-none">
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-sm font-bold text-slate-900 mb-3 flex items-center justify-between">
+                    <span>Selected Services & Packages</span>
+                    <span id="drawer-count-label" class="text-xs font-semibold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600">0 items</span>
+                </h3>
+                <div id="drawer-empty-state" class="text-center py-10 px-4 border-2 border-dashed border-slate-200 rounded-2xl">
+                    <div class="w-12 h-12 rounded-full bg-amber-50 text-amber-500 flex items-center justify-center mx-auto mb-3 text-xl">
+                        <i class="fa-solid fa-cart-plus"></i>
+                    </div>
+                    <p class="text-sm font-semibold text-slate-700">Your quote list is empty</p>
+                    <p class="text-xs text-slate-500 mt-1">Click "+ Add" on any combo package or individual service to build a custom estimate.</p>
+                </div>
+                <div id="drawer-items-list" class="space-y-3"></div>
+            </div>
+
+            <div id="drawer-disclaimers-box" class="hidden bg-amber-50/80 border border-amber-200 rounded-xl p-4 space-y-2">
+                <div class="flex items-center gap-2 text-amber-900 font-bold text-xs uppercase tracking-wider">
+                    <i class="fa-solid fa-circle-info text-amber-600"></i>
+                    <span>Important Terms & Notes for Selected Items</span>
+                </div>
+                <ul id="drawer-disclaimers-list" class="text-xs text-amber-900/90 space-y-1.5 list-disc pl-4"></ul>
+            </div>
+
+            <div id="drawer-summary-box" class="hidden border-t-2 border-slate-200 pt-4 space-y-2">
+                <div class="flex justify-between items-center text-sm text-slate-600">
+                    <span>Estimated Service Charges</span>
+                    <span id="drawer-subtotal" class="font-semibold text-slate-900">₹0</span>
+                </div>
+                <div class="flex justify-between items-center text-xs text-slate-500">
+                    <span>Govt. Fees / Hardware / Ad Budget</span>
+                    <span>Extra as applicable</span>
+                </div>
+                <div class="flex justify-between items-center pt-2 border-t border-slate-100">
+                    <span class="font-display font-bold text-base text-slate-900">Estimated Total</span>
+                    <span id="drawer-grand-total" class="font-display font-extrabold text-2xl text-emerald-600">₹0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4 bg-slate-50 border-t border-slate-200 shrink-0 space-y-2.5 no-print">
+            <div class="grid grid-cols-2 gap-2.5">
+                <button onclick="copyFormattedQuote()" class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-brand-primary text-white font-semibold text-sm transition cursor-pointer">
+                    <i class="fa-regular fa-copy"></i>
+                    <span>Copy Quote</span>
+                </button>
+                <button onclick="shareQuoteOnWhatsApp()" class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-brand-secondary text-white font-semibold text-sm transition shadow-sm cursor-pointer">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span>Send Quote on WhatsApp</span>
+                </button>
+            </div>
+            <button onclick="printEstimate()" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-semibold text-xs transition cursor-pointer">
+                <i class="fa-solid fa-print"></i>
+                <span>Print / Save as PDF Estimate</span>
+            </button>
+        </div>
+    </aside>` : ''}
+
+    <textarea id="clipboard-helper" class="sr-only" aria-hidden="true"></textarea>
+
+    <script>
+        const BRAND_TITLE = ${JSON.stringify(studioState.brandName)};
+        const BRAND_TAGLINE = ${JSON.stringify(studioState.tagline)};
+        const WHATSAPP_NUMBER = ${JSON.stringify(whatsapp)};
+
+        const CATEGORIES = [
+            { id: 'all', label: 'All Services', icon: 'fa-border-all' },
+            { id: 'combos', label: 'Combo Packages', icon: 'fa-star' },
+            { id: 'amc', label: 'AMC & Retainers', icon: 'fa-rotate' },
+            { id: 'cat-a', label: 'A. Digital Marketing', icon: 'fa-bullhorn' },
+            { id: 'cat-b', label: 'B. Business & Tax', icon: 'fa-building-shield' },
+            { id: 'cat-c', label: 'C. GeM & Tenders', icon: 'fa-file-contract' },
+            { id: 'cat-d', label: 'D. Citizen & Docs', icon: 'fa-id-card' },
+            { id: 'cat-e', label: 'E. CCTV & Security', icon: 'fa-video' },
+        ];
+
+        const AMC_PACKAGES = ${JSON.stringify(DEFAULT_AMC_PACKAGES)};
+        const COMBO_PACKAGES = ${JSON.stringify(DEFAULT_COMBO_PACKAGES)};
+        const SERVICE_SECTIONS = ${JSON.stringify(mergedSections)};
+
+        let activeCategory = 'all';
+        let searchQuery = '';
+        let quoteCart = {};
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCategoryTabs();
+            renderAllContent();
+            setupSearchListener();
+            const printDateEl = document.getElementById('print-date');
+            if (printDateEl) {
+                printDateEl.textContent = new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+            }
+        });
+
+        function renderCategoryTabs() {
+            const container = document.getElementById('category-tabs');
+            if (!container) return;
+            container.innerHTML = CATEGORIES.map(cat => {
+                const isActive = activeCategory === cat.id;
+                return \`
+                    <button onclick="selectCategory('\${cat.id}')" 
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all cursor-pointer \${
+                            isActive 
+                            ? 'bg-brand-primary text-white shadow-md' 
+                            : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
+                        }">
+                        <i class="fa-solid \${cat.icon} \${isActive ? 'text-brand-accent' : 'text-slate-400'}"></i>
+                        <span>\${cat.label}</span>
+                    </button>
+                \`;
+            }).join('');
+        }
+
+        function renderAllContent() {
+            const query = searchQuery.toLowerCase().trim();
+            let totalVisibleItems = 0;
+
+            const combosSection = document.getElementById('section-combos');
+            const combosGrid = document.getElementById('combos-grid');
+            if (combosSection && combosGrid) {
+                const showCombos = activeCategory === 'all' || activeCategory === 'combos';
+                const filteredCombos = COMBO_PACKAGES.filter(c => {
+                    if (!showCombos) return false;
+                    if (!query) return true;
+                    return c.title.toLowerCase().includes(query) || c.includes.some(i => i.toLowerCase().includes(query));
+                });
+                if (filteredCombos.length > 0) {
+                    combosSection.classList.remove('hidden');
+                    totalVisibleItems += filteredCombos.length;
+                    combosGrid.innerHTML = filteredCombos.map(createComboCardHTML).join('');
+                } else {
+                    combosSection.classList.add('hidden');
+                }
+            }
+
+            const amcSection = document.getElementById('section-amc');
+            const amcGrid = document.getElementById('amc-grid');
+            if (amcSection && amcGrid) {
+                const showAmc = activeCategory === 'all' || activeCategory === 'amc';
+                const filteredAmc = AMC_PACKAGES.filter(a => {
+                    if (!showAmc) return false;
+                    if (!query) return true;
+                    return a.title.toLowerCase().includes(query) || a.badge.toLowerCase().includes(query) || a.includes.some(i => i.toLowerCase().includes(query));
+                });
+                if (filteredAmc.length > 0) {
+                    amcSection.classList.remove('hidden');
+                    totalVisibleItems += filteredAmc.length;
+                    amcGrid.innerHTML = filteredAmc.map(createAmcCardHTML).join('');
+                } else {
+                    amcSection.classList.add('hidden');
+                }
+            }
+
+            const catalogContainer = document.getElementById('catalog-sections');
+            if (catalogContainer) {
+                let catalogHTML = '';
+                SERVICE_SECTIONS.forEach(section => {
+                    if (activeCategory !== 'all' && activeCategory !== section.id) return;
+                    const filteredItems = section.items.filter(item => {
+                        if (!query) return true;
+                        return item.name.toLowerCase().includes(query) || item.tag.toLowerCase().includes(query) || section.title.toLowerCase().includes(query);
+                    });
+                    if (filteredItems.length > 0) {
+                        totalVisibleItems += filteredItems.length;
+                        catalogHTML += createCategorySectionHTML(section, filteredItems);
+                    }
+                });
+                catalogContainer.innerHTML = catalogHTML;
+            }
+
+            const emptyState = document.getElementById('empty-search-state');
+            if (emptyState) {
+                if (totalVisibleItems === 0 && (combosSection || amcSection || catalogContainer)) {
+                    emptyState.classList.remove('hidden');
+                } else {
+                    emptyState.classList.add('hidden');
+                }
+            }
+        }
+
+        function createComboCardHTML(combo) {
+            const qty = quoteCart[combo.id] ? quoteCart[combo.id].qty : 0;
+            return \`
+                <div class="bg-white rounded-2xl border \${qty > 0 ? 'border-amber-500 ring-2 ring-amber-500/20' : 'border-slate-200'} shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
+                    <div class="p-5">
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="px-2.5 py-1 rounded-lg bg-brand-primary text-brand-accent text-[11px] font-bold uppercase tracking-wide">\${combo.badge}</span>
+                            \${qty > 0 ? \`<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold">Added (\${qty})</span>\` : ''}
+                        </div>
+                        <h3 class="font-display font-bold text-lg text-slate-900 leading-snug">\${combo.title}</h3>
+                        <div class="mt-2 font-display font-extrabold text-2xl text-emerald-600">\${combo.displayPrice}</div>
+                        <ul class="mt-4 space-y-2 border-t border-slate-100 pt-3">
+                            \${combo.includes.map(inc => \`<li class="flex items-start gap-2 text-xs text-slate-600"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0"></i><span>\${inc}</span></li>\`).join('')}
+                        </ul>
+                    </div>
+                    <div class="px-5 pb-5 pt-2">
+                        <p class="text-[11px] text-slate-400 italic mb-3">\${combo.note}</p>
+                        \${qty === 0 ? \`
+                            <button onclick="addToQuote('\${combo.id}', '\${escapeQuotes(combo.title)}', \${combo.price}, '\${combo.displayPrice}', 'combos', 'Combo Packages')" 
+                                class="w-full py-2.5 px-4 rounded-xl bg-brand-primary hover:opacity-95 text-white font-semibold text-sm transition flex items-center justify-center gap-2 cursor-pointer">
+                                <i class="fa-solid fa-plus text-brand-accent"></i>
+                                <span>Add Package to Quote</span>
+                            </button>
+                        \` : \`
+                            <div class="flex items-center justify-between bg-amber-50 border border-amber-300 rounded-xl p-1">
+                                <button onclick="updateQuantity('\${combo.id}', -1)" class="w-9 h-9 rounded-lg bg-white text-slate-900 font-bold flex items-center justify-center cursor-pointer"><i class="fa-solid fa-minus text-xs"></i></button>
+                                <span class="font-bold text-sm text-slate-900">\${qty} in Quote</span>
+                                <button onclick="updateQuantity('\${combo.id}', 1)" class="w-9 h-9 rounded-lg bg-brand-primary text-white font-bold flex items-center justify-center cursor-pointer"><i class="fa-solid fa-plus text-xs"></i></button>
+                            </div>
+                        \`}
+                    </div>
+                </div>\`;
+        }
+
+        function createAmcCardHTML(amc) {
+            const qty = quoteCart[amc.id] ? quoteCart[amc.id].qty : 0;
+            return \`
+                <div class="bg-white rounded-2xl border \${qty > 0 ? 'border-emerald-500 ring-2 ring-emerald-500/20' : 'border-slate-200'} shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
+                    <div class="p-5">
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="px-2.5 py-1 rounded-lg bg-emerald-950 text-emerald-300 text-[11px] font-bold uppercase tracking-wide">\${amc.badge}</span>
+                            \${qty > 0 ? \`<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold">Added (\${qty})</span>\` : ''}
+                        </div>
+                        <h3 class="font-display font-bold text-lg text-slate-900 leading-snug">\${amc.title}</h3>
+                        <div class="mt-2 font-display font-extrabold text-2xl text-emerald-600">\${amc.displayPrice}</div>
+                        <ul class="mt-4 space-y-2 border-t border-slate-100 pt-3">
+                            \${amc.includes.map(inc => \`<li class="flex items-start gap-2 text-xs text-slate-600"><i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 shrink-0"></i><span>\${inc}</span></li>\`).join('')}
+                        </ul>
+                    </div>
+                    <div class="px-5 pb-5 pt-2">
+                        <p class="text-[11px] text-slate-400 italic mb-3">\${amc.note}</p>
+                        \${qty === 0 ? \`
+                            <button onclick="addToQuote('\${amc.id}', '\${escapeQuotes(amc.title)}', \${amc.price}, '\${escapeQuotes(amc.displayPrice)}', 'amc', 'AMC & Retainer Plans')" 
+                                class="w-full py-2.5 px-4 rounded-xl bg-brand-secondary hover:opacity-95 text-white font-semibold text-sm transition flex items-center justify-center gap-2 cursor-pointer">
+                                <i class="fa-solid fa-plus"></i>
+                                <span>Add AMC Plan to Quote</span>
+                            </button>
+                        \` : \`
+                            <div class="flex items-center justify-between bg-emerald-50 border border-emerald-300 rounded-xl p-1">
+                                <button onclick="updateQuantity('\${amc.id}', -1)" class="w-9 h-9 rounded-lg bg-white text-slate-900 font-bold flex items-center justify-center cursor-pointer"><i class="fa-solid fa-minus text-xs"></i></button>
+                                <span class="font-bold text-sm text-slate-900">\${qty} in Quote</span>
+                                <button onclick="updateQuantity('\${amc.id}', 1)" class="w-9 h-9 rounded-lg bg-brand-secondary text-white font-bold flex items-center justify-center cursor-pointer"><i class="fa-solid fa-plus text-xs"></i></button>
+                            </div>
+                        \`}
+                    </div>
+                </div>\`;
+        }
+
+        function createCategorySectionHTML(section, items) {
+            return \`
+                <section id="\${section.id}" class="scroll-mt-20">
+                    <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 mb-4 shadow-xs">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                            <div class="flex items-start sm:items-center gap-3.5">
+                                <div class="w-11 h-11 rounded-xl bg-brand-primary text-brand-accent flex items-center justify-center font-display font-bold text-lg shrink-0">\${section.code}</div>
+                                <div>
+                                    <h2 class="font-display font-extrabold text-xl sm:text-2xl text-slate-900">\${section.code}. \${section.title}</h2>
+                                    <p class="text-xs sm:text-sm text-slate-500 mt-0.5">\${section.subtitle}</p>
+                                </div>
+                            </div>
+                            <span class="self-start sm:self-center px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold">\${items.length} Services</span>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-start gap-2 text-xs text-slate-600 bg-slate-50 p-3 rounded-xl">
+                            <i class="fa-solid fa-circle-info text-amber-500 mt-0.5 shrink-0"></i>
+                            <span>\${section.disclaimer}</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
+                        \${items.map(item => createServiceItemHTML(item, section)).join('')}
+                    </div>
+                </section>\`;
+        }
+
+        function createServiceItemHTML(item, section) {
+            const qty = quoteCart[item.id] ? quoteCart[item.id].qty : 0;
+            return \`
+                <div class="bg-white rounded-xl border \${qty > 0 ? 'border-emerald-500 bg-emerald-50/20' : 'border-slate-200 hover:border-slate-300'} p-4 transition-all flex flex-col justify-between gap-3 shadow-2xs">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-1.5">
+                            <span class="text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 text-slate-600">\${item.tag}</span>
+                            \${qty > 0 ? \`<span class="text-xs font-bold text-emerald-600"><i class="fa-solid fa-check mr-1"></i>Selected</span>\` : ''}
+                        </div>
+                        <h3 class="font-semibold text-slate-900 text-sm sm:text-base leading-snug">\${item.name}</h3>
+                    </div>
+                    <div class="flex items-center justify-between pt-2.5 border-t border-slate-100 gap-2">
+                        <div class="font-display font-bold text-base sm:text-lg text-slate-900">\${item.displayPrice}</div>
+                        \${qty === 0 ? \`
+                            <button onclick="addToQuote('\${item.id}', '\${escapeQuotes(item.name)}', \${item.price}, '\${escapeQuotes(item.displayPrice)}', '\${section.id}', '\${escapeQuotes(section.code + '. ' + section.title)}')" 
+                                class="px-3.5 py-2 rounded-lg bg-brand-primary hover:opacity-90 text-white text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer shrink-0">
+                                <i class="fa-solid fa-plus text-brand-accent"></i>
+                                <span>Add</span>
+                            </button>
+                        \` : \`
+                            <div class="flex items-center gap-1.5 bg-white border border-emerald-500 rounded-lg p-0.5">
+                                <button onclick="updateQuantity('\${item.id}', -1)" class="w-7 h-7 rounded-md hover:bg-slate-100 text-slate-700 font-bold flex items-center justify-center cursor-pointer"><i class="fa-solid fa-minus text-[10px]"></i></button>
+                                <span class="px-2 text-xs font-extrabold text-slate-900">\${qty}</span>
+                                <button onclick="updateQuantity('\${item.id}', 1)" class="w-7 h-7 rounded-md bg-brand-secondary text-white font-bold flex items-center justify-center cursor-pointer"><i class="fa-solid fa-plus text-[10px]"></i></button>
+                            </div>
+                        \`}
+                    </div>
+                </div>\`;
+        }
+
+        function selectCategory(catId) {
+            activeCategory = catId;
+            renderCategoryTabs();
+            renderAllContent();
+        }
+
+        function setupSearchListener() {
+            const input = document.getElementById('search-input');
+            const clearBtn = document.getElementById('clear-search');
+            if (!input) return;
+            input.addEventListener('input', (e) => {
+                searchQuery = e.target.value;
+                if (clearBtn) clearBtn.classList.toggle('hidden', searchQuery.length === 0);
+                renderAllContent();
+            });
+        }
+
+        function clearSearch() {
+            const input = document.getElementById('search-input');
+            if (input) input.value = '';
+            searchQuery = '';
+            const clearBtn = document.getElementById('clear-search');
+            if (clearBtn) clearBtn.classList.add('hidden');
+            renderAllContent();
+        }
+
+        function resetFilters() {
+            activeCategory = 'all';
+            clearSearch();
+            renderCategoryTabs();
+            renderAllContent();
+        }
+
+        function addToQuote(id, name, price, displayPrice, categoryId, categoryTitle) {
+            if (quoteCart[id]) quoteCart[id].qty += 1;
+            else quoteCart[id] = { id, name, price, displayPrice, qty: 1, categoryId, categoryTitle };
+            updateQuoteUI();
+            renderAllContent();
+            showToast(\`Added "\${name}" to quote\`);
+        }
+
+        function updateQuantity(id, delta) {
+            if (!quoteCart[id]) return;
+            quoteCart[id].qty += delta;
+            if (quoteCart[id].qty <= 0) {
+                const removedName = quoteCart[id].name;
+                delete quoteCart[id];
+                showToast(\`Removed "\${removedName}"\`);
+            }
+            updateQuoteUI();
+            renderAllContent();
+        }
+
+        function clearQuote() {
+            quoteCart = {};
+            updateQuoteUI();
+            renderAllContent();
+            showToast('Quote cleared');
+        }
+
+        function updateQuoteUI() {
+            const items = Object.values(quoteCart);
+            const totalCount = items.reduce((sum, item) => sum + item.qty, 0);
+            const totalAmount = items.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const formattedTotal = '₹' + totalAmount.toLocaleString('en-IN');
+
+            const setTxt = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+            setTxt('header-badge', totalCount);
+            setTxt('desktop-item-count', totalCount);
+            setTxt('desktop-total-price', formattedTotal);
+            setTxt('mobile-item-count', totalCount);
+            setTxt('mobile-total-price', formattedTotal);
+            setTxt('drawer-count-label', \`\${totalCount} \${totalCount === 1 ? 'item' : 'items'}\`);
+
+            const emptyState = document.getElementById('drawer-empty-state');
+            const itemsList = document.getElementById('drawer-items-list');
+            const summaryBox = document.getElementById('drawer-summary-box');
+            const disclaimersBox = document.getElementById('drawer-disclaimers-box');
+            const disclaimersList = document.getElementById('drawer-disclaimers-list');
+            const clearBtn = document.getElementById('clear-quote-btn');
+            if (!itemsList) return;
+
+            if (items.length === 0) {
+                emptyState.classList.remove('hidden');
+                itemsList.innerHTML = '';
+                summaryBox.classList.add('hidden');
+                disclaimersBox.classList.add('hidden');
+                clearBtn.classList.add('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            summaryBox.classList.remove('hidden');
+            clearBtn.classList.remove('hidden');
+
+            itemsList.innerHTML = items.map(item => \`
+                <div class="bg-white border border-slate-200 rounded-xl p-3.5 flex items-center justify-between gap-3 shadow-2xs">
+                    <div class="min-w-0 flex-1">
+                        <div class="text-[11px] font-semibold text-slate-400 truncate">\${item.categoryTitle}</div>
+                        <div class="font-semibold text-sm text-slate-900 leading-snug">\${item.name}</div>
+                        <div class="text-xs text-slate-500 mt-0.5">Rate: \${item.displayPrice}</div>
+                    </div>
+                    <div class="flex flex-col items-end gap-1.5 shrink-0">
+                        <div class="font-display font-bold text-sm text-emerald-600">₹\${(item.price * item.qty).toLocaleString('en-IN')}</div>
+                        <div class="flex items-center gap-1 bg-slate-100 rounded-lg p-0.5 no-print">
+                            <button onclick="updateQuantity('\${item.id}', -1)" class="w-6 h-6 rounded bg-white text-slate-700 text-xs font-bold flex items-center justify-center cursor-pointer">-</button>
+                            <span class="px-2 text-xs font-bold text-slate-900">\${item.qty}</span>
+                            <button onclick="updateQuantity('\${item.id}', 1)" class="w-6 h-6 rounded bg-brand-primary text-white text-xs font-bold flex items-center justify-center cursor-pointer">+</button>
+                        </div>
+                    </div>
+                </div>\`).join('');
+
+            setTxt('drawer-subtotal', formattedTotal);
+            setTxt('drawer-grand-total', formattedTotal);
+
+            const activeCategoryIds = new Set(items.map(i => i.categoryId));
+            const applicableNotes = [];
+            if (activeCategoryIds.has('combos')) applicableNotes.push('Combo Packages: Hardware, government statutory fees, and ad budgets are billed separately where applicable.');
+            if (activeCategoryIds.has('amc')) applicableNotes.push('AMC & Retainer Terms: Advance billing applies. Minimum 3-month lock-in for Digital/Tender AMCs & 12 months for CCTV AMCs.');
+            SERVICE_SECTIONS.forEach(sec => { if (activeCategoryIds.has(sec.id)) applicableNotes.push(sec.disclaimer); });
+
+            if (applicableNotes.length > 0) {
+                disclaimersBox.classList.remove('hidden');
+                disclaimersList.innerHTML = applicableNotes.map(n => \`<li>\${n}</li>\`).join('');
+            } else {
+                disclaimersBox.classList.add('hidden');
+            }
+        }
+
+        function toggleQuoteDrawer(open) {
+            const backdrop = document.getElementById('quote-drawer-backdrop');
+            const drawer = document.getElementById('quote-drawer');
+            if (!backdrop || !drawer) return;
+            if (open) {
+                backdrop.classList.remove('hidden');
+                setTimeout(() => { backdrop.classList.remove('opacity-0'); drawer.classList.remove('translate-x-full'); }, 10);
+                document.body.style.overflow = 'hidden';
+            } else {
+                backdrop.classList.add('opacity-0');
+                drawer.classList.add('translate-x-full');
+                setTimeout(() => backdrop.classList.add('hidden'), 300);
+                document.body.style.overflow = '';
+            }
+        }
+
+        function generateFormattedTextQuote() {
+            const items = Object.values(quoteCart);
+            if (items.length === 0) return null;
+            const clientName = (document.getElementById('client-name')?.value || '').trim();
+            const businessName = (document.getElementById('business-name')?.value || '').trim();
+            const totalAmount = items.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            let lines = [
+                \`*\${BRAND_TITLE.toUpperCase()}*\`,
+                \`_"\${BRAND_TAGLINE}"_\`,
+                \`----------------------------------------\`,
+                \`*SERVICE ESTIMATE / QUOTATION*\`
+            ];
+            if (clientName) lines.push(\`*Client:* \${clientName}\`);
+            if (businessName) lines.push(\`*Business:* \${businessName}\`);
+            lines.push(\`*Date:* \${new Date().toLocaleDateString('en-IN')}\`);
+            lines.push(\`----------------------------------------\`);
+            items.forEach((item, idx) => {
+                lines.push(\`\${idx + 1}. *\${item.name}*\`);
+                lines.push(\`   Qty: \${item.qty} × \${item.displayPrice} = *₹\${(item.price * item.qty).toLocaleString('en-IN')}*\`);
+            });
+            lines.push(\`----------------------------------------\`);
+            lines.push(\`*ESTIMATED SERVICE TOTAL: ₹\${totalAmount.toLocaleString('en-IN')}*\`);
+            lines.push(\`_(Note: Govt. fees, portal charges, hardware & ad budgets are extra as applicable.)_\`);
+            lines.push(\`----------------------------------------\`);
+            lines.push(\`Thank you for choosing \${BRAND_TITLE}!\`);
+            return lines.join('\\n');
+        }
+
+        function copyFormattedQuote() {
+            const text = generateFormattedTextQuote();
+            if (!text) { showToast('Add at least one service first!', 'error'); return; }
+            const helper = document.getElementById('clipboard-helper');
+            helper.value = text;
+            helper.select();
+            helper.setSelectionRange(0, 99999);
+            try {
+                document.execCommand('copy');
+                showToast('Formatted quote copied to clipboard!');
+            } catch (err) {
+                showToast('Unable to copy automatically.', 'error');
+            }
+        }
+
+        function shareQuoteOnWhatsApp() {
+            const text = generateFormattedTextQuote();
+            if (!text) { showToast('Add at least one service to share!', 'error'); return; }
+            window.open(\`https://wa.me/\${WHATSAPP_NUMBER}?text=\${encodeURIComponent(text)}\`, '_blank', 'noopener,noreferrer');
+        }
+
+        function printEstimate() {
+            if (Object.keys(quoteCart).length === 0) { showToast('Add services to generate a PDF estimate!', 'error'); return; }
+            window.print();
+        }
+
+        function escapeQuotes(str) {
+            return String(str).replace(/'/g, "\\\\'").replace(/"/g, '&quot;');
+        }
+
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+            const toast = document.createElement('div');
+            const bgClass = type === 'error' ? 'bg-rose-600' : 'bg-brand-primary border border-white/15';
+            const iconClass = type === 'error' ? 'fa-circle-exclamation text-white' : 'fa-circle-check text-emerald-400';
+            toast.className = \`\${bgClass} text-white px-4 py-3 rounded-xl shadow-xl text-xs sm:text-sm font-medium flex items-center gap-2.5 transition-all duration-300 translate-y-2 opacity-0\`;
+            toast.innerHTML = \`<i class="fa-solid \${iconClass}"></i><span>\${message}</span>\`;
+            container.appendChild(toast);
+            requestAnimationFrame(() => toast.classList.remove('translate-y-2', 'opacity-0'));
+            setTimeout(() => {
+                toast.classList.add('opacity-0', '-translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+        }
+    <\/script>
+</body>
+</html>`;
+        }
+    </script>
+</body>
+</html>
