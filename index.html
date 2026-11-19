@@ -1,0 +1,2045 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R.R.R Media Creation | Create • Connect • Grow</title>
+    <meta name="description" content="R.R.R Media Creation in Rasulgarh, Bhubaneswar – Video Production, Digital Media, Social Media Marketing, Business Registration, GeM/Tenders & CCTV Security.">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Montserrat & Open Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Open Sans', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        rrr: {
+                            navy: '#061E45',
+                            navyMid: '#0B397A',
+                            blue: '#1055B5',
+                            orange: '#FF6B00',
+                            orangeDark: '#E64A00',
+                            amber: '#FF9900',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Hero Deep Navy & Royal Blue Gradient with Orange Glow */
+        .hero-banner-bg {
+            background: radial-gradient(circle at 82% 28%, rgba(255, 107, 0, 0.24) 0%, transparent 45%),
+                        linear-gradient(135deg, #041533 0%, #061E45 48%, #0B397A 100%);
+        }
+
+        /* Sub-Page Banner Matching Brand Navy + Orange Accent */
+        .subpage-banner-bg {
+            background: linear-gradient(120deg, #041533 0%, #061E45 55%, #0B397A 100%);
+        }
+
+        /* Orange Gradient CTA Button */
+        .btn-rrr-orange {
+            background: linear-gradient(135deg, #FF9900 0%, #FF6B00 50%, #E64A00 100%);
+        }
+        .btn-rrr-orange:hover {
+            background: linear-gradient(135deg, #FF8800 0%, #E65C00 50%, #CC3D00 100%);
+        }
+
+        /* Brand Pill Banner (Like "Your One Stop Media & Digital Partner") */
+        .brand-pill-banner {
+            background: linear-gradient(90deg, #041533 0%, #0B397A 50%, #041533 100%);
+            box-shadow: -6px 0 0 #FF9900, 6px 0 0 #FF6B00;
+        }
+
+        /* Page Transition Animation */
+        .page-view {
+            animation: fadeSlideIn 0.26s ease-out;
+        }
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-7px); }
+        }
+        .animate-float {
+            animation: floatSlow 5s ease-in-out infinite;
+        }
+
+        @media print {
+            body * { visibility: hidden; }
+            #printable-estimate, #printable-estimate * { visibility: visible; }
+            #printable-estimate {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                background: white !important;
+                color: black !important;
+                padding: 20px !important;
+            }
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700 antialiased selection:bg-[#FF6B00] selection:text-white pb-20 md:pb-0 flex flex-col min-h-screen">
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed top-24 right-4 z-[100] flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- =====================================================================
+         1. TOP WHITE NAVIGATION BAR WITH CUSTOM RRR CAMERA BRAND MARK
+    ====================================================================== -->
+    <header class="bg-white sticky top-0 z-40 border-b border-slate-200/90 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- RRR Media Creation Custom SVG Brand Mark -->
+            <a href="#home" onclick="navigateTo('home'); return false;" class="flex items-center gap-3 group">
+                <svg viewBox="0 0 135 66" class="w-24 sm:w-28 h-12 sm:h-14 shrink-0">
+                    <defs>
+                        <linearGradient id="rrrNavGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#0E4A9E"/>
+                            <stop offset="100%" stop-color="#051B3E"/>
+                        </linearGradient>
+                        <linearGradient id="rrrOrgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#FFB000"/>
+                            <stop offset="55%" stop-color="#FF6B00"/>
+                            <stop offset="100%" stop-color="#D93800"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Swoosh Arc -->
+                    <path d="M12,56 C2,42 12,14 66,5" fill="none" stroke="url(#rrrNavGrad)" stroke-width="3.2" stroke-linecap="round"/>
+                    <path d="M16,58 C7,45 16,18 68,8" fill="none" stroke="url(#rrrOrgGrad)" stroke-width="2.2" stroke-linecap="round"/>
+
+                    <!-- First R (Navy + Play Triangle) -->
+                    <path d="M18,16 H37 C43,16 46,20 46,25 C46,29 43,32 39,34 L47,48 H38 L31,35 H26 V48 H18 Z" fill="url(#rrrNavGrad)"/>
+                    <polygon points="26,21 26,30 34,25.5" fill="#FFFFFF"/>
+
+                    <!-- Second R (Vibrant Orange) -->
+                    <path d="M47,16 H66 C72,16 75,20 75,25 C75,29 72,32 68,34 L76,48 H67 L60,35 H55 V48 H47 Z" fill="url(#rrrOrgGrad)"/>
+                    <path d="M55,22 H63 C65,22 67,23.5 67,25.5 C67,27.5 65,29 63,29 H55 Z" fill="#FFFFFF"/>
+
+                    <!-- Third R (Navy) -->
+                    <path d="M76,16 H94 C100,16 103,20 103,25 C103,29 100,32 96,34 L104,48 H95 L88,35 H84 V48 H76 Z" fill="url(#rrrNavGrad)"/>
+                    <path d="M84,22 H91 C93,22 95,23.5 95,25.5 C95,27.5 93,29 91,29 H84 Z" fill="#FFFFFF"/>
+
+                    <!-- Camera Outline + Colorful Aperture Lens -->
+                    <path d="M97,14 L103,9 H117 L122,14 H127 C130,14 132,16 132,19 V44 C132,47 130,49 127,49 H102" fill="none" stroke="#061E45" stroke-width="3.2" stroke-linejoin="round"/>
+                    <circle cx="114" cy="31" r="12.5" fill="#FFFFFF" stroke="#061E45" stroke-width="2.2"/>
+                    <!-- 6-Blade Rainbow Aperture -->
+                    <g transform="translate(114,31)">
+                        <path d="M0,-10 L8,-4 L3,1 Z" fill="#FF3B30"/>
+                        <path d="M8,-4 L8,6 L1,4 Z" fill="#FF9500"/>
+                        <path d="M8,6 L0,10 L-2,3 Z" fill="#34C759"/>
+                        <path d="M0,10 L-8,6 L-3,-1 Z" fill="#007AFF"/>
+                        <path d="M-8,6 L-8,-4 L-1,-4 Z" fill="#5856D6"/>
+                        <path d="M-8,-4 L0,-10 L2,-3 Z" fill="#AF52DE"/>
+                        <circle cx="0" cy="0" r="3.5" fill="#FFFFFF"/>
+                    </g>
+                </svg>
+
+                <div class="flex flex-col">
+                    <span class="font-display font-black italic text-base sm:text-lg tracking-tight leading-none">
+                        <span class="text-[#061E45]">MEDIA</span> <span class="text-[#FF6B00]">CREATION</span>
+                    </span>
+                    <span class="text-[8.5px] sm:text-[9.5px] font-bold tracking-[0.16em] text-[#061E45] uppercase mt-1 flex items-center gap-1">
+                        <span>CREATE</span>
+                        <span class="text-[#FF6B00]">•</span>
+                        <span>CONNECT</span>
+                        <span class="text-[#FF6B00]">•</span>
+                        <span>GROW</span>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Multi-Layer Navigation Menu -->
+            <nav class="hidden lg:flex items-center gap-1 xl:gap-1.5" id="desktop-nav">
+                <button onclick="navigateTo('home')" data-nav="home" class="nav-pill px-4 py-2.5 rounded font-semibold text-sm transition cursor-pointer">
+                    Home
+                </button>
+                <button onclick="navigateTo('about')" data-nav="about" class="nav-pill px-4 py-2.5 rounded font-semibold text-sm transition cursor-pointer">
+                    About
+                </button>
+                
+                <!-- Services Multi-Page Dropdown -->
+                <div class="relative group">
+                    <button onclick="navigateTo('services-all')" data-nav="services" class="nav-pill px-4 py-2.5 rounded font-semibold text-sm transition inline-flex items-center gap-1.5 cursor-pointer">
+                        <span>Services</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] opacity-80"></i>
+                    </button>
+                    <div class="absolute left-0 top-full pt-1 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <div class="bg-white rounded-md shadow-2xl border border-slate-100 divide-y divide-slate-100 overflow-hidden">
+                            <button onclick="navigateTo('service', 'cat-a')" class="w-full text-left px-5 py-3.5 hover:bg-orange-50 hover:text-[#FF6B00] font-medium text-sm text-slate-700 transition flex items-center justify-between cursor-pointer">
+                                <span>Digital Media &amp; Video Production</span>
+                                <i class="fa-solid fa-angle-right text-xs text-slate-400"></i>
+                            </button>
+                            <button onclick="navigateTo('service', 'cat-b')" class="w-full text-left px-5 py-3.5 hover:bg-orange-50 hover:text-[#FF6B00] font-medium text-sm text-slate-700 transition flex items-center justify-between cursor-pointer">
+                                <span>Business, GST &amp; Compliance</span>
+                                <i class="fa-solid fa-angle-right text-xs text-slate-400"></i>
+                            </button>
+                            <button onclick="navigateTo('service', 'cat-c')" class="w-full text-left px-5 py-3.5 hover:bg-orange-50 hover:text-[#FF6B00] font-medium text-sm text-slate-700 transition flex items-center justify-between cursor-pointer">
+                                <span>GeM &amp; Tender Services</span>
+                                <i class="fa-solid fa-angle-right text-xs text-slate-400"></i>
+                            </button>
+                            <button onclick="navigateTo('service', 'cat-d')" class="w-full text-left px-5 py-3.5 hover:bg-orange-50 hover:text-[#FF6B00] font-medium text-sm text-slate-700 transition flex items-center justify-between cursor-pointer">
+                                <span>Citizen &amp; Document Help</span>
+                                <i class="fa-solid fa-angle-right text-xs text-slate-400"></i>
+                            </button>
+                            <button onclick="navigateTo('service', 'cat-e')" class="w-full text-left px-5 py-3.5 hover:bg-orange-50 hover:text-[#FF6B00] font-medium text-sm text-slate-700 transition flex items-center justify-between cursor-pointer">
+                                <span>CCTV &amp; Security Systems</span>
+                                <i class="fa-solid fa-angle-right text-xs text-slate-400"></i>
+                            </button>
+                            <button onclick="navigateTo('services-all')" class="w-full text-left px-5 py-3 bg-[#061E45] hover:bg-[#0B397A] text-white font-bold text-xs uppercase tracking-wider transition flex items-center justify-between cursor-pointer">
+                                <span>View Complete Rate Card</span>
+                                <i class="fa-solid fa-arrow-right text-[#FF9900]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Packages Multi-Page Dropdown -->
+                <div class="relative group">
+                    <button onclick="navigateTo('packages', 'combos')" data-nav="packages" class="nav-pill px-4 py-2.5 rounded font-semibold text-sm transition inline-flex items-center gap-1.5 cursor-pointer">
+                        <span>Packages</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] opacity-80"></i>
+                    </button>
+                    <div class="absolute left-0 top-full pt-1 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <div class="bg-white rounded-md shadow-2xl border border-slate-100 divide-y divide-slate-100 overflow-hidden">
+                            <button onclick="navigateTo('packages', 'combos')" class="w-full text-left px-5 py-3.5 hover:bg-orange-50 hover:text-[#FF6B00] font-medium text-sm text-slate-700 transition flex items-center justify-between cursor-pointer">
+                                <span>Business Launch Combos</span>
+                                <i class="fa-solid fa-angle-right text-xs text-slate-400"></i>
+                            </button>
+                            <button onclick="navigateTo('packages', 'amc')" class="w-full text-left px-5 py-3.5 hover:bg-orange-50 hover:text-[#FF6B00] font-medium text-sm text-slate-700 transition flex items-center justify-between cursor-pointer">
+                                <span>Monthly &amp; Annual AMC Plans</span>
+                                <i class="fa-solid fa-angle-right text-xs text-slate-400"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="navigateTo('contact')" data-nav="contact" class="nav-pill px-4 py-2.5 rounded font-semibold text-sm transition cursor-pointer">
+                    Contact
+                </button>
+            </nav>
+
+            <!-- Right Actions: Interactive Quote Drawer Trigger & Mobile Menu -->
+            <div class="flex items-center gap-2.5">
+                <button onclick="toggleQuoteDrawer(true)" class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded bg-orange-50 hover:bg-orange-100 text-[#061E45] border border-orange-200 font-bold text-xs sm:text-sm transition cursor-pointer">
+                    <i class="fa-solid fa-file-invoice-dollar text-[#FF6B00]"></i>
+                    <span class="hidden sm:inline">My Quote</span>
+                    <span id="header-badge" class="px-2 py-0.5 text-xs rounded-full bg-[#FF6B00] text-white font-bold">0</span>
+                </button>
+
+                <button onclick="toggleMobileMenu()" class="lg:hidden w-10 h-10 rounded border border-slate-200 flex items-center justify-center text-[#061E45] hover:bg-slate-50 cursor-pointer">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Multi-Page Drawer -->
+        <div id="mobile-nav-menu" class="hidden lg:hidden bg-white border-t border-slate-100 px-4 py-4 space-y-1.5 shadow-xl max-h-[80vh] overflow-y-auto">
+            <button onclick="navigateTo('home'); toggleMobileMenu()" class="w-full text-left px-3.5 py-2.5 rounded font-semibold text-sm text-[#061E45] hover:bg-orange-50">Home</button>
+            <button onclick="navigateTo('about'); toggleMobileMenu()" class="w-full text-left px-3.5 py-2.5 rounded font-semibold text-sm text-[#061E45] hover:bg-orange-50">About Us</button>
+            <div class="pt-1 pb-1">
+                <div class="px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider text-[#FF6B00]">Services Pages</div>
+                <button onclick="navigateTo('service', 'cat-a'); toggleMobileMenu()" class="w-full text-left px-5 py-2 text-sm text-slate-700 hover:text-[#FF6B00]">• Digital Media &amp; Video Production</button>
+                <button onclick="navigateTo('service', 'cat-b'); toggleMobileMenu()" class="w-full text-left px-5 py-2 text-sm text-slate-700 hover:text-[#FF6B00]">• Business, GST &amp; Compliance</button>
+                <button onclick="navigateTo('service', 'cat-c'); toggleMobileMenu()" class="w-full text-left px-5 py-2 text-sm text-slate-700 hover:text-[#FF6B00]">• GeM &amp; Tender Services</button>
+                <button onclick="navigateTo('service', 'cat-d'); toggleMobileMenu()" class="w-full text-left px-5 py-2 text-sm text-slate-700 hover:text-[#FF6B00]">• Citizen &amp; Document Help</button>
+                <button onclick="navigateTo('service', 'cat-e'); toggleMobileMenu()" class="w-full text-left px-5 py-2 text-sm text-slate-700 hover:text-[#FF6B00]">• CCTV &amp; Security Systems</button>
+                <button onclick="navigateTo('services-all'); toggleMobileMenu()" class="w-full text-left px-5 py-2 text-sm font-bold text-[#061E45]">→ View All Services</button>
+            </div>
+            <div class="pt-1 pb-1 border-t border-slate-100">
+                <div class="px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider text-[#FF6B00]">Packages</div>
+                <button onclick="navigateTo('packages', 'combos'); toggleMobileMenu()" class="w-full text-left px-5 py-2 text-sm text-slate-700 hover:text-[#FF6B00]">• Combo Launch Packages</button>
+                <button onclick="navigateTo('packages', 'amc'); toggleMobileMenu()" class="w-full text-left px-5 py-2 text-sm text-slate-700 hover:text-[#FF6B00]">• Monthly &amp; Annual AMC Plans</button>
+            </div>
+            <button onclick="navigateTo('contact'); toggleMobileMenu()" class="w-full text-left px-3.5 py-2.5 rounded font-semibold text-sm text-[#061E45] hover:bg-orange-50 border-t border-slate-100">Contact &amp; Office Location</button>
+        </div>
+    </header>
+
+    <!-- =====================================================================
+         2. DYNAMIC MULTI-PAGE VIEWPORT (Renders active page layer)
+    ====================================================================== -->
+    <main id="app-viewport" class="flex-1"></main>
+
+    <!-- =====================================================================
+         3. CORPORATE NAVY & ORANGE FOOTER
+    ====================================================================== -->
+    <footer class="bg-[#041533] text-slate-300 border-t-4 border-[#FF6B00] mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Col 1: Brand & Address -->
+                <div>
+                    <div class="font-display font-black italic text-xl tracking-tight">
+                        <span class="text-white">R.R.R MEDIA</span> <span class="text-[#FF6B00]">CREATION</span>
+                    </div>
+                    <div class="text-[11px] font-bold tracking-[0.18em] text-slate-300 uppercase mt-1">
+                        CREATE <span class="text-[#FF6B00]">•</span> CONNECT <span class="text-[#FF6B00]">•</span> GROW
+                    </div>
+                    <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+                        “Your One Stop Media &amp; Digital Partner.” Video production, photography, digital marketing, GST/Udyam compliance, GeM tenders &amp; CCTV solutions.
+                    </p>
+                    <div class="mt-4 pt-3 border-t border-slate-800 text-xs text-slate-300 space-y-1.5">
+                        <div class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-[#FF6B00] mt-0.5 shrink-0"></i>
+                            <span>Plot No. 305/1383, GGP Chaka / GGP Colony, Rasulgarh, Bhubaneswar, Odisha – 751025 (Plus Code: 7VV7+M98)</span>
+                        </div>
+                        <div class="pl-5">
+                            <a href="https://www.google.com/maps/place/7VV7%2BM98,+GGP+Colony,+Rasulgarh,+Bhubaneswar,+Odisha+751025/@20.2940961,85.8633899,21z/data=!4m6!3m5!1s0x3a190a11fd0a2c21:0x7fb617364bbc4866!8m2!3d20.2942359!4d85.8634869!16s%2Fg%2F11ggs_jyy7?entry=ttu" target="_blank" rel="noopener noreferrer" class="text-[#FF9900] hover:text-[#FF6B00] font-semibold inline-flex items-center gap-1">
+                                <span>Open in Google Maps</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Pages -->
+                <div>
+                    <h4 class="font-display font-bold text-sm uppercase tracking-wider text-white mb-3 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-[#FF6B00]"></span>
+                        <span>Quick Navigation</span>
+                    </h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><button onclick="navigateTo('home')" class="hover:text-[#FF9900] transition cursor-pointer">Home</button></li>
+                        <li><button onclick="navigateTo('about')" class="hover:text-[#FF9900] transition cursor-pointer">About R.R.R Media</button></li>
+                        <li><button onclick="navigateTo('packages', 'combos')" class="hover:text-[#FF9900] transition cursor-pointer">Starter Combo Packages</button></li>
+                        <li><button onclick="navigateTo('packages', 'amc')" class="hover:text-[#FF9900] transition cursor-pointer">AMC &amp; Retainer Plans</button></li>
+                        <li><button onclick="navigateTo('contact')" class="hover:text-[#FF9900] transition cursor-pointer">Contact &amp; Map</button></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Service Pages -->
+                <div>
+                    <h4 class="font-display font-bold text-sm uppercase tracking-wider text-white mb-3 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-[#FF6B00]"></span>
+                        <span>Our Services</span>
+                    </h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><button onclick="navigateTo('service', 'cat-a')" class="hover:text-[#FF9900] transition cursor-pointer">Video Production &amp; Digital Media</button></li>
+                        <li><button onclick="navigateTo('service', 'cat-b')" class="hover:text-[#FF9900] transition cursor-pointer">GST, Udyam &amp; Compliance</button></li>
+                        <li><button onclick="navigateTo('service', 'cat-c')" class="hover:text-[#FF9900] transition cursor-pointer">GeM &amp; Tender Support</button></li>
+                        <li><button onclick="navigateTo('service', 'cat-d')" class="hover:text-[#FF9900] transition cursor-pointer">Citizen &amp; Document Help</button></li>
+                        <li><button onclick="navigateTo('service', 'cat-e')" class="hover:text-[#FF9900] transition cursor-pointer">CCTV &amp; Security Systems</button></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Direct Connect -->
+                <div>
+                    <h4 class="font-display font-bold text-sm uppercase tracking-wider text-white mb-3 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-[#FF6B00]"></span>
+                        <span>Instant Support</span>
+                    </h4>
+                    <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+                        Need help choosing the right service or want a custom quotation? Reach out directly.
+                    </p>
+                    <div class="flex flex-col gap-2.5">
+                        <a href="tel:+917978143717" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded btn-rrr-orange text-white text-sm font-bold transition shadow-md">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>+91 79781 43717</span>
+                        </a>
+                        <a href="https://wa.me/917978143717?text=Hi%20R.R.R%20Media%20Creation%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>WhatsApp Enquiry</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800/80 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-400">
+                <span>&copy; 2026 R.R.R Media Creation. All Rights Reserved.</span>
+                <span>Plot No. 305/1383, GGP Chaka, Rasulgarh, Bhubaneswar – 751025</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =====================================================================
+         4. FLOATING LEFT CALL/WHATSAPP & RIGHT LIVE QUOTE WIDGET
+    ====================================================================== -->
+    <div class="fixed bottom-20 md:bottom-6 left-4 z-40 flex flex-col gap-2.5 no-print">
+        <a href="tel:+917978143717" title="Call Now" class="w-12 h-12 rounded-full bg-[#061E45] hover:bg-[#0B397A] border-2 border-[#FF6B00] text-white flex items-center justify-center shadow-lg transition transform hover:scale-105">
+            <i class="fa-solid fa-phone text-lg text-[#FF9900]"></i>
+        </a>
+        <a href="https://wa.me/917978143717?text=Hi%20R.R.R%20Media%20Creation%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp" class="w-12 h-12 rounded-full bg-[#25D366] hover:bg-[#20BD5A] text-white flex items-center justify-center shadow-lg transition transform hover:scale-105">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+        </a>
+    </div>
+
+    <!-- Desktop Floating Quote Widget -->
+    <div class="hidden md:flex fixed bottom-6 right-5 z-40 flex-col items-end gap-2 no-print">
+        <div class="bg-[#061E45] border border-[#FF6B00]/50 text-white px-4 py-2.5 rounded-lg shadow-xl text-xs font-semibold relative flex items-center gap-3">
+            <div>
+                <div class="text-slate-300">Quote Estimate (<span id="desktop-item-count" class="text-[#FF9900] font-bold">0</span> items):</div>
+                <div class="font-display font-extrabold text-base text-white" id="desktop-total-price">₹0</div>
+            </div>
+            <button onclick="toggleQuoteDrawer(true)" class="px-3 py-1.5 rounded btn-rrr-orange text-white font-bold text-xs transition cursor-pointer shadow-xs">
+                View Quote
+            </button>
+            <div class="w-3 h-3 bg-[#061E45] border-r border-b border-[#FF6B00]/50 rotate-45 absolute -bottom-1.5 right-5"></div>
+        </div>
+        <button onclick="toggleQuoteDrawer(true)" title="Open Instant Quote Builder" class="w-14 h-14 rounded-full btn-rrr-orange text-white flex items-center justify-center shadow-xl border-2 border-white transition transform hover:scale-105 cursor-pointer">
+            <i class="fa-solid fa-file-invoice-dollar text-xl"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Sticky Bottom Quote Bar -->
+    <div class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#061E45] border-t-2 border-[#FF6B00] text-white px-4 py-3 shadow-[0_-6px_18px_rgba(0,0,0,0.2)] flex items-center justify-between gap-3 no-print">
+        <div>
+            <div class="text-xs text-slate-300"><span id="mobile-item-count" class="font-bold text-[#FF9900]">0</span> services selected</div>
+            <div class="font-display font-extrabold text-lg text-white leading-tight" id="mobile-total-price">₹0</div>
+        </div>
+        <button onclick="toggleQuoteDrawer(true)" class="px-5 py-2.5 rounded btn-rrr-orange text-white font-display font-bold text-xs uppercase tracking-wider transition flex items-center gap-2 shadow-sm cursor-pointer">
+            <span>View Quote</span>
+            <i class="fa-solid fa-chevron-up text-xs"></i>
+        </button>
+    </div>
+
+    <!-- =====================================================================
+         5. SLIDE-OVER QUOTE BUILDER DRAWER
+    ====================================================================== -->
+    <div id="quote-drawer-backdrop" onclick="toggleQuoteDrawer(false)" class="fixed inset-0 bg-slate-950/65 backdrop-blur-xs z-50 hidden transition-opacity opacity-0"></div>
+    
+    <aside id="quote-drawer" class="fixed top-0 right-0 h-full w-full sm:w-[480px] bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="bg-[#061E45] border-b-4 border-[#FF6B00] text-white px-6 py-5 flex items-center justify-between shrink-0">
+            <div>
+                <h2 class="font-display font-bold text-xl flex items-center gap-2">
+                    <i class="fa-solid fa-file-invoice text-[#FF9900]"></i>
+                    <span>Custom Quote Builder</span>
+                </h2>
+                <p class="text-xs text-slate-300 mt-0.5">R.R.R Media Creation • Rasulgarh, Bhubaneswar</p>
+            </div>
+            <button onclick="toggleQuoteDrawer(false)" class="w-9 h-9 rounded bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition cursor-pointer">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+
+        <div class="flex-1 overflow-y-auto p-6 space-y-6" id="printable-estimate">
+            <div class="hidden print:block border-b-2 border-[#061E45] pb-4 mb-4">
+                <h1 class="text-2xl font-bold text-[#061E45]">R.R.R Media Creation</h1>
+                <p class="text-sm text-[#FF6B00] font-semibold">CREATE • CONNECT • GROW — Your One Stop Media &amp; Digital Partner</p>
+                <p class="text-xs text-slate-600 mt-1">Plot No. 305/1383, GGP Chaka / GGP Colony, Rasulgarh, Bhubaneswar, Odisha – 751025 (Plus Code: 7VV7+M98)</p>
+                <p class="text-xs text-slate-500 mt-1">Service Estimate / Quotation • Generated on <span id="print-date"></span></p>
+            </div>
+
+            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#061E45]">Client / Quotation Details</span>
+                    <button onclick="clearQuote()" id="clear-quote-btn" class="text-xs text-rose-600 hover:text-rose-700 font-semibold hidden no-print cursor-pointer">
+                        Clear All
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">Client Name</label>
+                        <input type="text" id="client-name" placeholder="e.g., Rajesh Sharma" class="w-full px-3 py-2 rounded bg-white border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B00]">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">Business / Shop Name</label>
+                        <input type="text" id="business-name" placeholder="e.g., Sharma Enterprises" class="w-full px-3 py-2 rounded bg-white border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B00]">
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-sm font-bold text-[#061E45] mb-3 flex items-center justify-between">
+                    <span>Selected Services &amp; Packages</span>
+                    <span id="drawer-count-label" class="text-xs font-bold px-2.5 py-0.5 rounded bg-orange-50 text-[#FF6B00]">0 items</span>
+                </h3>
+
+                <div id="drawer-empty-state" class="text-center py-10 px-4 border-2 border-dashed border-slate-200 rounded-xl">
+                    <div class="w-12 h-12 rounded-full bg-orange-50 text-[#FF6B00] flex items-center justify-center mx-auto mb-3 text-xl">
+                        <i class="fa-solid fa-cart-plus"></i>
+                    </div>
+                    <p class="text-sm font-semibold text-slate-700">Your quote list is empty</p>
+                    <p class="text-xs text-slate-500 mt-1">Browse any Service or Package page and click "+ Add" to build an instant estimate.</p>
+                </div>
+
+                <div id="drawer-items-list" class="space-y-3"></div>
+            </div>
+
+            <div id="drawer-disclaimers-box" class="hidden bg-orange-50/70 border border-orange-200 rounded-lg p-4 space-y-2">
+                <div class="flex items-center gap-2 text-[#061E45] font-bold text-xs uppercase tracking-wider">
+                    <i class="fa-solid fa-circle-info text-[#FF6B00]"></i>
+                    <span>Important Terms &amp; Notes</span>
+                </div>
+                <ul id="drawer-disclaimers-list" class="text-xs text-slate-700 space-y-1.5 list-disc pl-4"></ul>
+            </div>
+
+            <div id="drawer-summary-box" class="hidden border-t-2 border-slate-200 pt-4 space-y-2">
+                <div class="flex justify-between items-center text-sm text-slate-600">
+                    <span>Estimated Service Charges</span>
+                    <span id="drawer-subtotal" class="font-semibold text-slate-900">₹0</span>
+                </div>
+                <div class="flex justify-between items-center text-xs text-slate-500">
+                    <span>Govt. Fees / Hardware / Ad Budget</span>
+                    <span>Extra as applicable</span>
+                </div>
+                <div class="flex justify-between items-center pt-2 border-t border-slate-100">
+                    <span class="font-display font-bold text-base text-[#061E45]">Estimated Total</span>
+                    <span id="drawer-grand-total" class="font-display font-extrabold text-2xl text-[#FF6B00]">₹0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4 bg-slate-50 border-t border-slate-200 shrink-0 space-y-2.5 no-print">
+            <div class="grid grid-cols-2 gap-2.5">
+                <button onclick="copyFormattedQuote()" class="flex items-center justify-center gap-2 px-4 py-3 rounded bg-[#061E45] hover:bg-[#0B397A] text-white font-semibold text-sm transition cursor-pointer">
+                    <i class="fa-regular fa-copy"></i>
+                    <span>Copy Quote</span>
+                </button>
+                <button onclick="shareQuoteOnWhatsApp()" class="flex items-center justify-center gap-2 px-4 py-3 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition shadow-sm cursor-pointer">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span>WhatsApp Quote</span>
+                </button>
+            </div>
+            <button onclick="printEstimate()" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded bg-white hover:bg-slate-100 text-[#061E45] border border-slate-300 font-semibold text-xs transition cursor-pointer">
+                <i class="fa-solid fa-print text-[#FF6B00]"></i>
+                <span>Print / Save as PDF Estimate</span>
+            </button>
+        </div>
+    </aside>
+
+    <textarea id="clipboard-helper" class="sr-only" aria-hidden="true"></textarea>
+
+    <script>
+        // ==========================================
+        // 1. BUSINESS CONSTANTS & COMPLETE CATALOG DATA
+        // ==========================================
+        const WHATSAPP_NUMBER = '917978143717';
+        const OFFICE_ADDRESS = 'Plot No. 305/1383, GGP Chaka / GGP Colony, Rasulgarh, Bhubaneswar, Odisha – 751025';
+        const OFFICE_MAPS_URL = 'https://www.google.com/maps/place/7VV7%2BM98,+GGP+Colony,+Rasulgarh,+Bhubaneswar,+Odisha+751025/@20.2940961,85.8633899,21z/data=!4m6!3m5!1s0x3a190a11fd0a2c21:0x7fb617364bbc4866!8m2!3d20.2942359!4d85.8634869!16s%2Fg%2F11ggs_jyy7?entry=ttu';
+
+        // 6 Core Brand Capabilities from Branding Suite
+        const BRAND_CAPABILITIES = [
+            { icon: 'fa-clapperboard', title: 'Video Production', desc: 'Reels shooting, editing & promo videos', targetPage: 'service', targetParam: 'cat-a' },
+            { icon: 'fa-camera', title: 'Photography', desc: 'Product, shop & event brand shoots', targetPage: 'service', targetParam: 'cat-a' },
+            { icon: 'fa-display', title: 'Digital Media', desc: 'Google Business Profile & WhatsApp setup', targetPage: 'service', targetParam: 'cat-a' },
+            { icon: 'fa-bullhorn', title: 'Social Media Marketing', desc: 'Monthly posts, Reels & Meta/Google ads', targetPage: 'service', targetParam: 'cat-a' },
+            { icon: 'fa-pen-nib', title: 'Graphic Design', desc: 'Logos, visiting cards & promo posters', targetPage: 'service', targetParam: 'cat-a' },
+            { icon: 'fa-globe', title: 'Web & Business Solutions', desc: 'Compliance, GeM tenders & CCTV security', targetPage: 'services-all', targetParam: null }
+        ];
+
+        const COMBO_PACKAGES = [
+            {
+                id: 'combo-1',
+                category: 'combos',
+                badge: 'Most Popular for Shops',
+                title: '1. Local Business Starter',
+                price: 1499,
+                displayPrice: '₹1,499',
+                includes: [
+                    'Google Business Profile setup',
+                    'Instagram / Facebook page setup',
+                    'WhatsApp Business setup',
+                    '3 promotional posters',
+                    'WhatsApp catalogue & basic contact links'
+                ],
+                note: 'Ideal for local shops, clinics & new service providers.'
+            },
+            {
+                id: 'combo-2',
+                category: 'combos',
+                badge: 'Complete Brand Kit',
+                title: '2. New Business Launch',
+                price: 2499,
+                displayPrice: '₹2,499',
+                includes: [
+                    'Everything in Local Business Starter',
+                    'Custom Business Logo design',
+                    'Visiting card design',
+                    '2 extra promotional posters (5 total)',
+                    'WhatsApp catalogue (up to 20 products)'
+                ],
+                note: 'Complete digital & print identity kit for new ventures.'
+            },
+            {
+                id: 'combo-3',
+                category: 'combos',
+                badge: 'Compliance Essential',
+                title: '3. MSME Documentation Support',
+                price: 1499,
+                displayPrice: '₹1,499',
+                includes: [
+                    'Udyam (MSME) registration',
+                    'GST registration assistance',
+                    'PAN application / correction',
+                    'Document checklist & status follow-up'
+                ],
+                note: 'Government/statutory portal fees, if any, are extra.'
+            },
+            {
+                id: 'combo-4',
+                category: 'combos',
+                badge: 'B2G / Govt Vendors',
+                title: '4. Contractor & Tender Starter',
+                price: 3499,
+                displayPrice: '₹3,499',
+                includes: [
+                    'GeM onboarding / e-procurement portal registration',
+                    'Contractor company profile creation',
+                    'Tender search & eligibility checklist',
+                    'Basic bid document preparation'
+                ],
+                note: 'Portal fees, EMD, and DSC charges are extra.'
+            },
+            {
+                id: 'combo-5',
+                category: 'combos',
+                badge: 'Monthly Retainer',
+                title: '5. Digital Growth Monthly',
+                price: 5999,
+                displayPrice: '₹5,999 / mo',
+                includes: [
+                    '12 custom social media posts',
+                    '4 Reels (customer supplied footage)',
+                    'WhatsApp status creatives',
+                    'Google Business Profile updates',
+                    'Monthly performance report'
+                ],
+                note: 'Ad spend budget is extra. Monthly retainer billing.'
+            },
+            {
+                id: 'combo-6',
+                category: 'combos',
+                badge: 'Retail Security + Digital',
+                title: '6. Complete Shop Launch & Security',
+                price: 7999,
+                displayPrice: '₹7,999',
+                includes: [
+                    'Everything in Local Business Starter',
+                    '2-Camera CCTV system installation',
+                    'On-site layout survey',
+                    'Mobile app live viewing setup'
+                ],
+                note: 'CCTV hardware, DVR, HDD & cabling billed separately.'
+            },
+            {
+                id: 'combo-7',
+                category: 'combos',
+                badge: 'Office All-in-One',
+                title: '7. Office & Contractor Compliance + Security',
+                price: 9999,
+                displayPrice: '₹9,999',
+                includes: [
+                    'Udyam & GST registration assistance',
+                    'Google Business Profile setup',
+                    '4-Camera CCTV system installation',
+                    'Mobile viewing & DVR configuration'
+                ],
+                note: 'CCTV hardware & government fees billed separately.'
+            }
+        ];
+
+        const AMC_PACKAGES = [
+            {
+                id: 'amc-1',
+                category: 'amc',
+                badge: 'Cat A • Digital Marketing',
+                title: 'AMC 1: Local Visibility Care',
+                price: 999,
+                displayPrice: '₹999 / mo',
+                includes: [
+                    'Google Business Profile weekly updates & photo uploads',
+                    'Review monitoring & customer response replies',
+                    '2 festival / offer promotional posters per month',
+                    'WhatsApp catalogue updates (up to 10 products)'
+                ],
+                note: 'Min. 3-month lock-in. Keeps local search ranking active.'
+            },
+            {
+                id: 'amc-2',
+                category: 'amc',
+                badge: 'Cat A • Digital Marketing',
+                title: 'AMC 2: Social Growth Retainer',
+                price: 2999,
+                displayPrice: '₹2,999 / mo',
+                includes: [
+                    '12 custom social media posts (Instagram & Facebook)',
+                    '2 basic Reels per month (customer-supplied footage)',
+                    'Monthly Google Business Profile optimization'
+                ],
+                note: 'Bundles ₹3,797+ worth of standalone design & video work.'
+            },
+            {
+                id: 'amc-3',
+                category: 'amc',
+                badge: 'Cat A • Digital Marketing',
+                title: 'AMC 3: Complete Brand & Reels AMC',
+                price: 5999,
+                displayPrice: '₹5,999 / mo',
+                includes: [
+                    '12 custom social media posts + 4 Reels/month',
+                    'WhatsApp status creatives & GBP updates',
+                    'Monthly performance report',
+                    'Meta / Google ad campaign monitoring (ad spend extra)'
+                ],
+                note: 'Ad spend budget is extra. Min. 3-month commitment.'
+            },
+            {
+                id: 'amc-4',
+                category: 'amc',
+                badge: 'Cat B • Compliance & Tax',
+                title: 'AMC 4: GST Compliance Care',
+                price: 799,
+                displayPrice: '₹799 / mo',
+                includes: [
+                    'Monthly GST return preparation & filing (GSTR-1 & 3B)',
+                    'Nil-return filing support when applicable',
+                    'Basic GST amendment & portal notice tracking'
+                ],
+                note: 'Also available at ₹1,999/quarter. Statutory fees extra.'
+            },
+            {
+                id: 'amc-5',
+                category: 'amc',
+                badge: 'Cat B • HR & Payroll',
+                title: 'AMC 5: MSME HR & Payroll AMC',
+                price: 1499,
+                displayPrice: '₹1,499 / mo',
+                includes: [
+                    'Monthly payroll preparation support (up to 10 staff)',
+                    'Monthly EPFO & ESIC challan preparation',
+                    'Up to 2 new employee onboardings/month included'
+                ],
+                note: 'Govt. EPFO/ESIC challan contributions are extra.'
+            },
+            {
+                id: 'amc-6',
+                category: 'amc',
+                badge: 'Cat B • Complete Back-Office',
+                title: 'AMC 6: Complete Business Care',
+                price: 1999,
+                displayPrice: '₹1,999 / mo',
+                includes: [
+                    'Monthly GST return filing support',
+                    'Monthly payroll & PF/ESIC compliance support',
+                    'Priority PAN / Udyam / business document updates'
+                ],
+                note: 'All-in-one compliance retainer for growing MSMEs.'
+            },
+            {
+                id: 'amc-7',
+                category: 'amc',
+                badge: 'Cat C • Tenders & GeM',
+                title: 'AMC 7: Tender Radar Subscription',
+                price: 999,
+                displayPrice: '₹999 / mo',
+                includes: [
+                    'Daily/weekly customized tender alerts (GeM & state portals)',
+                    'Tender search, shortlisting & eligibility checklist'
+                ],
+                note: 'Portal fees, EMD & DSC charges are extra.'
+            },
+            {
+                id: 'amc-8',
+                category: 'amc',
+                badge: 'Cat C • Tenders & GeM',
+                title: 'AMC 8: Active Bidder Retainer',
+                price: 2999,
+                displayPrice: '₹2,999 / mo',
+                includes: [
+                    'Unlimited tender alerts & shortlisting',
+                    'Up to 3 basic bid document preparations per month',
+                    'GeM catalogue listing updates (up to 5 products/mo)',
+                    'Contractor company profile updates'
+                ],
+                note: 'Registration & bid submission do not guarantee award.'
+            },
+            {
+                id: 'amc-9',
+                category: 'amc',
+                badge: 'Cat E • CCTV Security',
+                title: 'AMC 9: Standard CCTV Care (Up to 4 Cam)',
+                price: 1999,
+                displayPrice: '₹1,999 / yr',
+                includes: [
+                    '2 scheduled preventive maintenance visits per year',
+                    '2 free emergency troubleshooting / repair visits',
+                    'DVR/NVR health check & mobile viewing reconfiguration'
+                ],
+                note: '12-month term. Hardware, HDD, cables & adapters billed extra.'
+            },
+            {
+                id: 'amc-10',
+                category: 'amc',
+                badge: 'Cat E • CCTV Security',
+                title: 'AMC 10: Commercial CCTV Care (8+ Cam)',
+                price: 3499,
+                displayPrice: '₹3,499 / yr',
+                includes: [
+                    'Quarterly preventive maintenance visits (4 per year)',
+                    'Unlimited remote mobile app & DVR troubleshooting',
+                    'Priority on-site repair visits within 24 hours'
+                ],
+                note: '12-month term. Replacement parts & cabling billed extra.'
+            },
+            {
+                id: 'amc-11',
+                category: 'amc',
+                badge: 'All-in-One Hybrid AMC',
+                title: 'AMC 11: Office & Shop Partner Hybrid',
+                price: 3999,
+                displayPrice: '₹3,999 / mo',
+                includes: [
+                    'Monthly GST return filing support (Category B)',
+                    'GBP management + 4 festival/promo posters/mo (Category A)',
+                    'Annual CCTV maintenance & mobile viewing support (Category E)',
+                    'Priority office document, scan & form assistance (Category D)'
+                ],
+                note: 'Complete Digital + Compliance + Security under one plan.'
+            }
+        ];
+
+        const SERVICE_SECTIONS = [
+            {
+                id: 'cat-a',
+                code: 'A',
+                shortTitle: 'Media & Marketing',
+                title: 'Video Production, Digital Media & Marketing',
+                subtitle: 'Reels production, graphic design, Google Business visibility & social media campaigns.',
+                overview: 'Build strong local trust and attract daily enquiries with optimized Google Business Profiles, engaging social media posts, custom graphic designs, and high-retention Instagram/Facebook Reels.',
+                icon: 'fa-clapperboard',
+                disclaimer: 'Category A Note: Advertising budget is extra. Revision limits, shoot hours, and deliverables are confirmed in each quote.',
+                items: [
+                    { id: 'a1', name: 'Google Business Profile setup', price: 499, displayPrice: '₹499', tag: 'Digital Media' },
+                    { id: 'a2', name: 'Profile optimisation and photo upload', price: 799, displayPrice: '₹799', tag: 'Photography' },
+                    { id: 'a3', name: 'Instagram / Facebook business page setup', price: 399, displayPrice: '₹399', tag: 'Social Setup' },
+                    { id: 'a4', name: 'WhatsApp Business setup', price: 399, displayPrice: '₹399', tag: 'Digital Media' },
+                    { id: 'a5', name: 'WhatsApp catalogue (up to 20 products)', price: 599, displayPrice: '₹599', tag: 'Digital Media' },
+                    { id: 'a6', name: 'Promotional poster design', price: 199, displayPrice: '₹199', tag: 'Graphic Design' },
+                    { id: 'a7', name: 'Visiting card design', price: 299, displayPrice: '₹299', tag: 'Graphic Design' },
+                    { id: 'a8', name: 'Business logo design', price: 799, displayPrice: '₹799', tag: 'Graphic Design' },
+                    { id: 'a9', name: 'Basic Reel editing (customer footage supplied)', price: 399, displayPrice: '₹399 / video', tag: 'Video Production' },
+                    { id: 'a10', name: 'Reel shooting and editing', price: 999, displayPrice: '₹999 / video', tag: 'Video Production' },
+                    { id: 'a11', name: 'Monthly social media package (12 posts)', price: 2999, displayPrice: '₹2,999', tag: 'Social Marketing' },
+                    { id: 'a12', name: 'Monthly Reels package (8 Reels/month)', price: 3999, displayPrice: '₹3,999', tag: 'Video Production' },
+                    { id: 'a13', name: 'Combined monthly social media management', price: 5999, displayPrice: '₹5,999 – ₹9,999', tag: 'Base ₹5,999' },
+                    { id: 'a14', name: 'Meta / Google ad campaign setup', price: 999, displayPrice: '₹999', tag: 'Paid Ads' },
+                    { id: 'a15', name: 'Ad campaign management', price: 1999, displayPrice: '₹1,999 / month onwards', tag: 'Paid Ads' }
+                ]
+            },
+            {
+                id: 'cat-b',
+                code: 'B',
+                shortTitle: 'Business & Tax',
+                title: 'Business Registration, Taxation & Compliance',
+                subtitle: 'Fast-track MSME, GST, PAN, PF/ESIC, trademark & company incorporation support.',
+                overview: 'Keep your business compliant from day one. We assist proprietors, shops, and MSMEs with Udyam registration, GST filings, EPFO/ESIC employer setup, monthly payroll, and trademark coordination.',
+                icon: 'fa-building-shield',
+                disclaimer: 'Category B Note: Government fees, statutory portal charges, DSC fees, stamp duty, and third-party costs are extra.',
+                items: [
+                    { id: 'b1', name: 'PAN application assistance', price: 150, displayPrice: '₹150', tag: 'Tax ID' },
+                    { id: 'b2', name: 'PAN correction assistance', price: 250, displayPrice: '₹250', tag: 'Tax ID' },
+                    { id: 'b3', name: 'Voter application assistance', price: 150, displayPrice: '₹150', tag: 'Citizen ID' },
+                    { id: 'b4', name: "Learners / Driving licence application assistance", price: 250, displayPrice: '₹250', tag: 'Transport' },
+                    { id: 'b5', name: 'Udyam (MSME) registration assistance', price: 499, displayPrice: '₹499', tag: 'MSME' },
+                    { id: 'b6', name: 'GST registration assistance', price: 999, displayPrice: '₹999', tag: 'GST' },
+                    { id: 'b7', name: 'GST amendment assistance', price: 499, displayPrice: '₹499', tag: 'GST' },
+                    { id: 'b8', name: 'GST nil-return filing support', price: 399, displayPrice: '₹399 / return', tag: 'GST Filing' },
+                    { id: 'b9', name: 'GST monthly return preparation & filing support', price: 799, displayPrice: '₹799 / month onwards', tag: 'GST Filing' },
+                    { id: 'b10', name: 'EPFO employer registration assistance', price: 999, displayPrice: '₹999', tag: 'Labour Law' },
+                    { id: 'b11', name: 'ESIC employer registration assistance', price: 999, displayPrice: '₹999', tag: 'Labour Law' },
+                    { id: 'b12', name: 'EPFO / ESIC employee onboarding support', price: 150, displayPrice: '₹150 / employee', tag: 'HR Compliance' },
+                    { id: 'b13', name: 'Monthly payroll preparation support', price: 999, displayPrice: '₹999 / month onwards', tag: 'Payroll' },
+                    { id: 'b14', name: 'Proprietorship setup / documentation assistance', price: 799, displayPrice: '₹799', tag: 'Entity Setup' },
+                    { id: 'b15', name: 'Company / LLP incorporation coordination', price: 2999, displayPrice: '₹2,999 onwards', tag: 'Corporate' },
+                    { id: 'b16', name: 'Trademark search & preliminary report', price: 799, displayPrice: '₹799', tag: 'IP Protection' },
+                    { id: 'b17', name: 'Trademark filing coordination', price: 1499, displayPrice: '₹1,499 onwards', tag: 'IP Protection' }
+                ]
+            },
+            {
+                id: 'cat-c',
+                code: 'C',
+                shortTitle: 'GeM & Tenders',
+                title: 'GeM, Tenders & Contractor Services',
+                subtitle: 'End-to-end Government e-Marketplace onboarding, bid documentation & tender alerts.',
+                overview: 'Expand into government and institutional supply with structured GeM seller onboarding, catalogue listing, daily tender tracking, DSC coordination, and accurate bid document preparation.',
+                icon: 'fa-file-contract',
+                disclaimer: 'Category C Note: Official portal charges, tender fees, EMD, DSC provider charges, and certifications are extra. Registration does not guarantee contract award.',
+                items: [
+                    { id: 'c1', name: 'GeM seller registration assistance', price: 999, displayPrice: '₹999', tag: 'GeM Portal' },
+                    { id: 'c2', name: 'Product / service catalogue listing support', price: 499, displayPrice: '₹499 / category onwards', tag: 'GeM Listing' },
+                    { id: 'c3', name: 'Tender search and shortlist', price: 499, displayPrice: '₹499', tag: 'Discovery' },
+                    { id: 'c4', name: 'Tender alerts (1 month)', price: 999, displayPrice: '₹999', tag: 'Subscription' },
+                    { id: 'c5', name: 'Tender document checklist & eligibility review', price: 799, displayPrice: '₹799', tag: 'Compliance' },
+                    { id: 'c6', name: 'Basic bid document preparation', price: 1499, displayPrice: '₹1,499', tag: 'Bidding' },
+                    { id: 'c7', name: 'Complex tender preparation & submission support', price: 2999, displayPrice: '₹2,999 – ₹7,500', tag: 'Base ₹2,999' },
+                    { id: 'c8', name: 'DSC procurement coordination', price: 300, displayPrice: '₹300 service fee + provider cost', tag: 'Digital Signature' },
+                    { id: 'c9', name: 'Contractor company profile', price: 999, displayPrice: '₹999', tag: 'Branding' },
+                    { id: 'c10', name: 'Tender tracking monthly subscription', price: 1999, displayPrice: '₹1,999 / month', tag: 'Monthly' },
+                    { id: 'c11', name: 'Tender support for regular contractors', price: 2999, displayPrice: '₹2,999 / month onwards', tag: 'Retainer' }
+                ]
+            },
+            {
+                id: 'cat-d',
+                code: 'D',
+                shortTitle: 'Citizen & Docs',
+                title: 'Citizen & Document Assistance',
+                subtitle: 'Everyday digital documentation, online form submissions, resumes & printing services.',
+                overview: 'Quick, reliable walk-in and remote document assistance at our Rasulgarh center—from PDF conversions and online applications to professional resumes and printouts.',
+                icon: 'fa-id-card',
+                disclaimer: 'Category D Note: Biometric identity updates are referred to authorised centres. Gun licence charges cover lawful documentation assistance only.',
+                items: [
+                    { id: 'd1', name: 'Scan, merge, or convert PDF', price: 20, displayPrice: '₹20 – ₹100', tag: 'Base ₹20' },
+                    { id: 'd2', name: 'Online form filling', price: 100, displayPrice: '₹100 – ₹250', tag: 'Base ₹100' },
+                    { id: 'd3', name: 'Resume preparation', price: 299, displayPrice: '₹299', tag: 'Career' },
+                    { id: 'd4', name: 'Online appointment booking', price: 100, displayPrice: '₹100 – ₹200', tag: 'Base ₹100' },
+                    { id: 'd5', name: 'Application status tracking', price: 50, displayPrice: '₹50 – ₹100', tag: 'Base ₹50' },
+                    { id: 'd6', name: 'Printout', price: 5, displayPrice: '₹5 – ₹10 / page', tag: 'Base ₹5' },
+                    { id: 'd7', name: 'Photocopy', price: 2, displayPrice: '₹2 – ₹5 / page', tag: 'Base ₹2' },
+                    { id: 'd8', name: 'Gun licence application documentation guidance', price: 999, displayPrice: '₹999 onwards', tag: 'Documentation' }
+                ]
+            },
+            {
+                id: 'cat-e',
+                code: 'E',
+                shortTitle: 'CCTV & Security',
+                title: 'CCTV & Security Surveillance Services',
+                subtitle: 'Professional CCTV layout planning, installation, mobile viewing setup & Annual Maintenance.',
+                overview: 'Secure your shop, office, warehouse, or residence with clean CCTV installation, remote smartphone live-view configuration, troubleshooting, and scheduled AMC maintenance across Bhubaneswar.',
+                icon: 'fa-video',
+                disclaimer: 'Category E Note: Camera hardware, DVR/NVR, hard disk, connectors, power supply, and cabling are billed separately.',
+                items: [
+                    { id: 'e1', name: 'Site survey & camera layout plan', price: 0, displayPrice: 'Free (if booked) / ₹299', tag: 'Base ₹0' },
+                    { id: 'e2', name: 'Single Wi-Fi / smart camera setup', price: 499, displayPrice: '₹499', tag: 'Smart Home' },
+                    { id: 'e3', name: '2-Camera CCTV system installation', price: 1499, displayPrice: '₹1,499', tag: 'Installation' },
+                    { id: 'e4', name: '4-Camera CCTV system installation', price: 2499, displayPrice: '₹2,499', tag: 'Installation' },
+                    { id: 'e5', name: '8-Camera CCTV system installation', price: 4499, displayPrice: '₹4,499', tag: 'Commercial' },
+                    { id: 'e6', name: 'Mobile viewing & DVR/NVR configuration', price: 499, displayPrice: '₹499', tag: 'Configuration' },
+                    { id: 'e7', name: 'Troubleshooting / repair visit', price: 399, displayPrice: '₹399 onwards', tag: 'Support' },
+                    { id: 'e8', name: 'Annual Maintenance Contract (AMC)', price: 1999, displayPrice: '₹1,999 / year onwards', tag: 'AMC Plan' }
+                ]
+            }
+        ];
+
+        // ==========================================
+        // 2. MULTI-PAGE ROUTING & STATE
+        // ==========================================
+        let currentRoute = { page: 'home', param: null };
+        let homePillar = 'media';
+        let serviceSearchQuery = '';
+        let quoteCart = {};
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date().toLocaleDateString('en-IN', {
+                day: '2-digit', month: 'short', year: 'numeric'
+            });
+            document.getElementById('print-date').textContent = today;
+
+            handleHashRoute();
+            window.addEventListener('hashchange', handleHashRoute);
+        });
+
+        function handleHashRoute() {
+            const hash = window.location.hash.replace('#', '');
+            if (!hash || hash === 'home') {
+                renderPage('home', null, false);
+            } else if (hash === 'about') {
+                renderPage('about', null, false);
+            } else if (hash === 'services-all') {
+                renderPage('services-all', null, false);
+            } else if (hash.startsWith('service/')) {
+                const catId = hash.split('/')[1];
+                renderPage('service', catId, false);
+            } else if (hash.startsWith('packages/')) {
+                const pkgType = hash.split('/')[1];
+                renderPage('packages', pkgType, false);
+            } else if (hash === 'contact') {
+                renderPage('contact', null, false);
+            } else {
+                renderPage('home', null, false);
+            }
+        }
+
+        function navigateTo(page, param = null) {
+            serviceSearchQuery = '';
+            renderPage(page, param, true);
+        }
+
+        function renderPage(page, param = null, updateHash = true) {
+            currentRoute = { page, param };
+
+            if (updateHash) {
+                const newHash = param ? `${page}/${param}` : page;
+                history.pushState(null, '', `#${newHash}`);
+            }
+
+            updateActiveNavPill(page);
+
+            const viewport = document.getElementById('app-viewport');
+            if (page === 'home') {
+                viewport.innerHTML = buildHomePageHTML();
+            } else if (page === 'about') {
+                viewport.innerHTML = buildAboutPageHTML();
+            } else if (page === 'service') {
+                viewport.innerHTML = buildSingleServicePageHTML(param || 'cat-a');
+            } else if (page === 'services-all') {
+                viewport.innerHTML = buildAllServicesPageHTML();
+            } else if (page === 'packages') {
+                viewport.innerHTML = buildPackagesPageHTML(param || 'combos');
+            } else if (page === 'contact') {
+                viewport.innerHTML = buildContactPageHTML();
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateActiveNavPill(page) {
+            const activeKey = (page === 'service' || page === 'services-all') ? 'services' : page;
+            document.querySelectorAll('.nav-pill').forEach(btn => {
+                const key = btn.getAttribute('data-nav');
+                if (key === activeKey) {
+                    btn.className = 'nav-pill px-4 py-2.5 rounded btn-rrr-orange text-white font-bold text-sm shadow-xs transition cursor-pointer';
+                } else {
+                    btn.className = 'nav-pill px-4 py-2.5 rounded text-[#061E45] hover:text-[#FF6B00] font-semibold text-sm transition cursor-pointer';
+                }
+            });
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-nav-menu').classList.toggle('hidden');
+        }
+
+        // ==========================================
+        // 3. SUB-PAGE HEADER BANNER (Navy + Orange Curve)
+        // ==========================================
+        function buildSubpageHeader(title, breadcrumbs) {
+            const crumbsHTML = breadcrumbs.map((crumb, idx) => {
+                const isLast = idx === breadcrumbs.length - 1;
+                if (isLast) {
+                    return `<span class="text-[#FF9900] font-bold">${crumb.label}</span>`;
+                }
+                return `<button onclick="${crumb.action}" class="text-slate-200 hover:text-white transition cursor-pointer">${crumb.label}</button> <span class="mx-2 text-[#FF6B00]">&gt;</span> `;
+            }).join('');
+
+            return `
+                <section class="subpage-banner-bg relative overflow-hidden py-12 sm:py-16 text-white">
+                    <!-- Curved Wave Accent matching Navy & Orange Brand Theme -->
+                    <svg viewBox="0 0 1440 90" preserveAspectRatio="none" class="absolute bottom-0 inset-x-0 w-full h-10 sm:h-14 pointer-events-none">
+                        <path d="M0,45 C360,95 1080,-10 1440,55 L1440,90 L0,90 Z" fill="#F8FAFC"/>
+                        <path d="M0,62 C440,12 1000,88 1440,34 L1440,90 L0,90 Z" fill="#FF6B00" opacity="0.22"/>
+                    </svg>
+
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <h1 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-[42px] tracking-tight">
+                            ${title}
+                        </h1>
+                        <nav aria-label="Breadcrumb" class="mt-3 text-xs sm:text-sm uppercase tracking-wider font-semibold">
+                            ${crumbsHTML}
+                        </nav>
+                    </div>
+                </section>
+            `;
+        }
+
+        // ==========================================
+        // 4. PAGE LAYER BUILDERS
+        // ==========================================
+
+        // --- LAYER 1: HOME PAGE ---
+        function buildHomePageHTML() {
+            const PILLAR_CONTENT = {
+                media: {
+                    icon: 'fa-clapperboard',
+                    title: 'Video Production, Photography & Social Media',
+                    desc: 'We produce crisp promotional Reels, product/store photography, custom logos, posters, and monthly social media campaigns that capture attention and turn local viewers into paying customers.',
+                    ctaLabel: 'Explore Media & Marketing Services',
+                    ctaAction: "navigateTo('service', 'cat-a')"
+                },
+                branding: {
+                    icon: 'fa-pen-nib',
+                    title: 'Brand Identity & Digital Presence',
+                    desc: 'From Google Business Profile optimization and WhatsApp Business catalogues to custom visiting cards and launch kits, we establish a sharp, trustworthy brand identity.',
+                    ctaLabel: 'View Business Launch Combos',
+                    ctaAction: "navigateTo('packages', 'combos')"
+                },
+                compliance: {
+                    icon: 'fa-file-shield',
+                    title: 'GST, Udyam Registration & GeM Tenders',
+                    desc: 'Simplify statutory paperwork with guided Udyam (MSME) registration, GST registration & monthly filing, EPFO/ESIC payroll support, and GeM/tender bid preparation.',
+                    ctaLabel: 'Explore Compliance & Tender Pages',
+                    ctaAction: "navigateTo('service', 'cat-b')"
+                },
+                security: {
+                    icon: 'fa-video',
+                    title: 'CCTV Installation & Security AMC',
+                    desc: 'Protect your shop, office, or warehouse with on-site camera layout planning, Wi-Fi and multi-camera CCTV setup, live mobile viewing, and annual AMC maintenance.',
+                    ctaLabel: 'Explore CCTV & Security Plans',
+                    ctaAction: "navigateTo('service', 'cat-e')"
+                }
+            };
+
+            const activeP = PILLAR_CONTENT[homePillar];
+
+            return `
+                <div class="page-view">
+                    <!-- Deep Navy & Vibrant Orange Hero Banner -->
+                    <section class="hero-banner-bg relative overflow-hidden py-12 sm:py-16 lg:py-20 text-white">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                                <!-- Left Headline & Brand Pill -->
+                                <div class="lg:col-span-7 text-center lg:text-left space-y-5">
+                                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-bold tracking-[0.2em] uppercase text-white">
+                                        <span>CREATE</span>
+                                        <span class="text-[#FF6B00]">•</span>
+                                        <span>CONNECT</span>
+                                        <span class="text-[#FF6B00]">•</span>
+                                        <span>GROW</span>
+                                    </div>
+
+                                    <h1 class="font-display font-black text-3xl sm:text-5xl xl:text-[52px] tracking-tight uppercase leading-[1.12]">
+                                        R.R.R <span class="text-[#FF6B00]">MEDIA</span> CREATION
+                                    </h1>
+
+                                    <!-- Signature Navy & Orange-Tipped Pill Banner -->
+                                    <div class="inline-block brand-pill-banner px-6 py-2.5 rounded-full">
+                                        <span class="font-display italic font-bold text-sm sm:text-base text-white tracking-wide">
+                                            Your One Stop Media &amp; Digital Partner
+                                        </span>
+                                    </div>
+
+                                    <p class="text-slate-200 text-sm sm:text-base max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                                        From Video Production, Photography &amp; Social Media Marketing to GST/Udyam Registration, GeM Tender Bidding, and CCTV Security—everything your business needs under one roof in Bhubaneswar.
+                                    </p>
+
+                                    <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3.5">
+                                        <button onclick="navigateTo('services-all')" class="px-6 py-3.5 rounded btn-rrr-orange text-white font-display font-bold text-xs sm:text-sm uppercase tracking-wider shadow-lg transition cursor-pointer">
+                                            Explore All Services
+                                        </button>
+                                        <button onclick="navigateTo('packages', 'combos')" class="px-6 py-3.5 rounded bg-white/10 hover:bg-white/20 border border-white/25 text-white font-display font-bold text-xs sm:text-sm uppercase tracking-wider transition cursor-pointer">
+                                            View Combo Packages
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Right Visual Card: Camera Lens & Growth Metrics -->
+                                <div class="lg:col-span-5 flex justify-center">
+                                    <div class="w-full max-w-md bg-white/5 backdrop-blur-xs border border-white/15 rounded-2xl p-6 sm:p-8 shadow-2xl animate-float">
+                                        <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+                                            <div>
+                                                <div class="text-[11px] font-bold uppercase tracking-widest text-[#FF9900]">Bhubaneswar • Odisha</div>
+                                                <div class="font-display font-extrabold text-lg text-white mt-0.5">All-in-One Growth Hub</div>
+                                            </div>
+                                            <div class="w-12 h-12 rounded-xl btn-rrr-orange flex items-center justify-center text-white text-xl shadow-md">
+                                                <i class="fa-solid fa-camera-retro"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid grid-cols-2 gap-3 text-left">
+                                            <button onclick="navigateTo('service', 'cat-a')" class="p-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 transition cursor-pointer">
+                                                <i class="fa-solid fa-clapperboard text-[#FF9900] text-lg mb-1.5"></i>
+                                                <div class="font-display font-bold text-xs text-white">Media &amp; Reels</div>
+                                                <div class="text-[11px] text-slate-300 mt-0.5">From ₹199</div>
+                                            </button>
+                                            <button onclick="navigateTo('service', 'cat-b')" class="p-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 transition cursor-pointer">
+                                                <i class="fa-solid fa-building-shield text-[#FF9900] text-lg mb-1.5"></i>
+                                                <div class="font-display font-bold text-xs text-white">GST &amp; MSME</div>
+                                                <div class="text-[11px] text-slate-300 mt-0.5">From ₹150</div>
+                                            </button>
+                                            <button onclick="navigateTo('service', 'cat-c')" class="p-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 transition cursor-pointer">
+                                                <i class="fa-solid fa-file-contract text-[#FF9900] text-lg mb-1.5"></i>
+                                                <div class="font-display font-bold text-xs text-white">GeM &amp; Tenders</div>
+                                                <div class="text-[11px] text-slate-300 mt-0.5">From ₹499</div>
+                                            </button>
+                                            <button onclick="navigateTo('service', 'cat-e')" class="p-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 transition cursor-pointer">
+                                                <i class="fa-solid fa-video text-[#FF9900] text-lg mb-1.5"></i>
+                                                <div class="font-display font-bold text-xs text-white">CCTV &amp; AMC</div>
+                                                <div class="text-[11px] text-slate-300 mt-0.5">From ₹499</div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 6 Core Capabilities Strip (Directly inspired by Branding Suite Icon Bar) -->
+                    <section class="bg-white border-b border-slate-200 py-8">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 divide-y sm:divide-y-0 lg:divide-x divide-slate-200">
+                                ${BRAND_CAPABILITIES.map(cap => `
+                                    <button onclick="navigateTo('${cap.targetPage}', ${cap.targetParam ? `'${cap.targetParam}'` : 'null'})" class="group flex flex-col items-center text-center px-3 py-3 hover:bg-orange-50/60 rounded-lg transition cursor-pointer">
+                                        <div class="w-12 h-12 rounded-xl bg-[#061E45] group-hover:bg-[#FF6B00] text-white flex items-center justify-center text-xl mb-2.5 transition shadow-xs">
+                                            <i class="fa-solid ${cap.icon}"></i>
+                                        </div>
+                                        <div class="font-display font-extrabold text-xs sm:text-sm text-[#061E45] group-hover:text-[#FF6B00] transition leading-tight">
+                                            ${cap.title}
+                                        </div>
+                                        <div class="text-[11px] text-slate-500 mt-1 leading-snug">${cap.desc}</div>
+                                    </button>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Interactive 4-Pillar Tabs -->
+                    <section class="py-14 bg-white border-b border-slate-100">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div class="text-center max-w-2xl mx-auto mb-8">
+                                <span class="text-xs font-bold uppercase tracking-widest text-[#FF6B00]">What We Do Best</span>
+                                <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-[#061E45] mt-1">
+                                    Creative Media, Digital Growth &amp; Business Compliance
+                                </h2>
+                                <div class="w-16 h-1 bg-[#FF6B00] mx-auto mt-3 rounded-full"></div>
+                            </div>
+
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5 mb-8">
+                                ${Object.entries(PILLAR_CONTENT).map(([key, item]) => {
+                                    const active = homePillar === key;
+                                    return `
+                                        <button onclick="switchHomePillar('${key}')" class="py-4 px-4 rounded-lg border-2 ${active ? 'border-[#FF6B00] bg-[#061E45] text-white shadow-md' : 'border-slate-200 bg-slate-50 text-[#061E45] hover:border-[#FF6B00]'} font-display font-bold text-sm sm:text-base flex flex-col items-center gap-2 transition cursor-pointer">
+                                            <i class="fa-solid ${item.icon} text-xl ${active ? 'text-[#FF9900]' : 'text-[#FF6B00]'}"></i>
+                                            <span>${key === 'media' ? 'Media & Reels' : key === 'branding' ? 'Branding' : key === 'compliance' ? 'Compliance & GeM' : 'CCTV & Security'}</span>
+                                        </button>
+                                    `;
+                                }).join('')}
+                            </div>
+
+                            <div class="bg-slate-50 rounded-2xl p-6 sm:p-10 border border-slate-200 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                                <div class="lg:col-span-4 flex justify-center">
+                                    <div class="w-36 h-36 rounded-2xl bg-[#061E45] border-4 border-[#FF6B00] shadow-md flex items-center justify-center text-5xl text-[#FF9900]">
+                                        <i class="fa-solid ${activeP.icon}"></i>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-8 space-y-4 text-center lg:text-left">
+                                    <h3 class="font-display font-extrabold text-2xl text-[#061E45]">${activeP.title}</h3>
+                                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">${activeP.desc}</p>
+                                    <div>
+                                        <button onclick="${activeP.ctaAction}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded btn-rrr-orange text-white font-bold text-sm transition cursor-pointer shadow-xs">
+                                            <span>${activeP.ctaLabel}</span>
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Service Department Cards (Click any card to land on its dedicated page!) -->
+                    <section class="py-16 bg-slate-50">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div class="text-center max-w-2xl mx-auto mb-12">
+                                <span class="text-xs font-bold uppercase tracking-wider text-[#FF6B00]">Explore By Department</span>
+                                <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-[#061E45] mt-1">Click Any Department to View Services &amp; Rates</h2>
+                                <div class="w-16 h-1 bg-[#FF6B00] mx-auto mt-3 rounded-full"></div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                ${SERVICE_SECTIONS.map(sec => `
+                                    <div onclick="navigateTo('service', '${sec.id}')" class="group bg-white p-6 rounded-xl border border-slate-200 hover:border-[#FF6B00] shadow-2xs hover:shadow-lg transition-all cursor-pointer flex flex-col justify-between">
+                                        <div>
+                                            <div class="flex items-center justify-between mb-4">
+                                                <div class="w-12 h-12 rounded-lg bg-[#061E45] group-hover:bg-[#FF6B00] text-white flex items-center justify-center text-xl transition">
+                                                    <i class="fa-solid ${sec.icon}"></i>
+                                                </div>
+                                                <span class="text-xs font-bold px-2.5 py-1 rounded bg-orange-50 text-[#FF6B00]">${sec.items.length} Services</span>
+                                            </div>
+                                            <h3 class="font-display font-bold text-lg text-[#061E45] group-hover:text-[#FF6B00] transition mb-2">${sec.title}</h3>
+                                            <p class="text-sm text-slate-600 leading-relaxed">${sec.subtitle}</p>
+                                        </div>
+                                        <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#061E45] group-hover:text-[#FF6B00]">
+                                            <span>Open Service Page</span>
+                                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                                        </div>
+                                    </div>
+                                `).join('')}
+
+                                <!-- 6th Card: Combo & AMC Packages -->
+                                <div onclick="navigateTo('packages', 'combos')" class="group bg-[#061E45] border-2 border-[#FF6B00] p-6 rounded-xl text-white shadow-sm hover:shadow-lg transition-all cursor-pointer flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex items-center justify-between mb-4">
+                                            <div class="w-12 h-12 rounded-lg btn-rrr-orange text-white flex items-center justify-center text-xl">
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
+                                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-white/15 text-[#FF9900]">18 Bundles &amp; AMCs</span>
+                                        </div>
+                                        <h3 class="font-display font-bold text-lg mb-2">Combo Packages &amp; AMC Plans</h3>
+                                        <p class="text-sm text-slate-300 leading-relaxed">Save more with all-in-one shop launch kits, MSME compliance bundles, and monthly/annual maintenance retainers.</p>
+                                    </div>
+                                    <div class="mt-5 pt-3 border-t border-white/15 flex items-center justify-between text-xs font-bold text-[#FF9900]">
+                                        <span>Browse All Packages</span>
+                                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
+
+        function switchHomePillar(key) {
+            homePillar = key;
+            renderPage('home', null, false);
+        }
+
+        // --- LAYER 2: ABOUT PAGE ---
+        function buildAboutPageHTML() {
+            return `
+                <div class="page-view">
+                    ${buildSubpageHeader('About Us', [
+                        { label: 'HOME', action: "navigateTo('home')" },
+                        { label: 'ABOUT' }
+                    ])}
+
+                    <section class="py-14 bg-slate-50">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center bg-white p-6 sm:p-10 rounded-2xl border border-slate-200 shadow-2xs">
+                                <div class="lg:col-span-7 space-y-4">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-[#FF6B00]">Create • Connect • Grow</span>
+                                    <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-[#061E45]">
+                                        Your One Stop Media &amp; Digital Partner
+                                    </h2>
+                                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                                        Based at <strong>Plot No. 305/1383, GGP Chaka / GGP Colony, Rasulgarh, Bhubaneswar – 751025</strong>, <strong>R.R.R Media Creation</strong> brings creative media production, digital marketing, statutory compliance, GeM tender bidding, and CCTV security together under one roof.
+                                    </p>
+                                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                                        Whether you are launching a new shop, shooting promotional Reels, registering for Udyam/GST/EPFO, bidding on government tenders, or securing your office with CCTV cameras, we deliver clear pricing and dependable execution.
+                                    </p>
+                                    <div class="pt-2 flex flex-wrap gap-3">
+                                        <button onclick="navigateTo('services-all')" class="px-5 py-2.5 rounded btn-rrr-orange text-white font-bold text-sm transition cursor-pointer">
+                                            Browse Service Menu
+                                        </button>
+                                        <button onclick="navigateTo('contact')" class="px-5 py-2.5 rounded border border-[#061E45] text-[#061E45] hover:bg-[#061E45] hover:text-white font-semibold text-sm transition cursor-pointer">
+                                            Visit Our Office
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+                                    <div class="p-5 rounded-xl bg-[#061E45] text-white text-center border-b-4 border-[#FF6B00]">
+                                        <div class="font-display font-extrabold text-3xl text-[#FF9900]">5</div>
+                                        <div class="text-xs font-bold uppercase text-slate-200 mt-1">Core Departments</div>
+                                    </div>
+                                    <div class="p-5 rounded-xl bg-[#061E45] text-white text-center border-b-4 border-[#FF6B00]">
+                                        <div class="font-display font-extrabold text-3xl text-[#FF9900]">7</div>
+                                        <div class="text-xs font-bold uppercase text-slate-200 mt-1">Launch Combos</div>
+                                    </div>
+                                    <div class="p-5 rounded-xl bg-[#061E45] text-white text-center border-b-4 border-[#FF6B00]">
+                                        <div class="font-display font-extrabold text-3xl text-[#FF9900]">11</div>
+                                        <div class="text-xs font-bold uppercase text-slate-200 mt-1">AMC Care Plans</div>
+                                    </div>
+                                    <div class="p-5 rounded-xl bg-[#061E45] text-white text-center border-b-4 border-[#FF6B00]">
+                                        <div class="font-display font-extrabold text-3xl text-[#FF9900]">100%</div>
+                                        <div class="text-xs font-bold uppercase text-slate-200 mt-1">Transparent Quotes</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mission & Vision -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-2xs">
+                                    <div class="w-12 h-12 rounded-lg bg-[#061E45] text-[#FF9900] flex items-center justify-center text-xl mb-4">
+                                        <i class="fa-solid fa-bullseye"></i>
+                                    </div>
+                                    <h3 class="font-display font-bold text-xl text-[#061E45] mb-2">Our Mission</h3>
+                                    <p class="text-sm text-slate-600 leading-relaxed">
+                                        To empower local retailers, service providers, and contractors with high-impact media production, affordable digital marketing, hassle-free compliance, and dependable security infrastructure.
+                                    </p>
+                                </div>
+                                <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-2xs">
+                                    <div class="w-12 h-12 rounded-lg bg-[#061E45] text-[#FF9900] flex items-center justify-center text-xl mb-4">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </div>
+                                    <h3 class="font-display font-bold text-xl text-[#061E45] mb-2">Our Vision</h3>
+                                    <p class="text-sm text-slate-600 leading-relaxed">
+                                        To be Bhubaneswar’s most trusted single-window media and business growth partner known for creative quality, honest pricing, and responsive after-service support.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
+
+        // --- LAYER 3: DEDICATED SERVICE CATEGORY PAGE ---
+        function buildSingleServicePageHTML(catId) {
+            const section = SERVICE_SECTIONS.find(s => s.id === catId) || SERVICE_SECTIONS[0];
+
+            return `
+                <div class="page-view">
+                    ${buildSubpageHeader(section.title, [
+                        { label: 'HOME', action: "navigateTo('home')" },
+                        { label: 'SERVICES', action: "navigateTo('services-all')" },
+                        { label: section.shortTitle.toUpperCase() }
+                    ])}
+
+                    <section class="py-12 bg-slate-50">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <!-- Category Switcher Pills -->
+                            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-4 mb-6">
+                                ${SERVICE_SECTIONS.map(s => `
+                                    <button onclick="navigateTo('service', '${s.id}')" class="px-4 py-2 rounded text-xs sm:text-sm font-semibold whitespace-nowrap transition cursor-pointer ${s.id === section.id ? 'btn-rrr-orange text-white shadow-sm' : 'bg-white text-[#061E45] border border-slate-200 hover:border-[#FF6B00] hover:text-[#FF6B00]'}">
+                                        ${s.code}. ${s.shortTitle}
+                                    </button>
+                                `).join('')}
+                            </div>
+
+                            <!-- Department Overview Box -->
+                            <div class="bg-white rounded-xl border border-slate-200 p-6 sm:p-8 mb-8 shadow-2xs">
+                                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                                    <div class="space-y-2 max-w-3xl">
+                                        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FF6B00]">
+                                            <i class="fa-solid ${section.icon}"></i>
+                                            <span>Category ${section.code} Department</span>
+                                        </div>
+                                        <h2 class="font-display font-extrabold text-2xl text-[#061E45]">${section.title}</h2>
+                                        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">${section.overview}</p>
+                                    </div>
+                                    <div class="shrink-0">
+                                        <a href="https://wa.me/917978143717?text=${encodeURIComponent('Hi R.R.R Media Creation, I have an enquiry regarding ' + section.title)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition shadow-xs">
+                                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                                            <span>Enquire This Service</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="mt-5 pt-4 border-t border-slate-100 flex items-start gap-2.5 text-xs text-slate-600 bg-orange-50/70 p-3.5 rounded-lg">
+                                    <i class="fa-solid fa-circle-info text-[#FF6B00] mt-0.5 shrink-0"></i>
+                                    <span>${section.disclaimer}</span>
+                                </div>
+                            </div>
+
+                            <!-- Service Cards Grid -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                ${section.items.map(item => createServiceItemHTML(item, section)).join('')}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
+
+        // --- LAYER 4: ALL SERVICES DIRECTORY PAGE ---
+        function buildAllServicesPageHTML() {
+            const q = serviceSearchQuery.toLowerCase().trim();
+
+            return `
+                <div class="page-view">
+                    ${buildSubpageHeader('All Services & Rate Card', [
+                        { label: 'HOME', action: "navigateTo('home')" },
+                        { label: 'ALL SERVICES' }
+                    ])}
+
+                    <section class="py-12 bg-slate-50">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <!-- Search Filter Bar -->
+                            <div class="max-w-2xl mx-auto mb-10">
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#FF6B00]">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </div>
+                                    <input type="text" value="${escapeQuotes(serviceSearchQuery)}" oninput="handleAllServicesSearch(this.value)" placeholder="Filter services (e.g., GST, Reels, CCTV, Logo, GeM, PAN, Poster)..." 
+                                        class="w-full pl-11 pr-10 py-3.5 rounded-lg bg-white border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#FF6B00] text-sm sm:text-base shadow-2xs">
+                                    ${serviceSearchQuery ? `
+                                        <button onclick="handleAllServicesSearch('')" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-700 cursor-pointer">
+                                            <i class="fa-solid fa-circle-xmark"></i>
+                                        </button>
+                                    ` : ''}
+                                </div>
+                            </div>
+
+                            <div class="space-y-12">
+                                ${SERVICE_SECTIONS.map(sec => {
+                                    const filtered = sec.items.filter(item => !q || item.name.toLowerCase().includes(q) || item.tag.toLowerCase().includes(q) || sec.title.toLowerCase().includes(q));
+                                    if (filtered.length === 0) return '';
+                                    return `
+                                        <div>
+                                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-2 border-b border-slate-200">
+                                                <div>
+                                                    <h2 class="font-display font-extrabold text-xl sm:text-2xl text-[#061E45]">${sec.code}. ${sec.title}</h2>
+                                                    <p class="text-xs text-slate-500 mt-0.5">${sec.disclaimer}</p>
+                                                </div>
+                                                <button onclick="navigateTo('service', '${sec.id}')" class="self-start sm:self-center text-xs font-bold text-[#FF6B00] hover:underline cursor-pointer">
+                                                    Open Department Page →
+                                                </button>
+                                            </div>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                                ${filtered.map(item => createServiceItemHTML(item, sec)).join('')}
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
+
+        function handleAllServicesSearch(val) {
+            serviceSearchQuery = val;
+            renderPage('services-all', null, false);
+            const input = document.querySelector('#app-viewport input');
+            if (input) {
+                input.focus();
+                input.setSelectionRange(val.length, val.length);
+            }
+        }
+
+        // --- LAYER 5: PACKAGES & AMC PAGE ---
+        function buildPackagesPageHTML(activeTab) {
+            const isAmc = activeTab === 'amc';
+            const title = isAmc ? 'AMC & Monthly Retainer Plans' : 'Featured Business Combo Packages';
+
+            return `
+                <div class="page-view">
+                    ${buildSubpageHeader(title, [
+                        { label: 'HOME', action: "navigateTo('home')" },
+                        { label: 'PACKAGES', action: "navigateTo('packages', 'combos')" },
+                        { label: isAmc ? 'AMC PLANS' : 'COMBO BUNDLES' }
+                    ])}
+
+                    <section class="py-12 bg-slate-50">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <!-- Sub-Page Switcher Tabs -->
+                            <div class="flex flex-wrap items-center gap-3 mb-8">
+                                <button onclick="navigateTo('packages', 'combos')" class="px-5 py-2.5 rounded font-display font-bold text-xs sm:text-sm transition cursor-pointer ${!isAmc ? 'btn-rrr-orange text-white shadow-sm' : 'bg-white text-[#061E45] border border-slate-200 hover:border-[#FF6B00]'}">
+                                    <i class="fa-solid fa-star mr-1.5"></i> One-Time Launch Combos (7)
+                                </button>
+                                <button onclick="navigateTo('packages', 'amc')" class="px-5 py-2.5 rounded font-display font-bold text-xs sm:text-sm transition cursor-pointer ${isAmc ? 'btn-rrr-orange text-white shadow-sm' : 'bg-white text-[#061E45] border border-slate-200 hover:border-[#FF6B00]'}">
+                                    <i class="fa-solid fa-rotate mr-1.5"></i> AMC &amp; Retainer Plans (11)
+                                </button>
+                            </div>
+
+                            ${isAmc ? `
+                                <div class="bg-white border-l-4 border-[#FF6B00] rounded-r-lg p-4 mb-8 shadow-2xs text-xs text-slate-600">
+                                    <strong class="text-[#061E45]">Standard AMC Terms:</strong> Advance billing (monthly/quarterly/annual). Minimum lock-in: 3 months for Digital &amp; Tender AMCs; 12 months for CCTV AMCs. Unused monthly deliverables do not roll over. Govt. fees, portal charges, ad spend &amp; hardware are extra.
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                                    ${AMC_PACKAGES.map(amc => createAmcCardHTML(amc)).join('')}
+                                </div>
+                            ` : `
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                                    ${COMBO_PACKAGES.map(combo => createComboCardHTML(combo)).join('')}
+                                </div>
+                            `}
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
+
+        // --- LAYER 6: CONTACT & OFFICE LOCATION PAGE ---
+        function buildContactPageHTML() {
+            return `
+                <div class="page-view">
+                    ${buildSubpageHeader('Contact & Office Location', [
+                        { label: 'HOME', action: "navigateTo('home')" },
+                        { label: 'CONTACT' }
+                    ])}
+
+                    <section class="py-14 bg-slate-50">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+                            <!-- Left: Office Details & Google Map -->
+                            <div class="lg:col-span-6 space-y-6">
+                                <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 shadow-2xs space-y-5">
+                                    <h2 class="font-display font-extrabold text-2xl text-[#061E45]">Visit Our Bhubaneswar Office</h2>
+                                    <p class="text-sm text-slate-600">Walk in for media shoots, document assistance, project consultations, or on-site CCTV &amp; marketing bookings.</p>
+
+                                    <div class="space-y-4 text-sm">
+                                        <div class="flex items-start gap-3.5">
+                                            <div class="w-10 h-10 rounded-lg bg-[#061E45] text-[#FF9900] flex items-center justify-center shrink-0">
+                                                <i class="fa-solid fa-location-dot"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-[#061E45]">Office Address</div>
+                                                <div class="text-slate-600 mt-0.5">Plot No. 305/1383, GGP Chaka / GGP Colony, Rasulgarh, Bhubaneswar, Odisha – 751025</div>
+                                                <div class="text-xs text-slate-400 mt-1">Plus Code: <strong>7VV7+M98</strong> • GPS: 20.2942359, 85.8634869</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex items-start gap-3.5">
+                                            <div class="w-10 h-10 rounded-lg bg-[#061E45] text-[#FF9900] flex items-center justify-center shrink-0">
+                                                <i class="fa-solid fa-phone"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-[#061E45]">Phone &amp; WhatsApp</div>
+                                                <a href="tel:+917978143717" class="text-[#FF6B00] font-bold hover:underline">+91 79781 43717</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-2">
+                                        <a href="${OFFICE_MAPS_URL}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded btn-rrr-orange text-white font-bold text-sm transition shadow-xs">
+                                            <i class="fa-solid fa-map-location-dot"></i>
+                                            <span>Get Directions on Google Maps</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Embedded Map Frame -->
+                                <div class="bg-white p-2 rounded-xl border border-slate-200 shadow-2xs overflow-hidden">
+                                    <iframe 
+                                        title="R.R.R Media Creation Office Map"
+                                        src="https://maps.google.com/maps?q=20.2942359,85.8634869&z=17&output=embed" 
+                                        class="w-full h-64 rounded-lg border-0" 
+                                        loading="lazy" 
+                                        referrerpolicy="no-referrer-when-downgrade">
+                                    </iframe>
+                                </div>
+                            </div>
+
+                            <!-- Right: Interactive WhatsApp Enquiry Form -->
+                            <div class="lg:col-span-6">
+                                <div class="bg-white p-6 sm:p-8 rounded-xl border border-slate-200 shadow-2xs">
+                                    <h2 class="font-display font-extrabold text-2xl text-[#061E45] mb-2">Send a Quick Enquiry</h2>
+                                    <p class="text-sm text-slate-500 mb-6">Fill in your details below and send your inquiry directly to our WhatsApp desk for a fast response.</p>
+
+                                    <form onsubmit="submitContactForm(event)" class="space-y-4">
+                                        <div>
+                                            <label class="block text-xs font-bold uppercase text-[#061E45] mb-1">Your Name *</label>
+                                            <input type="text" id="contact-name" required placeholder="Enter your full name" class="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B00]">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-bold uppercase text-[#061E45] mb-1">Business / Shop Name</label>
+                                            <input type="text" id="contact-business" placeholder="e.g., Sai Traders, Bhubaneswar" class="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B00]">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-bold uppercase text-[#061E45] mb-1">Service Needed *</label>
+                                            <select id="contact-service" class="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#FF6B00]">
+                                                <option value="Video Production / Photography / Reels">Video Production / Photography / Reels</option>
+                                                <option value="Digital Marketing / Social Media / Graphic Design">Digital Marketing / Social Media / Graphic Design</option>
+                                                <option value="GST / Udyam / Business Registration">GST / Udyam / Business Registration</option>
+                                                <option value="GeM / Tender Bidding Support">GeM / Tender Bidding Support</option>
+                                                <option value="CCTV Installation / AMC">CCTV Installation / AMC</option>
+                                                <option value="Citizen / Document Assistance">Citizen / Document Assistance</option>
+                                                <option value="Combo Package / Custom Quote">Combo Package / Custom Quote</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-bold uppercase text-[#061E45] mb-1">Message / Requirement Details</label>
+                                            <textarea id="contact-message" rows="4" placeholder="Tell us briefly what you need..." class="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"></textarea>
+                                        </div>
+                                        <button type="submit" class="w-full py-3.5 px-6 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-display font-bold text-sm uppercase tracking-wider transition flex items-center justify-center gap-2 shadow-sm cursor-pointer">
+                                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                                            <span>Send Enquiry on WhatsApp</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
+
+        function submitContactForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value.trim();
+            const business = document.getElementById('contact-business').value.trim();
+            const service = document.getElementById('contact-service').value;
+            const msg = document.getElementById('contact-message').value.trim();
+
+            const lines = [
+                `*New Website Enquiry – R.R.R Media Creation*`,
+                `*Name:* ${name}`,
+                business ? `*Business:* ${business}` : null,
+                `*Service:* ${service}`,
+                msg ? `*Details:* ${msg}` : null
+            ].filter(Boolean).join('\n');
+
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines)}`, '_blank', 'noopener,noreferrer');
+        }
+
+        // ==========================================
+        // 5. REUSABLE CARD BUILDERS
+        // ==========================================
+        function createComboCardHTML(combo) {
+            const inCart = quoteCart[combo.id];
+            const qty = inCart ? inCart.qty : 0;
+
+            return `
+                <div class="bg-white rounded-xl border ${qty > 0 ? 'border-[#FF6B00] ring-2 ring-[#FF6B00]/20' : 'border-slate-200'} shadow-2xs hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
+                    <div class="p-5">
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="px-2.5 py-1 rounded bg-orange-50 text-[#FF6B00] text-[11px] font-bold uppercase tracking-wide">
+                                ${combo.badge}
+                            </span>
+                            ${qty > 0 ? `<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 text-xs font-bold">Added (${qty})</span>` : ''}
+                        </div>
+                        <h3 class="font-display font-bold text-lg text-[#061E45] leading-snug">${combo.title}</h3>
+                        <div class="mt-2">
+                            <span class="font-display font-extrabold text-2xl text-[#FF6B00]">${combo.displayPrice}</span>
+                        </div>
+                        <ul class="mt-4 space-y-2 border-t border-slate-100 pt-3">
+                            ${combo.includes.map(inc => `
+                                <li class="flex items-start gap-2 text-xs text-slate-600">
+                                    <i class="fa-solid fa-circle-check text-[#FF6B00] mt-0.5 shrink-0"></i>
+                                    <span>${inc}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="px-5 pb-5 pt-2">
+                        <p class="text-[11px] text-slate-400 italic mb-3">${combo.note}</p>
+                        ${qty === 0 ? `
+                            <button onclick="addToQuote('${combo.id}', '${escapeQuotes(combo.title)}', ${combo.price}, '${combo.displayPrice}', 'combos', 'Combo Packages')" 
+                                class="w-full py-2.5 px-4 rounded btn-rrr-orange text-white font-bold text-sm transition flex items-center justify-center gap-2 cursor-pointer">
+                                <i class="fa-solid fa-plus"></i>
+                                <span>Add Package to Quote</span>
+                            </button>
+                        ` : `
+                            <div class="flex items-center justify-between bg-orange-50 border border-orange-200 rounded p-1">
+                                <button onclick="updateQuantity('${combo.id}', -1)" class="w-9 h-9 rounded bg-white text-[#061E45] hover:bg-slate-100 font-bold shadow-2xs flex items-center justify-center cursor-pointer">
+                                    <i class="fa-solid fa-minus text-xs"></i>
+                                </button>
+                                <span class="font-bold text-sm text-[#FF6B00]">${qty} in Quote</span>
+                                <button onclick="updateQuantity('${combo.id}', 1)" class="w-9 h-9 rounded bg-[#FF6B00] text-white hover:bg-[#E64A00] font-bold shadow-2xs flex items-center justify-center cursor-pointer">
+                                    <i class="fa-solid fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        `}
+                    </div>
+                </div>
+            `;
+        }
+
+        function createAmcCardHTML(amc) {
+            const inCart = quoteCart[amc.id];
+            const qty = inCart ? inCart.qty : 0;
+
+            return `
+                <div class="bg-white rounded-xl border ${qty > 0 ? 'border-[#FF6B00] ring-2 ring-[#FF6B00]/20' : 'border-slate-200'} shadow-2xs hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
+                    <div class="p-5">
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="px-2.5 py-1 rounded bg-slate-100 text-[#061E45] text-[11px] font-bold uppercase tracking-wide">
+                                ${amc.badge}
+                            </span>
+                            ${qty > 0 ? `<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 text-xs font-bold">Added (${qty})</span>` : ''}
+                        </div>
+                        <h3 class="font-display font-bold text-lg text-[#061E45] leading-snug">${amc.title}</h3>
+                        <div class="mt-2">
+                            <span class="font-display font-extrabold text-2xl text-[#FF6B00]">${amc.displayPrice}</span>
+                        </div>
+                        <ul class="mt-4 space-y-2 border-t border-slate-100 pt-3">
+                            ${amc.includes.map(inc => `
+                                <li class="flex items-start gap-2 text-xs text-slate-600">
+                                    <i class="fa-solid fa-circle-check text-[#FF6B00] mt-0.5 shrink-0"></i>
+                                    <span>${inc}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="px-5 pb-5 pt-2">
+                        <p class="text-[11px] text-slate-400 italic mb-3">${amc.note}</p>
+                        ${qty === 0 ? `
+                            <button onclick="addToQuote('${amc.id}', '${escapeQuotes(amc.title)}', ${amc.price}, '${escapeQuotes(amc.displayPrice)}', 'amc', 'AMC & Retainer Plans')" 
+                                class="w-full py-2.5 px-4 rounded bg-[#061E45] hover:bg-[#FF6B00] text-white font-semibold text-sm transition flex items-center justify-center gap-2 cursor-pointer">
+                                <i class="fa-solid fa-plus"></i>
+                                <span>Add AMC Plan to Quote</span>
+                            </button>
+                        ` : `
+                            <div class="flex items-center justify-between bg-orange-50 border border-orange-200 rounded p-1">
+                                <button onclick="updateQuantity('${amc.id}', -1)" class="w-9 h-9 rounded bg-white text-[#061E45] hover:bg-slate-100 font-bold shadow-2xs flex items-center justify-center cursor-pointer">
+                                    <i class="fa-solid fa-minus text-xs"></i>
+                                </button>
+                                <span class="font-bold text-sm text-[#FF6B00]">${qty} in Quote</span>
+                                <button onclick="updateQuantity('${amc.id}', 1)" class="w-9 h-9 rounded bg-[#FF6B00] text-white hover:bg-[#E64A00] font-bold shadow-2xs flex items-center justify-center cursor-pointer">
+                                    <i class="fa-solid fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        `}
+                    </div>
+                </div>
+            `;
+        }
+
+        function createServiceItemHTML(item, section) {
+            const inCart = quoteCart[item.id];
+            const qty = inCart ? inCart.qty : 0;
+
+            return `
+                <div class="bg-white rounded-lg border ${qty > 0 ? 'border-[#FF6B00] bg-orange-50/30' : 'border-slate-200 hover:border-[#FF6B00]'} p-4 transition-all flex flex-col justify-between gap-3 shadow-2xs">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-1.5">
+                            <span class="text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 text-[#061E45]">
+                                ${item.tag}
+                            </span>
+                            ${qty > 0 ? `<span class="text-xs font-bold text-[#FF6B00]"><i class="fa-solid fa-check mr-1"></i>Selected</span>` : ''}
+                        </div>
+                        <h3 class="font-semibold text-[#061E45] text-sm sm:text-base leading-snug">${item.name}</h3>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-2.5 border-t border-slate-100 gap-2">
+                        <div class="font-display font-bold text-base sm:text-lg text-[#061E45]">${item.displayPrice}</div>
+
+                        ${qty === 0 ? `
+                            <button onclick="addToQuote('${item.id}', '${escapeQuotes(item.name)}', ${item.price}, '${escapeQuotes(item.displayPrice)}', '${section.id}', '${escapeQuotes(section.code + '. ' + section.title)}')" 
+                                class="px-3.5 py-2 rounded btn-rrr-orange text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shrink-0">
+                                <i class="fa-solid fa-plus"></i>
+                                <span>Add</span>
+                            </button>
+                        ` : `
+                            <div class="flex items-center gap-1.5 bg-white border border-[#FF6B00] rounded p-0.5 shadow-2xs">
+                                <button onclick="updateQuantity('${item.id}', -1)" class="w-7 h-7 rounded hover:bg-slate-100 text-[#061E45] font-bold flex items-center justify-center cursor-pointer">
+                                    <i class="fa-solid fa-minus text-[10px]"></i>
+                                </button>
+                                <span class="px-2 text-xs font-extrabold text-[#FF6B00]">${qty}</span>
+                                <button onclick="updateQuantity('${item.id}', 1)" class="w-7 h-7 rounded bg-[#FF6B00] text-white hover:bg-[#E64A00] font-bold flex items-center justify-center cursor-pointer">
+                                    <i class="fa-solid fa-plus text-[10px]"></i>
+                                </button>
+                            </div>
+                        `}
+                    </div>
+                </div>
+            `;
+        }
+
+        // ==========================================
+        // 6. QUOTE BUILDER CART & DRAWER LOGIC
+        // ==========================================
+        function refreshCurrentViewCards() {
+            const { page, param } = currentRoute;
+            if (page === 'service' || page === 'services-all' || page === 'packages') {
+                const scrollPos = window.scrollY;
+                renderPage(page, param, false);
+                window.scrollTo(0, scrollPos);
+            }
+        }
+
+        function addToQuote(id, name, price, displayPrice, categoryId, categoryTitle) {
+            if (quoteCart[id]) {
+                quoteCart[id].qty += 1;
+            } else {
+                quoteCart[id] = { id, name, price, displayPrice, qty: 1, categoryId, categoryTitle };
+            }
+            updateQuoteUI();
+            refreshCurrentViewCards();
+            showToast(`Added "${name}" to quote`);
+        }
+
+        function updateQuantity(id, delta) {
+            if (!quoteCart[id]) return;
+            quoteCart[id].qty += delta;
+            if (quoteCart[id].qty <= 0) {
+                const removedName = quoteCart[id].name;
+                delete quoteCart[id];
+                showToast(`Removed "${removedName}"`);
+            }
+            updateQuoteUI();
+            refreshCurrentViewCards();
+        }
+
+        function clearQuote() {
+            quoteCart = {};
+            updateQuoteUI();
+            refreshCurrentViewCards();
+            showToast('Quote cleared');
+        }
+
+        function updateQuoteUI() {
+            const items = Object.values(quoteCart);
+            const totalCount = items.reduce((sum, item) => sum + item.qty, 0);
+            const totalAmount = items.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const formattedTotal = '₹' + totalAmount.toLocaleString('en-IN');
+
+            document.getElementById('header-badge').textContent = totalCount;
+            document.getElementById('desktop-item-count').textContent = totalCount;
+            document.getElementById('desktop-total-price').textContent = formattedTotal;
+            document.getElementById('mobile-item-count').textContent = totalCount;
+            document.getElementById('mobile-total-price').textContent = formattedTotal;
+            document.getElementById('drawer-count-label').textContent = `${totalCount} ${totalCount === 1 ? 'item' : 'items'}`;
+
+            const emptyState = document.getElementById('drawer-empty-state');
+            const itemsList = document.getElementById('drawer-items-list');
+            const summaryBox = document.getElementById('drawer-summary-box');
+            const disclaimersBox = document.getElementById('drawer-disclaimers-box');
+            const disclaimersList = document.getElementById('drawer-disclaimers-list');
+            const clearBtn = document.getElementById('clear-quote-btn');
+
+            if (items.length === 0) {
+                emptyState.classList.remove('hidden');
+                itemsList.innerHTML = '';
+                summaryBox.classList.add('hidden');
+                disclaimersBox.classList.add('hidden');
+                clearBtn.classList.add('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            summaryBox.classList.remove('hidden');
+            clearBtn.classList.remove('hidden');
+
+            itemsList.innerHTML = items.map(item => `
+                <div class="bg-white border border-slate-200 rounded-lg p-3.5 flex items-center justify-between gap-3 shadow-2xs">
+                    <div class="min-w-0 flex-1">
+                        <div class="text-[11px] font-semibold text-slate-400 truncate">${item.categoryTitle}</div>
+                        <div class="font-semibold text-sm text-[#061E45] leading-snug">${item.name}</div>
+                        <div class="text-xs text-slate-500 mt-0.5">Rate: ${item.displayPrice}</div>
+                    </div>
+                    <div class="flex flex-col items-end gap-1.5 shrink-0">
+                        <div class="font-display font-bold text-sm text-[#FF6B00]">
+                            ₹${(item.price * item.qty).toLocaleString('en-IN')}
+                        </div>
+                        <div class="flex items-center gap-1 bg-slate-100 rounded p-0.5 no-print">
+                            <button onclick="updateQuantity('${item.id}', -1)" class="w-6 h-6 rounded bg-white text-[#061E45] hover:bg-slate-200 text-xs font-bold flex items-center justify-center cursor-pointer">-</button>
+                            <span class="px-2 text-xs font-bold text-[#061E45]">${item.qty}</span>
+                            <button onclick="updateQuantity('${item.id}', 1)" class="w-6 h-6 rounded bg-[#FF6B00] text-white hover:bg-[#E64A00] text-xs font-bold flex items-center justify-center cursor-pointer">+</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('drawer-subtotal').textContent = formattedTotal;
+            document.getElementById('drawer-grand-total').textContent = formattedTotal;
+
+            const activeCategoryIds = new Set(items.map(i => i.categoryId));
+            const applicableNotes = [];
+
+            if (activeCategoryIds.has('combos')) {
+                applicableNotes.push('Combo Packages: Hardware, government statutory fees, and ad budgets are billed separately where applicable.');
+            }
+            if (activeCategoryIds.has('amc')) {
+                applicableNotes.push('AMC & Retainer Terms: Advance billing applies. Minimum 3-month lock-in for Digital/Tender AMCs & 12 months for CCTV AMCs. Unused monthly deliverables do not roll over.');
+            }
+            SERVICE_SECTIONS.forEach(sec => {
+                if (activeCategoryIds.has(sec.id)) {
+                    applicableNotes.push(sec.disclaimer);
+                }
+            });
+
+            if (applicableNotes.length > 0) {
+                disclaimersBox.classList.remove('hidden');
+                disclaimersList.innerHTML = applicableNotes.map(note => `<li>${note}</li>`).join('');
+            } else {
+                disclaimersBox.classList.add('hidden');
+            }
+        }
+
+        function toggleQuoteDrawer(open) {
+            const backdrop = document.getElementById('quote-drawer-backdrop');
+            const drawer = document.getElementById('quote-drawer');
+
+            if (open) {
+                backdrop.classList.remove('hidden');
+                setTimeout(() => {
+                    backdrop.classList.remove('opacity-0');
+                    drawer.classList.remove('translate-x-full');
+                }, 10);
+                document.body.style.overflow = 'hidden';
+            } else {
+                backdrop.classList.add('opacity-0');
+                drawer.classList.add('translate-x-full');
+                setTimeout(() => {
+                    backdrop.classList.add('hidden');
+                }, 300);
+                document.body.style.overflow = '';
+            }
+        }
+
+        function generateFormattedTextQuote() {
+            const items = Object.values(quoteCart);
+            if (items.length === 0) return null;
+
+            const clientName = document.getElementById('client-name').value.trim();
+            const businessName = document.getElementById('business-name').value.trim();
+            const totalAmount = items.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            let lines = [];
+            lines.push(`*R.R.R MEDIA CREATION*`);
+            lines.push(`_CREATE • CONNECT • GROW_`);
+            lines.push(`_"Your One Stop Media & Digital Partner"_`);
+            lines.push(`*Office:* ${OFFICE_ADDRESS}`);
+            lines.push(`*Map:* ${OFFICE_MAPS_URL}`);
+            lines.push(`----------------------------------------`);
+            lines.push(`*SERVICE ESTIMATE / QUOTATION*`);
+            if (clientName) lines.push(`*Client:* ${clientName}`);
+            if (businessName) lines.push(`*Business:* ${businessName}`);
+            lines.push(`*Date:* ${new Date().toLocaleDateString('en-IN')}`);
+            lines.push(`----------------------------------------`);
+
+            items.forEach((item, idx) => {
+                const lineTotal = (item.price * item.qty).toLocaleString('en-IN');
+                lines.push(`${idx + 1}. *${item.name}*`);
+                lines.push(`   Qty: ${item.qty} × ${item.displayPrice} = *₹${lineTotal}*`);
+            });
+
+            lines.push(`----------------------------------------`);
+            lines.push(`*ESTIMATED SERVICE TOTAL: ₹${totalAmount.toLocaleString('en-IN')}*`);
+            lines.push(`_(Note: Govt. fees, portal charges, hardware & ad budgets are extra as applicable.)_`);
+            lines.push(`----------------------------------------`);
+            lines.push(`Thank you for choosing R.R.R Media Creation!`);
+
+            return lines.join('\n');
+        }
+
+        function copyFormattedQuote() {
+            const text = generateFormattedTextQuote();
+            if (!text) {
+                showToast('Add at least one service first!', 'error');
+                return;
+            }
+            const helper = document.getElementById('clipboard-helper');
+            helper.value = text;
+            helper.select();
+            helper.setSelectionRange(0, 99999);
+            try {
+                document.execCommand('copy');
+                showToast('Formatted quote copied to clipboard!');
+            } catch (err) {
+                showToast('Unable to copy automatically. Please try Print/PDF.', 'error');
+            }
+        }
+
+        function shareQuoteOnWhatsApp() {
+            const text = generateFormattedTextQuote();
+            if (!text) {
+                showToast('Add at least one service to share!', 'error');
+                return;
+            }
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+        }
+
+        function printEstimate() {
+            if (Object.keys(quoteCart).length === 0) {
+                showToast('Add services to generate a PDF estimate!', 'error');
+                return;
+            }
+            window.print();
+        }
+
+        function escapeQuotes(str) {
+            return String(str).replace(/'/g, "\\'").replace(/"/g, '&quot;');
+        }
+
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            const bgClass = type === 'error' ? 'bg-rose-600' : 'bg-[#061E45] border border-[#FF6B00]';
+            const iconClass = type === 'error' ? 'fa-circle-exclamation text-white' : 'fa-circle-check text-[#FF9900]';
+
+            toast.className = `${bgClass} text-white px-4 py-3 rounded-lg shadow-xl text-xs sm:text-sm font-medium flex items-center gap-2.5 transform transition-all duration-300 translate-y-2 opacity-0`;
+            toast.innerHTML = `<i class="fa-solid ${iconClass}"></i><span>${message}</span>`;
+
+            container.appendChild(toast);
+            requestAnimationFrame(() => toast.classList.remove('translate-y-2', 'opacity-0'));
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', '-translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
